@@ -4,12 +4,6 @@ import java.util.ArrayList;
 public class ReadToFile {
       private String sourceExpression;
     ArrayList<Character> list = new ArrayList<>();
-    /**
-     *
-     * @param name
-     * @return
-     * @throws IOException
-     */
     public String ReadToFile(String name) throws Exception {
         FileInputStream inputStream=null;
         try {
@@ -44,36 +38,10 @@ public class ReadToFile {
         }
         return sourceExpression;
     }
-    /**
-     *
-     */
     public void get(){
         for(int i=0; i<list.size(); i++){
             System.out.print(list.get(i));
         }
     }
-    /**
-     *
-     * @return
-     */
-    public int getSize(){
-        return list.size();
-    }
-    /**
-     *
-     * @return
-     */
-    public String getExpression(){
-        return sourceExpression;
-    }
-    /**
-     *
-     * @param i
-     * @return
-     */
-    public ArrayList add(int i){
-        ArrayList<Character> list = new ArrayList<>();
-        list.add((char) i);
-        return list;
-    }
+
 }

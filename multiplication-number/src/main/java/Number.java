@@ -6,17 +6,11 @@ import java.io.IOException;
  *
  */
 public class Number {
-    /**
-     *
-     */
-    public String sourceExpression;
-    public int result;
+
+    private String sourceExpression;
+    private int result;
     private static final int VALUE = 24;
-    /**
-     * read to file
-     * @param name
-     * @return
-     */
+
     public String ReadToFile(String name) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(name));
@@ -32,10 +26,7 @@ public class Number {
         }
         return sourceExpression;
     }
-    /**
-     *
-     * @return
-     */
+
     public int []  getNumbers(){
         int k = Integer.parseInt(sourceExpression);
         int [] numbers = new int[sourceExpression.length()];
@@ -45,10 +36,7 @@ public class Number {
         }
         return numbers;
     }
-    /**
-     *
-     * @param numbers
-     */
+
     public int getResult(int [] numbers){
            int result=1;
            for(int i=0; i<numbers.length; i++){
@@ -56,12 +44,8 @@ public class Number {
            }
         return result;
     }
-    /**
-     *
-     * @param s
-     * @return
-     */
-    public  String CorrectExpression(String s){
+
+    public  boolean CorrectExpression(String s){
         StringBuilder sb = new StringBuilder(s.length());
         for(int i = 0; i < s.length(); i++){
             char p = s.charAt(i);
@@ -69,18 +53,16 @@ public class Number {
                 sb.append(p);
             }
         }
-        return sb.toString();
+        return sb.length()!=0;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getSourceExpression(){
         return sourceExpression;
     }
+
     public int getResult(){
         return VALUE;
     }
+
 
 }
