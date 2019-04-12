@@ -12,6 +12,7 @@ public class Main {
 
     private static void start(){
         Number number = new Number();
+        
         number.ReadToFile(
                 "/Users/vladimirlozickiy/Desktop/multimodule/multiplication-number/src/main/resources/actual.txt");
         int value[] = new int[number.getNumbers().length];
