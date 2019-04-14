@@ -3,20 +3,18 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  *
  */
-public class Parking extends Thread {
-    Place res;
+ class Parking extends Thread {
+    private Place res;
     Parking(Place res){
         this.res=res;
     }
-    /**
-     *
-     */
+
      public void run() {
          synchronized (res) {
             checkPlace();
          }
     }
-    public  void checkPlace() {
+    private void checkPlace() {
         int i;
         while(true){
            i= ThreadLocalRandom.current().nextInt(res.getSize());

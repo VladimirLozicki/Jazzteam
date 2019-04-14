@@ -1,4 +1,4 @@
-public class Place {
+class Place {
    private int [] places={0,0,0,0,0,0};
 
     public int getSize() {

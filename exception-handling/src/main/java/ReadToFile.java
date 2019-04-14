@@ -1,47 +1,63 @@
 import java.io.*;
-import java.util.ArrayList;
+import java.util.logging.Logger;
 
-public class ReadToFile {
-      private String sourceExpression;
-    ArrayList<Character> list = new ArrayList<>();
+class ReadToFile {
+    private String sourceExpression;
+    private static final Logger logger = Logger.getGlobal();
+
     public String ReadToFile(String name) throws Exception {
-        FileInputStream inputStream=null;
+        FileInputStream inputStream = null;
         try {
-             inputStream = new FileInputStream(name);
-            int i=-1;
-            StringBuilder br = new StringBuilder();
-            while((i=inputStream.read())!=-1){
-                list.add((char) i);
-                br.append((char)i);
+            getSourceExpression(inputStream, name);
+        } catch (FileNotFoundException exception) {
+            logger.info("FileNotFound" + exception);
+        } catch (IOException ex) {
+            logger.info("exception" + ex);
+        } catch (Exception exception) {
+            if (inputStream == null) {
+                throw new Exception("file empty");
             }
-            sourceExpression=br.toString();
-        }
-        catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
-        }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-        catch (Exception exception){
-            if(inputStream==null){
-                 throw new Exception("file empty");
-            }
-        }
-        finally {
-            try{
-                if(inputStream!=null)
-                    inputStream.close();
-            }
-            catch(IOException ex){
-                System.out.println(ex.getMessage());
+        } finally {
+            try {
+                if (inputStream != null)
+                    closeStream(name);
+            } catch (IOException ex) {
+                //System.out.println(ex.getMessage());
+                logger.info("" + ex);
             }
         }
         return sourceExpression;
     }
-    public void get(){
-        for(int i=0; i<list.size(); i++){
-            System.out.print(list.get(i));
+    String getSourceExpression(FileInputStream inputStream, String name) throws IOException {
+        inputStream = new FileInputStream(name);
+        int i = -1;
+        StringBuilder br = new StringBuilder();
+        while ((i = inputStream.read()) != -1) {
+            addItem(br, i);
         }
+        return sourceExpression = br.toString();
     }
 
+    StringBuilder createStringBuilder() {
+        StringBuilder br = new StringBuilder();
+        return br;
+    }
+
+    StringBuilder addItem(StringBuilder br, int i) {
+        return br.append((char) i);
+    }
+
+    String returnInputExpression() {
+        return sourceExpression;
+    }
+
+    FileInputStream createStream(String name) throws FileNotFoundException {
+        FileInputStream linkobject = new FileInputStream(name);
+        return linkobject;
+    }
+
+    FileInputStream closeStream(String name) throws IOException {
+        createStream(name).close();
+        return null;
+    }
 }

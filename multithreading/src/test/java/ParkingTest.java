@@ -20,7 +20,6 @@ public class ParkingTest {
     }
 
     @Test
-    @AfterClass
     public  void checkPlace() {
         Place place = new Place();
         assertNotNull(place.getSize());

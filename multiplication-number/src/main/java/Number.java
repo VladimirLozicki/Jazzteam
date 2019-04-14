@@ -1,43 +1,46 @@
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-/**
- *
- */
-public class Number {
+import java.util.logging.Logger;
 
+class Number {
+
+    private static final Logger logger = Logger.getGlobal();
     private String sourceExpression;
-    private int result;
-    private static final int VALUE = 24;
 
-    public String ReadToFile(String name) {
+     String getStringFromFile(String name) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(name));
+             BufferedReader reader= createBuffer(name);
             String str;
             while ((str = reader.readLine()) != null) {
                 if (!str.isEmpty()) {
                     sourceExpression=str;
                 }
             }
-            reader.close();
+            createBuffer(name);
         } catch (IOException e) {
-            System.out.println(e);
+            logger.info("Error" + e);
         }
-        return sourceExpression;
+         return sourceExpression;
     }
 
-    public int []  getNumbers(){
+    /**
+     *  the divide the string into elements
+     * @param sourceExpression
+     * @return link on massive
+     */
+    int []  divisionExpression(String sourceExpression){
         int k = Integer.parseInt(sourceExpression);
-        int [] numbers = new int[sourceExpression.length()];
+        int [] source = new int[sourceExpression.length()];
         for (int i = 0; i <sourceExpression.length(); i++) {
-            numbers[i] = k % 10;
+            source[i] = k % 10;
             k = k / 10;
         }
-        return numbers;
+        return source;
     }
 
-    public int getResult(int [] numbers){
+     int multiplicationOfNumbers(int [] numbers){
            int result=1;
            for(int i=0; i<numbers.length; i++){
                result*=numbers[i];
@@ -45,24 +48,15 @@ public class Number {
         return result;
     }
 
-    public  boolean CorrectExpression(String s){
-        StringBuilder sb = new StringBuilder(s.length());
-        for(int i = 0; i < s.length(); i++){
-            char p = s.charAt(i);
-            if(p < 47 || p > 58 ){
-                sb.append(p);
-            }
-        }
-        return sb.length()!=0;
+      BufferedReader createBuffer(String name) throws FileNotFoundException {
+        BufferedReader linkobject = new BufferedReader(new FileReader(name));
+        return linkobject;
     }
 
-    public String getSourceExpression(){
-        return sourceExpression;
-    }
-
-    public int getResult(){
-        return VALUE;
-    }
-
+      BufferedReader closeBuffer(String name) throws IOException {
+         createBuffer(name).close();
+          return null;
+      }
 
 }
+

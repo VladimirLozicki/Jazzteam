@@ -1,12 +1,5 @@
-import java.util.Scanner;
-
-import static java.lang.Thread.sleep;
-
 public class Main {
-    /**
-     *
-     * @param args
-     */
+
     private  static final int COUNT=33;
     public static void main(String args []){
         Place place = new Place();
@@ -15,9 +8,6 @@ public class Main {
           thread.start();
 
       }
-    }
-    public static int getCount(){
-        return COUNT;
     }
 
     }
