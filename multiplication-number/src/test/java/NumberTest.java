@@ -1,6 +1,8 @@
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.io.File;
+
 import static org.testng.Assert.*;
 
 public class NumberTest {
@@ -79,7 +81,7 @@ public class NumberTest {
     }
 
     private String setAddress() {
-        String name = getClass().getResource("/expression.txt").getPath();
+        String name = new File("src/main/resources/expression.txt").getAbsolutePath();
         return name;
     }
 
