@@ -17,18 +17,16 @@ class ExampleReadFromFile {
             sourceExpression = br.toString();
         } catch (FileNotFoundException exception) {
             exception.printStackTrace();
-        }catch (IOException exception){
+        } catch (IOException exception) {
             exception.printStackTrace();
-        }
-
-        finally {
+        } finally {
             try {
                 if (inputStream != null)
                     closeStream(name);
             } catch (IOException ex) {
                 logger.info("" + ex);
             }
-            if(sourceExpression.length()==0){
+            if (sourceExpression.length() == 0) {
                 try {
                     throw new Exception("FileNotFoundException");
                 } catch (Exception e) {

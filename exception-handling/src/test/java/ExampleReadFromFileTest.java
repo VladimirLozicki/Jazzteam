@@ -1,8 +1,7 @@
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 import static org.testng.Assert.*;
 
@@ -23,13 +22,14 @@ public class ExampleReadFromFileTest {
 
     @Test(expectedExceptions = Exception.class)
     public void testFileNotFound() {
-        String name="/Users/vladimirlozickiy/Desktop/multimodule/exception-handling/src/main/resources/1.txt";
+        String name = new File("src/main/resources/1.txt")
+                .getAbsolutePath();
         getLink().exampleReadFile(name);
     }
 
     private String setAdress() {
-        String name="/Users/vladimirlozickiy/Desktop/multimodule/exception-handling/src/main/resources/expression.txt";
-       // String name = getClass().getResource("/expression.txt").getPath();
+        String name = new File("src/main/resources/expression.txt")
+                .getAbsolutePath();
         return name;
     }
 
