@@ -12,11 +12,6 @@ class Parking implements Runnable {
                     res.takePlace(j);
                     break;
                 }
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
             Thread.interrupted();
         }

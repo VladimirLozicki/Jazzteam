@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 class Number {
 
     private static final Logger logger = Logger.getGlobal();
+    
     private String sourceExpression;
 
     String getStringFromFile(String name) {
