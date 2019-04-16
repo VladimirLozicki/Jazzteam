@@ -25,9 +25,6 @@ public class ParkingTest {
             try {
                 t.join();
                 actual = commonResource.place[0];
-                //logger.info("place first thread" + commonResource.place[1]);
-                // System.out.print(commonResource.place[1]);
-                // System.out.println(commonResource.place[2]);
                 assertEquals(actual, exprected);
             } catch (InterruptedException e) {
                 e.printStackTrace();

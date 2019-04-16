@@ -1,7 +1,5 @@
 import org.testng.annotations.Test;
-
 import java.io.File;
-import java.io.FileInputStream;
 
 import static org.testng.Assert.*;
 
@@ -10,14 +8,8 @@ public class ExampleReadFromFileTest {
     @Test
     public void testGetSourceExpression() throws Exception {
         int actual = returnLengthExpression();
-        int expected = 0;
+        int expected = 2;
         assertEquals(actual, expected);
-    }
-
-    @Test
-    public void testCreateStream() {
-        FileInputStream actual = getLink().createStream(setAdress());
-        assertNotNull(actual);
     }
 
     @Test(expectedExceptions = Exception.class)
@@ -28,7 +20,7 @@ public class ExampleReadFromFileTest {
     }
 
     private String setAdress() {
-        String name = new File("src/main/resources/expression.txt")
+        String name = new File("src/main/resources/exception.txt")
                 .getAbsolutePath();
         return name;
     }
