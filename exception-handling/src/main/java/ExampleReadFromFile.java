@@ -16,14 +16,24 @@ class ExampleReadFromFile {
             }
             sourceExpression = br.toString();
         } catch (FileNotFoundException exception) {
-            //exception.getMessage();
-            getFileNotFoundException(exception);
-        } finally {
+            exception.printStackTrace();
+        }catch (IOException exception){
+            exception.printStackTrace();
+        }
+
+        finally {
             try {
                 if (inputStream != null)
                     closeStream(name);
             } catch (IOException ex) {
                 logger.info("" + ex);
+            }
+            if(sourceExpression.length()==0){
+                try {
+                    throw new Exception("FileNotFoundException");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
             return sourceExpression;
         }
@@ -47,10 +57,6 @@ class ExampleReadFromFile {
 
     void closeStream(String name) throws IOException {
         createStream(name).close();
-    }
-
-    String getFileNotFoundException(FileNotFoundException ex) {
-        return ex.toString();
     }
 
 }
