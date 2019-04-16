@@ -1,11 +1,12 @@
 class Place {
-   private int [] places={0,0,0,0,0,0};
-
-    public int getSize() {
-        return places.length;
+    int[] place = {0, 0, 0, 0, 0, 0, 0, 0};
+    public int takePlace(int i) {
+        if (place[i] == 0) {
+            place[i] = 1;
+            return i;
+        } else {
+            return -1;
+        }
     }
 
-    public int[] getPlaces() {
-        return places;
-    }
 }

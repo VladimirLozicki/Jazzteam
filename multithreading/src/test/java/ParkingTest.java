@@ -1,27 +1,44 @@
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.*;
+import java.util.logging.Logger;
+
+import static org.testng.Assert.assertEquals;
 
 public class ParkingTest {
+    private static final Logger logger = Logger.getGlobal();
+
     @Test
     public void testRun() {
-     Place r = new Place();
-        int actual=r.getSize();
-        int decoded=6;
-        assertEquals(actual,decoded);
+        int actual = getLinkPlace().place.length;
+        int decoded = 8;
+        assertEquals(actual, decoded);
     }
 
     @Test
-    public void testValue() {
-        Place s = new Place();
-        int [] expected = {0,0,0,0,0,0};
-        assertEquals(s.getPlaces(), expected);
+    public void testcheckPlace() {
+        Place commonResource = new Place();
+        int actual;
+        int exprected = 1;
+        for (int i = 1; i < 5; i++) {
+            Thread t = new Thread(new Parking(commonResource));
+            t.start();
+            try {
+                t.join();
+                actual = commonResource.place[0];
+                //logger.info("place first thread" + commonResource.place[1]);
+                // System.out.print(commonResource.place[1]);
+                // System.out.println(commonResource.place[2]);
+                assertEquals(actual, exprected);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
-    @Test
-    public  void checkPlace() {
-        Place place = new Place();
-        assertNotNull(place.getSize());
+    private Place getLinkPlace() {
+        Place link = new Place();
+        return link;
     }
+
 }

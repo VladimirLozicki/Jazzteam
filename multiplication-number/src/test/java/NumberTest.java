@@ -1,63 +1,54 @@
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 
 import static org.testng.Assert.*;
 
 public class NumberTest {
-    
-    @Test
-    public void testLengthExpression() throws IOException {
-        int actual = Integer.parseInt(String.valueOf(
-                getLink().createBuffer(setAdress()).readLine().length()));
-        int expected=3;
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void createBuffer() throws FileNotFoundException {
-        assertNotNull((getLink().createBuffer(setAdress())));
-    }
-
-    @Test
-    public void closeBuffer() throws IOException {
-        assertNull(getLink().closeBuffer(setAdress()));
-    }
-
-    @Test
-    public void testTheResult(){
+    @Test(dataProvider = "data")
+    public void testTheResult(String[] input) {
         int actual = getLink().multiplicationOfNumbers(
-                getLink().divisionExpression(sourceExpression()));
-        int expected=6;
+                getLink().divisionExpression(input[0]));
+        int expected = Integer.parseInt(input[1]);
         assertEquals(actual, expected);
     }
 
-    @Test
-    public void testInputOnSpaces() {
-       String actual=sourceExpression();
-       assertFalse(containsWhiteSpace(actual));
+    @DataProvider(name = "data")
+    public Object[][] getData() {
+        return new Object[][]{
+                {"1234", "24" },
+                {"1479", "252" },
+                {"0000", "0" },
+
+        };
     }
 
-     @Test
-     public void testInputOnOtherSymbols() {
-         String actual = sourceExpression();
-         assertTrue(сheckOtherCharacters(actual));
-     }
+    @Test
+    public void testDivisionExpression() {
+        int[] expected = {4, 3, 2, 1};
+        assertEquals(getLink().divisionExpression(getExpressionOfFile()), expected);
+    }
 
+    @Test
+    public void testLengthExpression() {
+        assertTrue(expectedLengthExpression());
+    }
 
+    @Test
+    public void testOnSpaces() {
+        assertTrue(containsWhiteSpace(getExpressionOfFile()));
+    }
 
+    @Test
+    public void testOnOtherCharacters() {
+        String actual = getExpressionOfFile();
+        assertTrue(сheckOtherCharacters(actual));
+    }
 
-
-
-
-    private boolean сheckOtherCharacters(String s ){
+    private boolean сheckOtherCharacters(String s) {
         StringBuilder sb = new StringBuilder(s.length());
-        for(int i = 0; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             char p = s.charAt(i);
-            switch (p){
+            switch (p) {
                 case '+':
                 case '-':
                 case '*':
@@ -66,53 +57,49 @@ public class NumberTest {
                 case ')':
                     sb.append(p);
             }
-            if((p < 47 || p > 58)){
+            if ((p < 47 || p > 58)) {
                 sb.append(p);
             }
         }
-        if(sb.length()==0){
-           return true;
-        }
-        else {
-           return false;
+        if (sb.length() == 0) {
+            return true;
+        } else {
+            return false;
         }
     }
 
-    private String sourceExpression(){
-        String line=getLink().getStringFromFile(setAdress());
+    private String getExpressionOfFile() {
+        String line = getLink().getStringFromFile(setAddress());
         return line;
     }
 
-    private Number getLink(){
-        Number object=new Number();
+    private Number getLink() {
+        Number object = new Number();
         return object;
     }
 
-    private  boolean containsWhiteSpace(String sourceExpression){
-        if(sourceExpression != null){
-            for(int i = 0; i < sourceExpression.length(); i++){
-                if(Character.isWhitespace(sourceExpression.charAt(i))){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-
-    private String setAdress(){
-        String name =
-                "/Users/vladimirlozickiy/Desktop/multimodule/multiplication-number/src/main/resources/expression.txt";
-        //  String name ="/Users/vladimirlozickiy/Desktop/multimodule/exception-handling/src/main/resources/empty.txt";
-       // String name = null;
+    private String setAddress() {
+        String name = getClass().getResource("/expression.txt").getPath();
         return name;
     }
 
-    boolean IOException(IOException exception, String name){
-        getLink().getStringFromFile(name);
-        if(exception==null){
-            return true;
-        }else
+
+    boolean expectedLengthExpression() {
+        if (getExpressionOfFile().length() != 4) {
             return false;
+        } else {
+            return true;
+        }
     }
+
+    private boolean containsWhiteSpace(String sourceExpression) {
+        char[] chArray = sourceExpression.toCharArray();
+        for (int i = 0; i < chArray.length; i++) {
+            if (chArray[i] == ' ') {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

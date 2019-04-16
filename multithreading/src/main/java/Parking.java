@@ -1,35 +1,24 @@
-import java.util.concurrent.ThreadLocalRandom;
+class Parking implements Runnable {
+    Place res;
 
-/**
- *
- */
- class Parking extends Thread {
-    private Place res;
-    Parking(Place res){
-        this.res=res;
+    Parking(Place res) {
+        this.res = res;
     }
 
-     public void run() {
-         synchronized (res) {
-            checkPlace();
-         }
-    }
-    private void checkPlace() {
-        int i;
-        while(true){
-           i= ThreadLocalRandom.current().nextInt(res.getSize());
-            if(res.getPlaces()[i]==0) {
-                res.getPlaces()[i] = 1;
-                System.out.println(this.getId() + " припарковался на " + i);
-                break;
+    public void run() {
+        synchronized (res) {
+            for (int j = 0; j < res.place.length; j++) {
+                if (res.place[j] == 0) {
+                    res.takePlace(j);
+                    break;
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-            try {
-                Thread.sleep(100);
-                Thread.interrupted();
-            } catch (InterruptedException e) {
-            }
+            Thread.interrupted();
         }
     }
-
 }
-
