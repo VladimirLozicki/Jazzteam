@@ -1,36 +1,49 @@
 import org.testng.annotations.Test;
+
 import java.io.File;
+import java.io.FileNotFoundException;
+
 
 import static org.testng.Assert.*;
 
 public class ExampleReadFromFileTest {
 
+    File name = new File("./src/main/resources/expression.txt");
+    ExampleReadFromFile file = new ExampleReadFromFile();
+    // TODO  Иван пару тестов  негативных и позитивных
+
     @Test
-    public void testGetSourceExpression() throws Exception {
-        int actual = returnLengthExpression();
-        int expected = 2;
-        assertEquals(actual, expected);
+    public void testCheckReadFile() {
+        assertTrue(name.canRead());
     }
 
-    @Test(expectedExceptions = Exception.class)
-    public void testFileNotFound() {
+    @Test
+    public void testCheckWriteFile() {
+        assertTrue(name.canWrite());
+    }
+
+    @Test
+    public void testCheckExists() {
+        assertTrue(name.exists());
+    }
+
+
+    @Test
+    public void testCheckIsFile() {
+        assertTrue(name.isFile());
+    }
+
+    @Test
+    public void testGetSourceExpression() {
+        String actual = file.exampleReadFile(name);
+        assertNotNull(actual);
+    }
+
+
+    @Test(expectedExceptions = FileNotFoundException.class)
+    public void testFileNotFound() throws FileNotFoundException {
         String name = new File("src/main/resources/1.txt")
                 .getAbsolutePath();
-        getLink().exampleReadFile(name);
-    }
-
-    private String setAdress() {
-        String name = new File("src/main/resources/exception.txt")
-                .getAbsolutePath();
-        return name;
-    }
-
-    private ExampleReadFromFile getLink() {
-        ExampleReadFromFile objectFile = new ExampleReadFromFile();
-        return objectFile;
-    }
-
-    private int returnLengthExpression() {
-        return getLink().exampleReadFile(setAdress()).length();
+        file.createStream(new File(name));
     }
 }

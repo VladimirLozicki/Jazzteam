@@ -1,22 +1,17 @@
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 
 public class ParkingTest {
     private static final Logger logger = Logger.getGlobal();
-
-    @Test
-    public void testRun() {
-        int actual = getLinkPlace().place.length;
-        int decoded = 8;
-        assertEquals(actual, decoded);
-    }
-
+    Place commonResource = new Place();
+ // TODO Иван подумать над допольнительными тестами
     @Test
     public void testcheckPlace() {
-        Place commonResource = new Place();
         int actual;
         int exprected = 1;
         for (int i = 1; i < 2; i++) {
@@ -33,9 +28,8 @@ public class ParkingTest {
 
     }
 
-    private Place getLinkPlace() {
-        Place link = new Place();
-        return link;
+    @Test
+    public void testCountPlace() {
+       assertNotNull(commonResource.place.length);
     }
-
 }

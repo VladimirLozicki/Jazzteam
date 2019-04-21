@@ -1,30 +1,28 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Logger;
 
 class Number {
 
     private static final Logger logger = Logger.getGlobal();
-    
+
     private String sourceExpression;
 
-    String getStringFromFile(String name) {
+    // TODO Иван строку переделть на файл
+    String getStringFromFile(File file) {
         try {
-            BufferedReader reader = createBuffer(name);
+            BufferedReader reader = new BufferedReader(new FileReader(file));
             String str;
             while ((str = reader.readLine()) != null) {
                 if (!str.isEmpty()) {
-                    sourceExpression = str;
+                    sourceExpression=str;
                 }
             }
-            createBuffer(name);
+            reader.close();
         } catch (IOException e) {
-            logger.info("Error" + e);
+            System.out.println(e);
         }
         return sourceExpression;
-    }
+}
 
     int[] divisionExpression(String sourceExpression) {
         int k = Integer.parseInt(sourceExpression);
@@ -42,11 +40,6 @@ class Number {
             result *= numbers[i];
         }
         return result;
-    }
-
-    BufferedReader createBuffer(String name) throws FileNotFoundException {
-        BufferedReader linkobject = new BufferedReader(new FileReader(name));
-        return linkobject;
     }
 
 }

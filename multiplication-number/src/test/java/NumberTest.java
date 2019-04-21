@@ -2,10 +2,14 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.io.IOException;
 
 import static org.testng.Assert.*;
 
+// TODO больше негативных тестов
 public class NumberTest {
+    File name = new File("./src/main/resources/expression.txt");
+
     @Test(dataProvider = "data")
     public void testTheResult(String[] input) {
         int actual = getLink().multiplicationOfNumbers(
@@ -17,81 +21,91 @@ public class NumberTest {
     @DataProvider(name = "data")
     public Object[][] getData() {
         return new Object[][]{
-                {"1234", "24" },
-                {"1479", "252" },
-                {"0000", "0" },
+                {"1234", "24"},
+                {"1479", "252"},
+                {"0000", "0"},
+                {"832", "48"},
 
         };
     }
 
     @Test
-    public void testDivisionExpression() {
-        int[] expected = {4, 3, 2, 1};
-        assertEquals(getLink().divisionExpression(getExpressionOfFile()), expected);
+    public void testCheckReadFile() {
+        assertTrue(name.canRead());
     }
 
     @Test
-    public void testLengthExpression() {
-        assertTrue(expectedLengthExpression());
+    public void testCheckWriteFile() {
+        assertTrue(name.canWrite());
+    }
+
+    @Test
+    public void testCheckExists() {
+        assertTrue(name.exists());
+    }
+
+
+    @Test
+    public void testCheckIsFile() {
+        assertTrue(name.isFile());
+    }
+
+    @Test
+    public void testDivisionExpression() {
+        int[] expected = {4, 3, 2, 1};
+        assertEquals(getLink().divisionExpression(getLink().getStringFromFile(name)), expected);
     }
 
     @Test
     public void testOnSpaces() {
-        assertTrue(containsWhiteSpace(getExpressionOfFile()));
+        assertTrue(containsWhiteSpace(getLink().getStringFromFile(name)));
     }
 
-    @Test
-    public void testOnOtherCharacters() {
-        String actual = getExpressionOfFile();
-        assertTrue(сheckOtherCharacters(actual));
+
+    @Test(dataProvider = "exp")
+    public void testOnOtherCharacters(String[] input) {
+        assertFalse(isNumeric(input[0]));
     }
 
-    private boolean сheckOtherCharacters(String s) {
-        StringBuilder sb = new StringBuilder(s.length());
-        for (int i = 0; i < s.length(); i++) {
-            char p = s.charAt(i);
-            switch (p) {
-                case '+':
-                case '-':
-                case '*':
-                case '/':
-                case '(':
-                case ')':
-                    sb.append(p);
-            }
-            if ((p < 47 || p > 58)) {
-                sb.append(p);
-            }
-        }
-        if (sb.length() == 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
-    private String getExpressionOfFile() {
-        String line = getLink().getStringFromFile(setAddress());
-        return line;
-    }
+    // TODO Иван убрать избыточную логику из тестов
+
 
     private Number getLink() {
         Number object = new Number();
         return object;
     }
 
-    private String setAddress() {
-        String name = new File("src/main/resources/expression.txt").getAbsolutePath();
-        return name;
-    }
+
+// TODO Иван параметризировать сигнатуру метода
 
 
-    boolean expectedLengthExpression() {
-        if (getExpressionOfFile().length() != 4) {
+    private boolean expectedLengthExpression(String s) {
+        if (s.length() != 4) {
             return false;
         } else {
             return true;
         }
+    }
+
+
+    @Test(dataProvider = "expression")
+    public void testExpectedLengthExpression(String[] input) {
+        assertFalse(expectedLengthExpression(input[0]));
+    }
+
+    @DataProvider(name = "expression")
+    public Object[] getFalseData() {
+        return new Object[]{
+                "1",
+                "42",
+                "835",
+                "63718",
+                "0",
+                "637",
+                ""
+
+        };
     }
 
     private boolean containsWhiteSpace(String sourceExpression) {
@@ -104,4 +118,25 @@ public class NumberTest {
         return true;
     }
 
+    private boolean isNumeric(String str) {
+        try {
+            int d = Integer.parseInt(str);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
+
+    @DataProvider(name = "exp")
+    public Object[] checkCharacter() {
+        return new Object[]{
+                ".",
+                ">>>>*",
+                "<>%@()(!#)",
+                ",",
+                "__",
+                "±",
+
+        };
+    }
 }
