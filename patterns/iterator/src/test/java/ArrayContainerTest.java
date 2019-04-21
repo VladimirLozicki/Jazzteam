@@ -1,4 +1,3 @@
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -11,28 +10,30 @@ public class ArrayContainerTest {
 
     @Test
     public void testOneIteration() {
-        ArrayList<String>list = new ArrayList<>();
+        assertEquals(getArrayList().get(1), "1");
+    }
+
+    @Test
+    public void testThreeIteration() {
+        assertEquals(getArrayList().get(3), "3");
+    }
+
+    @Test
+    public void testArray() {
+        assertNotNull(getArrayList());
+    }
+
+    @Test
+    public void testHasNext() {
+        assertTrue(iterator.hasNext());
+    }
+
+    public ArrayList getArrayList() {
+        ArrayList<String> list = new ArrayList<>();
         while (iterator.hasNext()) {
             list.add(iterator.next().toString());
         }
-        assertEquals(list.get(1), "1");
-    }   
-
-
-    @Test(dataProvider = "data")
-    public void testTheResult(String[] input) {
-            assertEquals(arrayContainer.array, input[1]);
-    }
-
-    @DataProvider(name = "data")
-    public Object[] getData() {
-        return new Object[]{
-                "1",
-                "2",
-                "3",
-                "4",
-                "5",
-        };
+        return list;
     }
 
 }

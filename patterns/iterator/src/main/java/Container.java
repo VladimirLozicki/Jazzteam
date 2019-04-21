@@ -1,3 +1,3 @@
- interface Container {
-     Iterator getIterator();
+interface Container {
+    Iterator getIterator();
 }
