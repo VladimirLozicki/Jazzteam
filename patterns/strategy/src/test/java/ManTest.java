@@ -7,34 +7,35 @@ public class ManTest {
 
     @Test
     public void testSleepingActivity() {
-
         newMan.setActivity(new Sleeping());
-        String actual = newMan.executeActivity();
         String expected = "Sleeping";
-        assertEquals(actual, expected);
+        assertEquals(activity(), expected);
     }
 
     @Test
     public void testWorkingActivity() {
         newMan.setActivity(new Working());
-        String actual = newMan.executeActivity();
         String expected = "Working";
-        assertEquals(actual, expected);
+        assertEquals(activity(), expected);
     }
 
     @Test
     public void testRunActivity() {
         newMan.setActivity(new Run());
-        String actual = newMan.executeActivity();
         String expected = "Running";
-        assertEquals(actual, expected);
+        assertEquals(activity(), expected);
     }
 
     @Test
     public void testReadingActivity() {
         newMan.setActivity(new Reading());
-        String actual = newMan.executeActivity();
+
         String expected = "Reading";
-        assertEquals(actual, expected);
+        assertEquals(activity(),expected);
+    }
+
+
+    public String activity() {
+        return newMan.executeActivity();
     }
 }

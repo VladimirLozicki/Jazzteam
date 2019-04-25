@@ -10,16 +10,23 @@ public class ComputerTest {
 
     @Test
     public void testTwoObject() {
-        computer.Launch("Linux");
+        launch("Linux");
     assertNotNull(computer.os);
 }
 
     @Test
     public void testСhangeObject() {
-        computer.Launch("Linux");
-        computer.Launch("MacOS");
+        launch("Linux");
+        launch("MacOS");
         String actual = computer.os.getName();
         String expected = "Linux";
         assertEquals(actual, expected);
     }
+
+    public  void  launch(String name){
+        computer.Launch(name);
+    }
 }
+
+
+

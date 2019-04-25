@@ -1,6 +1,8 @@
+package mylist;
+
 import java.util.ArrayList;
 
-public class List<T> {
+public class MyList<T> {
     private ListElement firstElement;
     private ListElement lastElement;
 
@@ -9,12 +11,6 @@ public class List<T> {
         lastElement = a;
     }
 
-
-    /**
-     * add element inFront
-     *
-     * @param data
-     */
     public void addFront(T data) {
         ListElement a = new ListElement();
         a.data = data;
@@ -26,12 +22,7 @@ public class List<T> {
         }
     }
 
-    /**
-     * add eltment in Back
-     *
-     * @param data
-     */
-    void addBack(T data) {
+    public void addBack(T data) {
         ListElement a = new ListElement();
         a.data = data;
         if (lastElement == null) {
@@ -42,12 +33,6 @@ public class List<T> {
         }
     }
 
-
-    /**
-     * delete element of list
-     *
-     * @param data
-     */
     public void deleteElement(T data) {
         if (firstElement == null)
             return;
@@ -60,7 +45,6 @@ public class List<T> {
             firstElement = firstElement.next;
             return;
         }
-
         ListElement t = firstElement;
         while (t.next != null) {
             if (t.next.data == data) {
@@ -74,12 +58,7 @@ public class List<T> {
         }
     }
 
-    /**
-     * get link on list
-     *
-     * @return
-     */
-    ArrayList<String> List() {
+    public ArrayList<String> List() {
         ArrayList<String> list = new ArrayList<String>();
         ListElement t = firstElement;
         while (t != null) {

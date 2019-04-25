@@ -33,7 +33,7 @@ public class ComputerTest {
 
     @Test
     public void testCopy() {
-      assertTrue(computer.copy());
+        assertTrue(computer.copy());
     }
 
     @Test

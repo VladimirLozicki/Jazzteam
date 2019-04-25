@@ -1,12 +1,13 @@
+import mylist.*;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.*;
 
-public class ListTest {
+public class MyListTest {
 
     @Test
     public void testAddBackInteger() {
-        List<Integer> ml = new List();
+        MyList<Integer> ml = new MyList();
         ml.addBack(3);
         ml.addBack(2);
         ml.addBack(5);
@@ -16,7 +17,7 @@ public class ListTest {
 
     @Test
     public void testAddBackString() {
-        List<String> ml = new List();
+        MyList<String> ml = new MyList();
         ml.addBack("First");
         ml.addBack("Second");
         ml.addBack("Third");
@@ -26,7 +27,7 @@ public class ListTest {
 
     @Test
     public void testDeleteBackElement() {
-        List<Integer> ml = new List();
+        MyList<Integer> ml = new MyList();
         ml.addBack(3);
         ml.addBack(2);
         ml.addBack(5);
@@ -37,7 +38,7 @@ public class ListTest {
 
     @Test
     public void testAddFrontInteger() {
-        List<Integer> ml = new List();
+        MyList<Integer> ml = new MyList();
         ml.addFront(3);
         ml.addFront(2);
         ml.addFront(5);
@@ -47,7 +48,7 @@ public class ListTest {
 
     @Test
     public void testAddFrontString() {
-        List<String> ml = new List();
+        MyList<String> ml = new MyList();
         ml.addFront("First");
         ml.addFront("Second");
         ml.addFront("Third");

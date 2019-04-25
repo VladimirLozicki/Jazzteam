@@ -1,14 +1,16 @@
+package multiplication;
+
 import java.io.*;
 import java.util.logging.Logger;
 
-class Number {
+public class MultiplicationNumber {
 
     private static final Logger logger = Logger.getGlobal();
 
     private String sourceExpression;
 
-    // TODO Иван строку переделть на файл
-    String getStringFromFile(File file) {
+    // TODO Иван строку переделать на файл
+  public  String getStringFromFile(File file) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String str;
@@ -24,7 +26,7 @@ class Number {
         return sourceExpression;
 }
 
-    int[] divisionExpression(String sourceExpression) {
+   public int[] divisionExpression(String sourceExpression) {
         int k = Integer.parseInt(sourceExpression);
         int[] source = new int[sourceExpression.length()];
         for (int i = 0; i < sourceExpression.length(); i++) {
@@ -34,7 +36,7 @@ class Number {
         return source;
     }
 
-    int multiplicationOfNumbers(int[] numbers) {
+   public int multiplicationOfNumbers(int[] numbers) {
         int result = 1;
         for (int i = 0; i < numbers.length; i++) {
             result *= numbers[i];

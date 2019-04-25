@@ -1,13 +1,13 @@
+import multiplication.MultiplicationNumber;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
-import java.io.IOException;
 
 import static org.testng.Assert.*;
 
 // TODO больше негативных тестов
-public class NumberTest {
+public class MultiplicationNumberTest {
     File name = new File("./src/main/resources/expression.txt");
 
     @Test(dataProvider = "data")
@@ -71,8 +71,8 @@ public class NumberTest {
     // TODO Иван убрать избыточную логику из тестов
 
 
-    private Number getLink() {
-        Number object = new Number();
+    private MultiplicationNumber getLink() {
+        MultiplicationNumber object = new MultiplicationNumber();
         return object;
     }
 
