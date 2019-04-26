@@ -8,23 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Success</title>
     <style>
         .button {
-            width: 40px;
+            width: 70px;
             height: 30px;
             border-color: indigo;
-            background-color: lawngreen;
+            background-color:hotpink;
             color: darkblue;
         }
     </style>
 </head>
-<div align="center">
+ <h1 align="center">Welcome on page with Task</h1>
     <form action="multi.jsp">
-        <input type="submit" value="Task1" class="button">
+        <input type="submit" value="Multiply" class="button">
     </form>
     <form action="list.jsp">
-        <input type="submit" value="Task2" class="button">
+        <input type="submit" value="List" class="button">
     </form>
-</div>
 </html>

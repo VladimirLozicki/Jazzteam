@@ -1,39 +1,29 @@
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-
 import static org.testng.Assert.*;
 
 public class ArrayContainerTest {
     ArrayContainer arrayContainer = new ArrayContainer();
     Iterator iterator = arrayContainer.getIterator();
 
+
     @Test
     public void testOneIteration() {
-        assertEquals(getArrayList().get(1), "1");
+        iterator.next();
+        assertEquals(iterator.next(), "1");
     }
 
     @Test
-    public void testThreeIteration() {
-        assertEquals(getArrayList().get(3), "3");
+    public void testTwoIteration() {
+        iterator.next();
+        iterator.next();
+        assertEquals(iterator.next(), "2");
     }
 
     @Test
     public void testArray() {
-        assertNotNull(getArrayList());
+        assertNotNull(arrayContainer.array.length);
     }
 
-    @Test
-    public void testHasNext() {
-        assertTrue(iterator.hasNext());
-    }
 
-    public ArrayList getArrayList() {
-        ArrayList<String> list = new ArrayList<>();
-        while (iterator.hasNext()) {
-            list.add(iterator.next().toString());
-        }
-        return list;
-    }
 
 }

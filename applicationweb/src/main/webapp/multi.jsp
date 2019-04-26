@@ -5,7 +5,6 @@
   Time: 10:45
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
@@ -21,6 +20,13 @@
             height: 30px;
             color: teal;
         }
+        .text{
+            width: 50px;
+            height: 30px;
+            border-bottom: lawngreen;
+            background-color: blanchedalmond;
+            margin-left: 450px;
+        }
     </style>
 </head>
 <body>
@@ -28,8 +34,12 @@
 <form action="numberservlet" method="post" align="center">
     <input type="number" name="number" class="input">
 
-    <input type="submit" value="вычислить" class="button">
+    <input type="submit" value="Calculation" class="button">
 </form>
-<div align="center"> ${KEY} </div>
+
+<textarea  class="text" placeholder="Result" > ${KEY} </textarea>
+
+
+</form>
 </body>
 </html>
