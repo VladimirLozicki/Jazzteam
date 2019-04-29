@@ -27,10 +27,11 @@
 <body>
 <h1 align="center" ><span style="color: sandybrown"> Add item</span></h1>
 <form action="listservlet" method="post" align="center">
-    <input type="number" name="value">
+    <input type="number"  name="value">
     <input type="submit" value="addFront" name="action" class="input">
     <input type="submit" value="addBack" name="action" class="input">
 </form>
 <div align="center"> List:  ${VALUE} </div>
+<div align="center"> List:  ${VAL} </div>
 </body>
 </html>

@@ -10,36 +10,26 @@
     <title>Title</title>
     <style>
         .button {
-            width: 70px;
+            width: 80px;
             height: 30px;
             background-color: yellow;
         }
-
-        .input {
-            width: 70px;
+        .input{
+            width: 200px;
             height: 30px;
-            color: teal;
-        }
-        .text{
-            width: 50px;
-            height: 30px;
-            border-bottom: lawngreen;
-            background-color: blanchedalmond;
-            margin-left: 450px;
+            color: darkturquoise;
         }
     </style>
 </head>
 <body>
-
 <form action="numberservlet" method="post" align="center">
-    <input type="number" name="number" class="input">
+    <input type="number" name="number" placeholder="input number" class="input">
 
+   <div>
+       <textarea class="input"> ${KEY} </textarea>
+   </div>
     <input type="submit" value="Calculation" class="button">
 </form>
-
-<textarea  class="text" placeholder="Result" > ${KEY} </textarea>
-
-
 </form>
 </body>
 </html>

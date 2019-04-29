@@ -5,24 +5,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 import org.jazzteam.singleton.*;
 
-public class ListServlet extends HttpServlet {
+public class ListServlet extends HttpServlet  {
     protected void doPost(HttpServletRequest request, HttpServletResponse resp)
             throws ServletException, IOException {
         Singleton singleton = Singleton.getInstance();
         String value = request.getParameter("value");
         String action = request.getParameter("action");
+       
         switch (action) {
             case "addFront":
                 singleton.addFront(value);
-                break;
-            case "DELETE":
-                singleton.deleteElement(value);
-                break;
+                request.setAttribute("VALUE", singleton.List());
+               break;
             case "addBack":
                 singleton.addBack(value);
+                request.setAttribute("VALUE", singleton.List());
                 break;
         }
         request.setAttribute("VALUE", singleton.List());

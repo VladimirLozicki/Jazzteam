@@ -2,7 +2,7 @@
 <head>
     <style>
         .button {
-            width: 50px;
+            width: 45px;
             height: 20px;
             border-color: brown;
             background-color: lawngreen;
@@ -26,6 +26,5 @@
     <input type="submit" value="Submit" class="button">
     <input type="reset" value="Reset" class="button">
 </form>
-
 </body>
 </html>

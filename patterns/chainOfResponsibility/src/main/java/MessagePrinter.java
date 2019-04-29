@@ -6,7 +6,6 @@ public abstract class MessagePrinter {
         nextMessagePrinter = messagePrinter;
     }
 
-
     String print(String message) {
         printMessage(message);
         if (nextMessagePrinter != null) {
