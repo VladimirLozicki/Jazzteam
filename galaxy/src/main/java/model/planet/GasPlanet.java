@@ -1,4 +1,4 @@
-package planet;
+package model.planet;
 
 public class GasPlanet {
 }

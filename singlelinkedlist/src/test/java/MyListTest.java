@@ -7,53 +7,53 @@ public class MyListTest {
 
     @Test
     public void testAddBackInteger() {
-        MyList<Integer> ml = new MyList();
-        ml.addBack(3);
-        ml.addBack(2);
-        ml.addBack(5);
+        MyList<Integer> myList = new MyList();
+        myList.addBack(3);
+        myList.addBack(2);
+        myList.addBack(5);
         int i = 5;
-        assertEquals(Integer.parseInt(ml.List().get(2)), i);
+        assertEquals(Integer.parseInt(myList.List().get(2)), i);
     }
 
     @Test
     public void testAddBackString() {
-        MyList<String> ml = new MyList();
-        ml.addBack("First");
-        ml.addBack("Second");
-        ml.addBack("Third");
+        MyList<String> myList = new MyList();
+        myList.addBack("First");
+        myList.addBack("Second");
+        myList.addBack("Third");
         String expected = "Third";
-        assertEquals(ml.List().get(2), expected);
+        assertEquals(myList.List().get(2), expected);
     }
 
     @Test
     public void testDeleteBackElement() {
-        MyList<Integer> ml = new MyList();
-        ml.addBack(3);
-        ml.addBack(2);
-        ml.addBack(5);
-        ml.deleteElement(2);
+        MyList<Integer> myList = new MyList();
+        myList.addBack(3);
+        myList.addBack(2);
+        myList.addBack(5);
+        myList.deleteElement(2);
         int[] expected = {3, 5};
-        assertEquals(ml.List().size(), expected.length);
+        assertEquals(myList.List().size(), expected.length);
     }
 
     @Test
     public void testAddFrontInteger() {
-        MyList<Integer> ml = new MyList();
-        ml.addFront(3);
-        ml.addFront(2);
-        ml.addFront(5);
+        MyList<Integer> myList = new MyList();
+        myList.addFront(3);
+        myList.addFront(2);
+        myList.addFront(5);
         int i = 5;
-        assertEquals(Integer.parseInt(ml.List().get(0)), i);
+        assertEquals(Integer.parseInt(myList.List().get(0)), i);
     }
 
     @Test
     public void testAddFrontString() {
-        MyList<String> ml = new MyList();
-        ml.addFront("First");
-        ml.addFront("Second");
-        ml.addFront("Third");
+        MyList<String> myList = new MyList();
+        myList.addFront("First");
+        myList.addFront("Second");
+        myList.addFront("Third");
         String expected = "Third";
-        assertEquals(ml.List().get(0), expected);
+        assertEquals(myList.List().get(0), expected);
     }
 
 }

@@ -10,6 +10,7 @@ import static org.testng.Assert.*;
 public class MultiplicationNumberTest {
     File name = new File("./src/main/resources/expression.txt");
 
+
     @Test(dataProvider = "data")
     public void testTheResult(String[] input) {
         int actual = getLink().multiplicationOfNumbers(
@@ -24,8 +25,18 @@ public class MultiplicationNumberTest {
                 {"1234", "24"},
                 {"1479", "252"},
                 {"0000", "0"},
-                {"832", "48"},
-
+                {"8321", "48"},
+                {"1111", "1"},
+                {"2222", "16"},
+                {"3333", "81"},
+                {"4444", "256"},
+                {"5555", "625"},
+                {"6666", "1296"},
+                {"3897", "1512"},
+                {"4184", "128"},
+                {"7777", "2401"},
+                {"8888", "4096"},
+                {"9999", "6561"},
         };
     }
 
@@ -103,8 +114,9 @@ public class MultiplicationNumberTest {
                 "63718",
                 "0",
                 "637",
-                ""
-
+                "",
+                "123456789",
+                "12345678998765432",
         };
     }
 
@@ -131,12 +143,18 @@ public class MultiplicationNumberTest {
     public Object[] checkCharacter() {
         return new Object[]{
                 ".",
-                ">>>>*",
-                "<>%@()(!#)",
+                ">",
+                "%",
                 ",",
                 "__",
                 "±",
-
+                "^",
+                "!",
+                "@",
+                "$",
+                "&",
+                "~",
+                "§",
         };
     }
 }

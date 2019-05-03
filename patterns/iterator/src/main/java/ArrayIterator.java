@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class ArrayIterator implements Iterator {
     int index;
     ArrayContainer arrayContainer = new ArrayContainer();

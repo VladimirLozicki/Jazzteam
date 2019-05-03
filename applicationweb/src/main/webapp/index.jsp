@@ -17,7 +17,6 @@
             color: darkblue;
         }
     </style>
-
 </head>
 <body>
 <form action="servlet" method="get" align="center">

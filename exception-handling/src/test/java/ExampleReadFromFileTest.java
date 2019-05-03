@@ -1,3 +1,4 @@
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -32,6 +33,21 @@ public class ExampleReadFromFileTest {
     public void testCheckIsFile() {
         assertTrue(name.isFile());
     }
+
+    @Test(dataProvider = "data")
+    public void testTheResult(String[] input) {
+        ExampleReadFromFile exampleReadFromFile = new ExampleReadFromFile();
+        String actual=exampleReadFromFile.exampleReadFile(name);
+        assertEquals(actual, input[0]);
+    }
+
+    @DataProvider(name = "data")
+    public Object[] getData() {
+        return new Object[]{
+                "1234",
+        };
+    }
+
 
 
     @Test

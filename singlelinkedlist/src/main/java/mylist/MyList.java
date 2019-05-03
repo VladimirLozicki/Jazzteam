@@ -68,5 +68,4 @@ public class MyList<T> {
         return list;
     }
 
-
 }
