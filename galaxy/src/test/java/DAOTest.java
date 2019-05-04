@@ -21,8 +21,6 @@ public class DAOTest extends AbstractTransactionalTestNGSpringContextTests {
     public void testCreate() {
         Sattelite sattelite = new Sattelite();
         dao.create(sattelite);
-
-
     }
 
     @Test

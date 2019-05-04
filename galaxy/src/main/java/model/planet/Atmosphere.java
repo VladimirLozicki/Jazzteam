@@ -1,6 +1,6 @@
 package model.planet;
 
-public class Atmosphere {
-
+public interface Atmosphere {
+    double getConsistAtmosphere();
 
 }

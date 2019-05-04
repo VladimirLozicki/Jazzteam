@@ -10,6 +10,16 @@ public class AstronomicalObject {
     public AstronomicalObject() {
     }
 
+    public AstronomicalObject(double r, String n) {
+        this.radius = r;
+        this.name = n;
+    }
+
+    public AstronomicalObject(double w, double r, String n) {
+        this.weight = w;
+        this.radius = r;
+        this.name = n;
+    }
     public AstronomicalObject(double w, double r, double t, String n) {
         this.weight = w;
         this.radius = r;

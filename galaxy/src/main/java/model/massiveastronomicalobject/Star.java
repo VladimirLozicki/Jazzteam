@@ -2,6 +2,7 @@ package model.massiveastronomicalobject;
 
 public class Star extends MassiveAstronomicalObject {
     private double luminocity;
+
     public Star(double minLuminocity, double maxLuminocity) {
         super(minLuminocity, maxLuminocity);
     }

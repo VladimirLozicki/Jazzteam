@@ -9,32 +9,45 @@ import java.util.logging.Logger;
 public class PlanetTest {
 
     private static final Logger logger = Logger.getGlobal();
-    Planet perfectPlanet = new Planet(5.97e24, 6371, 20,
-            "", 24, 11.186, 5.50,
-            5.79, 6300, 6400, 0, 30);
-    Star sun = new Star(0.8, 1.3);
-
-    Planet planet = new Planet(5.97e20, 6371, 2, "", 11.0, 10.0, 1.0);
-    Star myStars = new Star(1);
-    Orbita orbita = new Orbita(1, planet);
-
     @Test
-    public void testPlanet() {
-        if (planet.getDensity() > perfectPlanet.getMaxDensity()
-                || planet.getDensity() < perfectPlanet.getMinDensity()) {
-            logger.info("density is not within normal limits");
-        }
-        if (planet.getRadius() > perfectPlanet.getMaxRadius()
-                || planet.getRadius() < perfectPlanet.getMinRadius()) {
-            logger.info("radius not normal");
-        }
-        if (planet.getTemperature() > perfectPlanet.getMaxTemperature()
-                || planet.getTemperature() < perfectPlanet.getMinTemperature()) {
-            logger.info("temperature not normal");
-        }
-        if (myStars.getLuminocity() > sun.getMaxLuminocity()
-                || myStars.getLuminocity() < sun.getMinLuminocity()) {
-            logger.info("luminocity start not normal");
+    public void testPlanetOnLife() {
+        SolidPlanet planetEarthType = new SolidPlanet(5.97e24, 6371, "Earth",
+                11.0, 12.0, 5.0, 6.0,
+                6200, 6700, 0, 25, 22,
+                24 );
+        Star sun = new Star(0.8, 1.3);
+        Orbita orbita = new Orbita(0.8, 1.5, planetEarthType);
+
+        Planet planet = new Planet(6000.0, 6500, 4, "Cepler748b", 5.8, 22.1);
+        Star myStars = new Star(1);
+        Orbita myOrbita = new Orbita(1, planet);
+
+        if (planet.getDensity() > planetEarthType.getMaxDensity()) {
+            logger.info("density is more normal ");
+        } else if (planet.getDensity() < planetEarthType.getMinDensity()) {
+            logger.info("density is less normal ");
+        } else if (planet.getRadius() > planetEarthType.getMaxRadius()) {
+            logger.info("radius more normal");
+        } else if (planet.getRadius() < planetEarthType.getMinRadius()) {
+            logger.info("radius less normal");
+        } else if (planet.getTemperature() > planetEarthType.getMaxTemperature()) {
+            logger.info("temperature more normal");
+        } else if (planet.getTemperature() < planetEarthType.getMinTemperature()) {
+            logger.info("temperature less  normal");
+        } else if (myStars.getLuminocity() > sun.getMaxLuminocity()) {
+            logger.info("luminocity more normal");
+        } else if (myStars.getLuminocity() < sun.getMinLuminocity()) {
+            logger.info("luminocity less normal");
+        } else if (planet.getRotationPeriod() > planetEarthType.getMaxRotatioPeriod()) {
+            logger.info(" period more normal");
+        } else if (planet.getRotationPeriod() < planetEarthType.getMinRotatioPeriod()) {
+            logger.info(" period less normal");
+        } else if (myOrbita.getDistance() > orbita.getMaxDistance()) {
+            logger.info("distance more normal");
+        } else if (myOrbita.getDistance() < orbita.getMinDistance()) {
+            logger.info("distance more normal");
+        } else {
+            logger.info("you created a planet where life can be: " + planet.getName());
         }
     }
 

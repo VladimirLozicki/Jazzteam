@@ -15,7 +15,7 @@ public class Servlet extends HttpServlet {
                 resp.sendRedirect("/ok.jsp");
             } else {
 
-                
+
                 request.getRequestDispatcher("/error.jsp").forward(request, resp);
             }
     }

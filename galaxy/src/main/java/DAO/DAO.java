@@ -22,18 +22,18 @@ public class DAO {
         return sattelite;
     }
 
-//    public Sattelite update(Sattelite sattelite ){
-//        sessionFactory.getCurrentSession().update(sattelite);
-//        return sattelite;
-//    }
-//    public Sattelite delete(Sattelite sattelite){
-//        sessionFactory.getCurrentSession().delete(sattelite);
-//        sessionFactory.getCurrentSession().flush();
-//        return sattelite;
-//    }
-//    public Sattelite find(Sattelite sattelite ){
-//        sessionFactory.getCurrentSession().find(Sattelite.class, sattelite);
-//        sessionFactory.getCurrentSession().flush();
-//        return sattelite;
-//    }
+    public Sattelite update(Sattelite sattelite ){
+        sessionFactory.getCurrentSession().update(sattelite);
+        return sattelite;
+    }
+    public Sattelite delete(Sattelite sattelite){
+        sessionFactory.getCurrentSession().delete(sattelite);
+        sessionFactory.getCurrentSession().flush();
+        return sattelite;
+    }
+    public Sattelite find(Sattelite sattelite ){
+        sessionFactory.getCurrentSession().find(Sattelite.class, sattelite);
+        sessionFactory.getCurrentSession().flush();
+        return sattelite;
+    }
 }
