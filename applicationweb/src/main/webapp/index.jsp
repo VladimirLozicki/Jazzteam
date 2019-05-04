@@ -2,7 +2,7 @@
 <head>
     <style>
         .button {
-            width: 50px;
+            width: 48px;
             height: 20px;
             border-color: brown;
             background-color: lawngreen;

@@ -8,7 +8,6 @@ public class ParkingTest {
     private static final Logger logger = Logger.getGlobal();
     Place commonResource = new Place();
 
-
     @Test
     public void testZeroThread() {
         start(0);

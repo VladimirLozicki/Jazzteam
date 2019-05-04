@@ -21,7 +21,7 @@ public class JDBC {
             String actual = "";
             String expected = "54321";
             while (resultSet.next()) {
-                actual = resultSet.getString(1);
+                  actual = resultSet.getString(1);
                   logger.info(String.valueOf(actual.equals(expected)));
             }
 
@@ -34,7 +34,6 @@ public class JDBC {
             e.printStackTrace();
         }
     }
-
 
 }
 
