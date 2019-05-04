@@ -22,9 +22,9 @@ public class JDBC {
             String expected = "54321";
             while (resultSet.next()) {
                 actual = resultSet.getString(1);
-                logger.info(actual);
-                logger.info(expected);
+                  logger.info(String.valueOf(actual.equals(expected)));
             }
+
             resultSet.close();
             statement.close();
             connection.close();

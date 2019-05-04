@@ -7,13 +7,14 @@ public class AstronomicalObject {
     private double temperature;
     private String name;
 
-    public AstronomicalObject(){}
+    public AstronomicalObject() {
+    }
 
-  public  AstronomicalObject(double w, double r,double t, String n){
-        this.weight=w;
-        this.radius=r;
-        this.temperature=t;
-        this.name=n;
+    public AstronomicalObject(double w, double r, double t, String n) {
+        this.weight = w;
+        this.radius = r;
+        this.temperature = t;
+        this.name = n;
     }
 
     public void setWeight(double weight) {

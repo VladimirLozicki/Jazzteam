@@ -1,29 +1,20 @@
 package model.massiveastronomicalobject;
 
 public class Star extends MassiveAstronomicalObject {
-    private  double minDistance;
-    private  double maxDistance;
-
-    public Star(double minLuminocity, double minDistance,double maxDistance, double maxLuminocity){
-       super(minLuminocity,maxLuminocity);
-       this.minDistance=minDistance;
-       this.maxDistance=maxDistance;
+    private double luminocity;
+    public Star(double minLuminocity, double maxLuminocity) {
+        super(minLuminocity, maxLuminocity);
     }
 
-
-    public double getMinDistance() {
-        return minDistance;
+    public Star(double luminocity) {
+       this.luminocity=luminocity;
     }
 
-    public void setMinDistance(double minDistance) {
-        this.minDistance = minDistance;
+    public double getLuminocity() {
+        return luminocity;
     }
 
-    public double getMaxDistance() {
-        return maxDistance;
-    }
-
-    public void setMaxDistance(double maxDistance) {
-        this.maxDistance = maxDistance;
+    public void setLuminocity(double luminocity) {
+        this.luminocity = luminocity;
     }
 }

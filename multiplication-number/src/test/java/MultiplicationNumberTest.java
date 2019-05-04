@@ -6,15 +6,13 @@ import java.io.File;
 
 import static org.testng.Assert.*;
 
-// TODO больше негативных тестов
 public class MultiplicationNumberTest {
     File name = new File("./src/main/resources/expression.txt");
-
+    MultiplicationNumber object = new MultiplicationNumber();
 
     @Test(dataProvider = "data")
     public void testTheResult(String[] input) {
-        int actual = getLink().multiplicationOfNumbers(
-                getLink().divisionExpression(input[0]));
+        int actual = object.multiplicationOfNumbers(object.divisionExpression(input[0]));
         int expected = Integer.parseInt(input[1]);
         assertEquals(actual, expected);
     }
@@ -64,12 +62,12 @@ public class MultiplicationNumberTest {
     @Test
     public void testDivisionExpression() {
         int[] expected = {4, 3, 2, 1};
-        assertEquals(getLink().divisionExpression(getLink().getStringFromFile(name)), expected);
+        assertEquals(object.divisionExpression(object.getStringFromFile(name)), expected);
     }
 
     @Test
     public void testOnSpaces() {
-        assertTrue(containsWhiteSpace(getLink().getStringFromFile(name)));
+        assertTrue(containsWhiteSpace(object.getStringFromFile(name)));
     }
 
 
@@ -78,19 +76,6 @@ public class MultiplicationNumberTest {
         assertFalse(isNumeric(input[0]));
     }
 
-
-    // TODO Иван убрать избыточную логику из тестов
-
-
-    private MultiplicationNumber getLink() {
-        MultiplicationNumber object = new MultiplicationNumber();
-        return object;
-    }
-
-
-// TODO Иван параметризировать сигнатуру метода
-
-
     private boolean expectedLengthExpression(String s) {
         if (s.length() != 4) {
             return false;
@@ -98,7 +83,6 @@ public class MultiplicationNumberTest {
             return true;
         }
     }
-
 
     @Test(dataProvider = "expression")
     public void testExpectedLengthExpression(String[] input) {

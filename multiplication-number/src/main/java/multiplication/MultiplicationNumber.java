@@ -10,13 +10,13 @@ public class MultiplicationNumber {
     private String sourceExpression;
 
     // TODO Иван строку переделать на файл
-  public  String getStringFromFile(File file) {
+    public String getStringFromFile(File file) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String str;
             while ((str = reader.readLine()) != null) {
                 if (!str.isEmpty()) {
-                    sourceExpression=str;
+                    sourceExpression = str;
                 }
             }
             reader.close();
@@ -24,9 +24,9 @@ public class MultiplicationNumber {
             System.out.println(e);
         }
         return sourceExpression;
-}
+    }
 
-   public int[] divisionExpression(String sourceExpression) {
+    public int[] divisionExpression(String sourceExpression) {
         int k = Integer.parseInt(sourceExpression);
         int[] source = new int[sourceExpression.length()];
         for (int i = 0; i < sourceExpression.length(); i++) {
@@ -36,7 +36,7 @@ public class MultiplicationNumber {
         return source;
     }
 
-   public int multiplicationOfNumbers(int[] numbers) {
+    public int multiplicationOfNumbers(int[] numbers) {
         int result = 1;
         for (int i = 0; i < numbers.length; i++) {
             result *= numbers[i];

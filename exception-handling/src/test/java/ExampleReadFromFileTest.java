@@ -11,7 +11,6 @@ public class ExampleReadFromFileTest {
 
     File name = new File("./src/main/resources/expression.txt");
     ExampleReadFromFile file = new ExampleReadFromFile();
-    // TODO  Иван пару тестов  негативных и позитивных
 
     @Test
     public void testCheckReadFile() {
@@ -28,7 +27,6 @@ public class ExampleReadFromFileTest {
         assertTrue(name.exists());
     }
 
-
     @Test
     public void testCheckIsFile() {
         assertTrue(name.isFile());
@@ -36,8 +34,7 @@ public class ExampleReadFromFileTest {
 
     @Test(dataProvider = "data")
     public void testTheResult(String[] input) {
-        ExampleReadFromFile exampleReadFromFile = new ExampleReadFromFile();
-        String actual=exampleReadFromFile.exampleReadFile(name);
+        String actual=file.exampleReadFile(name);
         assertEquals(actual, input[0]);
     }
 
@@ -48,8 +45,6 @@ public class ExampleReadFromFileTest {
         };
     }
 
-
-
     @Test
     public void testGetSourceExpression() {
         String actual = file.exampleReadFile(name);
@@ -59,8 +54,7 @@ public class ExampleReadFromFileTest {
 
     @Test(expectedExceptions = FileNotFoundException.class)
     public void testFileNotFound() throws FileNotFoundException {
-        String name = new File("src/main/resources/1.txt")
-                .getAbsolutePath();
+        String name = new File("src/main/resources/1.txt").getAbsolutePath();
         file.createStream(new File(name));
     }
 }

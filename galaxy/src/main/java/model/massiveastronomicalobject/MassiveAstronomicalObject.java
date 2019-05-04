@@ -1,10 +1,14 @@
 package model.massiveastronomicalobject;
 import model.AstronomicalObject;
 
+
 public class MassiveAstronomicalObject extends AstronomicalObject {
     private double minLuminocity;
     private double maxLuminocity;
 
+    MassiveAstronomicalObject(){
+
+    }
     public MassiveAstronomicalObject(double minLuminocity, double maxLuminocity) {
         this.minLuminocity=minLuminocity;
         this.maxLuminocity=maxLuminocity;

@@ -1,13 +1,23 @@
 package model;
 
-public class Orbita {
-   private double weight;
+import model.planet.Planet;
 
-    public double getWeight() {
-        return weight;
+public class Orbita {
+
+    Planet planet;
+    private double distance;
+
+    public Orbita(double distance, Planet planet) {
+        this.distance = distance;
+        this.planet = planet;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
     }
 }

@@ -7,9 +7,9 @@ import java.util.Objects;
 @Entity
 public class Sattelite {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private  String name;
+    private String name;
     private int weight;
     private int radius;
 

@@ -1,35 +1,61 @@
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotNull;
 
 public class ParkingTest {
     private static final Logger logger = Logger.getGlobal();
     Place commonResource = new Place();
- // TODO Иван подумать над допольнительными тестами
+
+
     @Test
-    public void testcheckPlace() {
-        int actual;
-        int exprected = 1;
-        for (int i = 1; i < 2; i++) {
+    public void testZeroThread() {
+        start(0);
+        int actual = checkPlace(commonResource.getPlace());
+        int expected = 8;
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testRunTwoThread() {
+        start(2);
+        int actual = checkPlace(commonResource.getPlace());
+        int expected = 2;
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testThreadMorePlace() {
+        start(10);
+        int actual = checkPlace(commonResource.getPlace());
+        int expected = 8;
+        assertEquals(actual, expected);
+    }
+
+    public void start(int countThread) {
+        for (int i = 0; i < countThread; i++) {
             Thread t = new Thread(new Parking(commonResource));
             t.start();
             try {
                 t.join();
-                actual = commonResource.place[0];
-                assertEquals(actual, exprected);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-
     }
 
-    @Test
-    public void testCountPlace() {
-       assertNotNull(commonResource.place.length);
+    public int checkPlace(int[] place) {
+        int countPlace = 0;
+        for (int i = 0; i < place.length; i++) {
+            if (place[i] == 1) {
+                countPlace++;
+            } else {
+                continue;
+            }
+        }
+        return countPlace;
     }
+
+
 }

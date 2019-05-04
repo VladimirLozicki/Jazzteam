@@ -24,7 +24,8 @@ class ExampleReadFromFile {
         } finally {
             try {
                 if (inputStream != null)
-                    closeStream(name);
+                    createStream(name).close();
+
             } catch (IOException ex) {
                 logger.info("" + ex);
             }
@@ -36,9 +37,6 @@ class ExampleReadFromFile {
         FileInputStream linkobject = null;
         try {
             linkobject = new FileInputStream(name);
-            if (name == null) {
-                throw new NullPointerException("null");
-            }
         } catch (NullPointerException ex) {
             ex.getMessage();
 
@@ -48,8 +46,4 @@ class ExampleReadFromFile {
         return linkobject;
     }
 
-
-    void closeStream(File name) throws IOException {
-        createStream(name).close();
-    }
 }
