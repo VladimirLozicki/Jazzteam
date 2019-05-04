@@ -9,6 +9,10 @@ public class Planet extends AstronomicalObject implements Atmosphere {
     private double density;
     private double secondCosmicVelocity;
 
+    Planet(){
+
+    }
+
     Planet(double weight, double radius, String n){
         super(weight,radius,n);
     }
