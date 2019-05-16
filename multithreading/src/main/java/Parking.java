@@ -4,7 +4,6 @@ class Parking implements Runnable {
     Parking(Place res) {
         this.res = res;
     }
-
     public void run() {
         synchronized (res) {
             for (int j = 0; j < res.place.length; j++) {

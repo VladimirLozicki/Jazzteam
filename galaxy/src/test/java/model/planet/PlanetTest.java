@@ -18,7 +18,7 @@ public class PlanetTest {
 
     @Test
     public void testCreatePlanetWithLife() {
-        Planet planet = new Planet(6000.0, 6500, 4, "Cepler748b", 5.8, 22.1);
+        Planet planet = new Planet(5.6e24, 6500, 4, "Cepler748b", 5.8, 22.1);
         Star myStars = new Star(1);
         Orbita myOrbita = new Orbita(1, planet);
         if (planet.getDensity() > planetEarthType.getMaxDensity() ) {

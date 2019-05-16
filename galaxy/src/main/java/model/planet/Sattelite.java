@@ -1,24 +1,27 @@
 package model.planet;
 
 import javax.persistence.*;
-import java.util.Objects;
-
 
 @Entity
+@Table (name = "sattelite")
 public class Sattelite {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "name")
     private String name;
     private int weight;
     private int radius;
 
-    public long getId() {
-        return id;
+    public Sattelite() {
+
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Sattelite(String name,  int radius, int weight) {
+        this.name = name;
+        this.radius=radius;
+        this.weight=weight;
+
     }
 
     public String getName() {
@@ -46,18 +49,12 @@ public class Sattelite {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sattelite sattelite = (Sattelite) o;
-        return id == sattelite.id &&
-                weight == sattelite.weight &&
-                radius == sattelite.radius &&
-                Objects.equals(name, sattelite.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, weight, radius);
+    public String toString() {
+        return "model.planet.Sattelite{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", radius='" + radius + '\'' +
+                ", weight='" + weight  +
+                '}';
     }
 }
