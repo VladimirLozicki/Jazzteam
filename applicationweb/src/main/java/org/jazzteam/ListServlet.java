@@ -16,7 +16,8 @@ public class ListServlet extends HttpServlet {
         String action = request.getParameter("action");
         if(value.isEmpty()){
             request.setAttribute("VALUE", singleton.List());
-            request.getRequestDispatcher("list.jsp").forward(request, resp);
+            //request.getRequestDispatcher("list.jsp").forward(request, resp);
+            request.getRequestDispatcher("ajax.jsp").forward(request, resp);
         }
 
         if(!value.isEmpty() && !action.isEmpty()) {
@@ -24,19 +25,21 @@ public class ListServlet extends HttpServlet {
                 case "addFront":
                     singleton.addFront(value);
                     request.setAttribute("VALUE", singleton.List());
-                    request.getRequestDispatcher("list.jsp").forward(request, resp);
+                    //request.getRequestDispatcher("list.jsp").forward(request, resp);
+                    request.getRequestDispatcher("ajax.jsp").forward(request, resp);
                     break;
                 case "addBack":
                     singleton.addBack(value);
                     request.setAttribute("VALUE", singleton.List());
-                    request.getRequestDispatcher("list.jsp").forward(request, resp);
+                    //request.getRequestDispatcher("list.jsp").forward(request, resp);
+                    request.getRequestDispatcher("ajax.jsp").forward(request, resp);
                     break;
             }
         }
         else{
-            request.getRequestDispatcher("list.jsp").forward(request, resp);
+           // request.getRequestDispatcher("list.jsp").forward(request, resp);
+            request.getRequestDispatcher("ajax.jsp").forward(request, resp);
         }
-
     }
 }
 

@@ -8,6 +8,7 @@ public class Service {
     private DAO dao = new DAO();
 
     public Service() {
+
     }
 
     public Sattelite findUser(int id) {

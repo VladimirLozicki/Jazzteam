@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"
             type="text/javascript"></script>
-    <script src="js/triangle.js" type="text/javascript"></script>
+    <script src="js/script.js" type="text/javascript"></script>
 
     <style>
         .button {
@@ -29,16 +29,15 @@
             color: darkblue;
         }
     </style>
-
 </head>
 <body>
 <h1 align="center"><span style="color: sandybrown"> Add item</span></h1>
 <form action="listservlet" method="post" align="center">
-    <input type="number"  name="value" value="number">
-    <input type="submit" value="addFront" name="action" class="input" id="front" onclick="click">
-    <input type="submit" value="addBack" name="action" class="input">
+    <input type="number"  name="value" value="number" id="number">
+    <input type="submit" value="addFront" name="action" class="input" id="front" onclick="change();">
+    <input type="submit" value="addBack" name="action" class="input" onclick="change();">
 </form>
 
-<div align="center" id="#row"> List:   </div>
+<div align="center" id="row" > List: ${VALUE} </div>
 </body>
 </html>
