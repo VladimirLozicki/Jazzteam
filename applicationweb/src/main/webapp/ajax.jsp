@@ -17,13 +17,6 @@
     <script src="js/script.js" type="text/javascript"></script>
 
     <style>
-        .button {
-            width: 50px;
-            height: 30px;
-            border-color: rebeccapurple;
-            background-color: darkturquoise;
-            color: darkblue;
-        }
         .input {
             background-color: cornflowerblue;
             color: darkblue;
@@ -32,12 +25,13 @@
 </head>
 <body>
 <h1 align="center"><span style="color: sandybrown"> Add item</span></h1>
-<form action="listservlet" method="post" align="center">
+<form align="center">
     <input type="number"  name="value" value="number" id="number">
-    <input type="submit" value="addFront" name="action" class="input" id="front" onclick="change();">
-    <input type="submit" value="addBack" name="action" class="input" onclick="change();">
+    <input type="submit" value="addFront"  class="input" id="front">
+    <input type="submit" value="addBack" name="action" class="input"  id="back">
 </form>
 
-<div align="center" id="row" > List: ${VALUE} </div>
+<div align="center" id="answer" > List: ${VALUE}  </div>
+
 </body>
 </html>

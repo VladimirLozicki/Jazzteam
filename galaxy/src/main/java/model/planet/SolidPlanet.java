@@ -1,6 +1,6 @@
 package model.planet;
 
-public class SolidPlanet extends Planet implements Atmosphere {
+public class SolidPlanet extends Planet{
     private double minRotatioPeriod;
     private double maxRotatioPeriod;
     private double minSecondCosmicVelocity;

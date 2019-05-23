@@ -16,12 +16,10 @@ public class Sattelite {
     public Sattelite() {
 
     }
-
     public Sattelite(String name,  int radius, int weight) {
         this.name = name;
         this.radius=radius;
         this.weight=weight;
-
     }
 
     public String getName() {

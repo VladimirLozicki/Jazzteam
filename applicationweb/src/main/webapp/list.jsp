@@ -17,13 +17,6 @@
     <script src="js/triangle.js" type="text/javascript"></script>
 
     <style>
-        .button {
-            width: 50px;
-            height: 30px;
-            border-color: rebeccapurple;
-            background-color: darkturquoise;
-            color: darkblue;
-        }
         .input {
             background-color: cornflowerblue;
             color: darkblue;

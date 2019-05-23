@@ -1,47 +1,35 @@
 package model;
 
 import model.planet.Planet;
+import model.planet.Sattelite;
 
 public class Orbita {
-
+    final static double G =1;
+    double velocityObject;
+    private double height;
     Planet planet;
-    private double distance;
-
-    private double minDistance;
-    private double maxDistance;
-    public Orbita(double minDistance, double maxDistance, Planet planet) {
-        this.maxDistance = maxDistance;
-        this.minDistance =minDistance ;
-        this.planet=planet;
-    }
-
-    public Orbita(double distance, Planet planet) {
-        this.distance = distance;
+    Sattelite sattelite;
+    public Orbita(double height, Planet planet) {
+        this.height = height;
         this.planet = planet;
     }
 
-
-    public double getDistance() {
-        return distance;
+    public Orbita(double height, Planet planet, Sattelite sattelite) {
+        this.height = height;
+        this.planet = planet;
+        this.sattelite=sattelite;
+    }
+    public double getHeight() {
+        return height;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
-    }
-    public double getMinDistance() {
-        return minDistance;
+    public void setHeight(double height) {
+        this.height = height;
     }
 
-    public void setMinDistance(double minDistance) {
-        this.minDistance = minDistance;
-    }
-
-    public double getMaxDistance() {
-        return maxDistance;
-    }
-
-    public void setMaxDistance(double maxDistance) {
-        this.maxDistance = maxDistance;
+    public double getAcceleration(double weight, double radius){
+        return (G*weight)/(radius*radius);
+        //return radius;
     }
 
 }

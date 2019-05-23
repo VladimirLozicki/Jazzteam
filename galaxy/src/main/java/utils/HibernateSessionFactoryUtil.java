@@ -9,7 +9,6 @@ public class HibernateSessionFactoryUtil {
     private static SessionFactory sessionFactory;
 
     private HibernateSessionFactoryUtil() {}
-
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {

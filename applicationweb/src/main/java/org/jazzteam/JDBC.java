@@ -24,7 +24,6 @@ public class JDBC {
                   actual = resultSet.getString(1);
                   logger.info(String.valueOf(actual.equals(expected)));
             }
-
             resultSet.close();
             statement.close();
             connection.close();

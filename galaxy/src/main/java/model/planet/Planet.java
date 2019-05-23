@@ -2,7 +2,7 @@ package model.planet;
 
 import model.AstronomicalObject;
 
-public class Planet extends AstronomicalObject implements Atmosphere {
+public class Planet extends AstronomicalObject{
 
 
     private double rotationPeriod;
@@ -45,11 +45,5 @@ public class Planet extends AstronomicalObject implements Atmosphere {
 
     public void setSecondCosmicVelocity(double secondCosmicVelocity) {
         this.secondCosmicVelocity = secondCosmicVelocity;
-    }
-
-
-    @Override
-    public double getConsistAtmosphere() {
-        return 0.8;
     }
 }

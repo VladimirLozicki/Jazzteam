@@ -7,6 +7,7 @@ public class AstronomicalObject {
     private double temperature;
     private String name;
 
+
     public AstronomicalObject() {
     }
 

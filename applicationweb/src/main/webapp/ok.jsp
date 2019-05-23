@@ -23,7 +23,7 @@
     <form action="multi.jsp">
         <input type="submit" value="Multiply" class="button">
     </form>
-    <form action="list.jsp">
+    <form action="ajax.jsp">
         <input type="submit" value="List" class="button">
     </form>
 </html>
