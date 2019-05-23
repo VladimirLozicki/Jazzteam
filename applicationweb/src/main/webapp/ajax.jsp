@@ -25,13 +25,13 @@
 </head>
 <body>
 <h1 align="center"><span style="color: sandybrown"> Add item</span></h1>
-<form align="center">
+<form  align="center">
     <input type="number"  name="value" value="number" id="number">
-    <input type="submit" value="addFront"  class="input" id="front">
-    <input type="submit" value="addBack" name="action" class="input"  id="back">
+    <input type="submit" value="addFront" name="action" class="input" id="front">
+    <input type="submit" value="addBack" name="action" class="input">
 </form>
 
-<div align="center" id="answer" > List: ${VALUE}  </div>
+<div align="center" id="ajaxResponse"></div>
 
 </body>
 </html>

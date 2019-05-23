@@ -36,8 +36,9 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ListServlet</servlet-name>
-    <url-pattern>/listservlet</url-pattern>
+    <url-pattern>/ListServlet</url-pattern>
   </servlet-mapping>
+
 
 
 </web-app>

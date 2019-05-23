@@ -1,11 +1,9 @@
 package model;
-
 import model.planet.Planet;
 import model.planet.Sattelite;
 
 public class Orbita {
     final static double G =1;
-    double velocityObject;
     private double height;
     Planet planet;
     Sattelite sattelite;
@@ -27,9 +25,8 @@ public class Orbita {
         this.height = height;
     }
 
-    public double getAcceleration(double weight, double radius){
+    public double run(double weight, double radius){
         return (G*weight)/(radius*radius);
-        //return radius;
     }
 
 }

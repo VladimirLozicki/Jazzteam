@@ -92,16 +92,16 @@ public class PlanetTest {
                 logger.info(" period less normal");
             }
         }
+
         @Test
         public void testCreatBalanceSystem () {
         Planet planet = new Planet(100.0, 1.0, 10, "Cepler748b", 5.0,
                         15.0);
         Sattelite sattelite = new Sattelite("kepler", 1000, 134325);
         Orbita orbita = new Orbita(10, planet, sattelite);
-        double actual = orbita.getAcceleration(planet.getWeight(), planet.getRadius());
+        double actual = orbita.run(planet.getWeight(), planet.getRadius());
           if(actual == 1.0 ){
               logger.info("This is balance system");
-
           }
             if(actual < 1.0 ){
                 logger.info("This is not balance system");
