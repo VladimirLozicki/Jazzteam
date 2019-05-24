@@ -27,7 +27,7 @@ public class DAO {
         session.close();
         return sattelite;
     }
-    @Transactional
+
     public Sattelite save(Sattelite sattelite) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -37,7 +37,7 @@ public class DAO {
         return sattelite;
     }
 
-    @Transactional
+
     public Sattelite update(Sattelite sattelite) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
@@ -47,7 +47,7 @@ public class DAO {
         return sattelite;
     }
 
-    @Transactional
+
     public Sattelite delete(Sattelite sattelite) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();

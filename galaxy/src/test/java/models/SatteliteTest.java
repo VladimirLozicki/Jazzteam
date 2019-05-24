@@ -9,7 +9,7 @@ public class SatteliteTest {
     @Test
     public void testAddAuto() {
         Service service = new Service();
-        Sattelite sattelite = new Sattelite("Kepler134", 1892, 724);
+        Sattelite sattelite = new Sattelite("Kepler134", 1892);
         service.saveSattelite(sattelite);
     }
 }

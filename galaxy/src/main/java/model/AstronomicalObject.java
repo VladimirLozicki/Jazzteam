@@ -6,16 +6,15 @@ public class AstronomicalObject {
     private double radius;
     private double temperature;
     private String name;
-
+    private double velocity;
 
     public AstronomicalObject() {
+
     }
 
-    public AstronomicalObject(double r, String n) {
-        this.radius = r;
-        this.name = n;
+    public AstronomicalObject(double velocity) {
+        this.velocity = velocity;
     }
-
     public AstronomicalObject(double w, double r, String n) {
         this.weight = w;
         this.radius = r;
@@ -59,5 +58,13 @@ public class AstronomicalObject {
 
     public void setTemperature(double temperature) {
         this.temperature = temperature;
+    }
+
+    public double getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(double velocity) {
+        this.velocity = velocity;
     }
 }

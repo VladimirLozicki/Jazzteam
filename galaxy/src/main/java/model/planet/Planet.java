@@ -17,8 +17,8 @@ public class Planet extends AstronomicalObject{
         super(weight,radius,n);
     }
 
-    Planet(double weight, double radius, double temperature, String n,double density,
-            double rotationPeriod){
+    public Planet(double weight, double radius, double temperature, String n, double density,
+                  double rotationPeriod){
         super(weight,radius,temperature,n);
         this.density=density;
         this.rotationPeriod=rotationPeriod;

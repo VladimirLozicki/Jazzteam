@@ -4,21 +4,18 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "sattelite")
-public class Sattelite {
+public class Sattelite extends Planet{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @Column(name = "name")
     private String name;
-    private int weight;
-    private int radius;
-
-    public Sattelite() {
-
+    private double weight;
+    public Sattelite(double velocity) {
+        this.setVelocity(velocity);
     }
-    public Sattelite(String name,  int radius, int weight) {
+    public Sattelite(String name,  int weight) {
         this.name = name;
-        this.radius=radius;
         this.weight=weight;
     }
 
@@ -30,7 +27,7 @@ public class Sattelite {
         this.name = name;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -38,20 +35,11 @@ public class Sattelite {
         this.weight = weight;
     }
 
-    public int getRadius() {
-        return radius;
-    }
-
-    public void setRadius(int radius) {
-        this.radius = radius;
-    }
-
     @Override
     public String toString() {
         return "model.planet.Sattelite{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", radius='" + radius + '\'' +
                 ", weight='" + weight  +
                 '}';
     }
