@@ -2,8 +2,11 @@ package model;
 import model.planet.Planet;
 import model.planet.Sattelite;
 
+import java.util.logging.Logger;
+
 public class Orbita {
-    final static double G =1;
+     private final static double G =1;
+    private static final Logger logger = Logger.getGlobal();
     private double height;
     Planet planet;
     Sattelite sattelite;
@@ -25,8 +28,11 @@ public class Orbita {
         this.height = height;
     }
 
-    public double run(double weight, double radius){
-        return (G*weight)/(radius*radius);
+    public double run(){
+        return (G*planet.getWeight())/(planet.getRadius()*planet.getRadius());
     }
 
+    public void printResult(String message){
+        logger.info(sattelite.getName() + " " + message + " " + planet.getName());
+    }
 }
