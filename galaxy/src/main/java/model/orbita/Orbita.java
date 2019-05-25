@@ -5,7 +5,7 @@ import model.planet.Sattelite;
 import java.util.logging.Logger;
 
 public class Orbita {
-    private final static double G = 1;
+    final double G = 1;
     private static final Logger logger = Logger.getGlobal();
     Planet planet;
     Sattelite sattelite;
@@ -14,7 +14,7 @@ public class Orbita {
         this.sattelite=sattelite;
     }
 
-    public double run(){
+    public double accelerationGravity(){
         return (G*planet.getWeight())/(planet.getRadius()*planet.getRadius());
     }
 

@@ -11,15 +11,13 @@ public class Sattelite extends Planet{
     @Column(name = "name")
     private String name;
     private double weight;
-    public Sattelite(double velocity) {
-        this.setVelocity(velocity);
-    }
-    public Sattelite(String name,  int weight) {
+
+    public Sattelite(String name) {
         this.name = name;
-        this.weight=weight;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
@@ -33,6 +31,11 @@ public class Sattelite extends Planet{
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public Sattelite(double velocity, String name) {
+        this.setVelocity(velocity);
+        this.name=name;
     }
 
     @Override

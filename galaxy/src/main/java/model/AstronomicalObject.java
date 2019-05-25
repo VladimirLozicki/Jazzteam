@@ -43,7 +43,6 @@ public class AstronomicalObject {
         return radius;
     }
 
-
     public String getName() {
         return name;
     }
