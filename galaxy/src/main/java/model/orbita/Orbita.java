@@ -5,7 +5,7 @@ import model.planet.Sattelite;
 import java.util.logging.Logger;
 
 public class Orbita {
-    final double G = 1;
+    public final double G = 1;
     private static final Logger logger = Logger.getGlobal();
     Planet planet;
     Sattelite sattelite;
@@ -18,7 +18,8 @@ public class Orbita {
         return (G*planet.getWeight())/(planet.getRadius()*planet.getRadius());
     }
 
-    public void printResult(String message){
+    public void print(String message) {
         logger.info(sattelite.getName() + " " + message + " " + planet.getName());
     }
+
 }

@@ -14,36 +14,28 @@ public class GeostationaryOrbitaTest {
         Planet planet = new Planet(10000, 100, 4, "Kepler748b", 5.8,
                 22.1);
         GeostationaryOrbita geostationaryOrbita = new GeostationaryOrbita(planet, sattelite);
-        int actual = (int) geostationaryOrbita.getHeightOrbita();
-        int expected = (int) geostationaryOrbita.getHeightRise();
-        //System.out.println(actual + "   "+ expected);
+        int actual = (int) geostationaryOrbita.heightOrbita();
+        int expected = (int) geostationaryOrbita.heightRise();
         assertEquals(actual, expected);
     }
 
     @Test
     public void testNotOutOnOrbita() {
-        Sattelite sattelite = new Sattelite(3.5, "Moon");
+        Sattelite sattelite = new Sattelite(3.5, "Gf893");
         Planet planet = new Planet(10000, 100, 4, "Kepler748b", 5.8,
                 22.1);
         GeostationaryOrbita geostationaryOrbita = new GeostationaryOrbita(planet, sattelite);
-        assertFalse(Equals(geostationaryOrbita.getHeightRise(), geostationaryOrbita.getHeightOrbita()));
+        assertFalse(geostationaryOrbita.heightRise()> geostationaryOrbita.heightOrbita());
     }
 
     @Test
     public void testBeyondLimitsOrbita() {
-        Sattelite sattelite = new Sattelite(10, "Moon");
-
+        Sattelite sattelite = new Sattelite(10, "Kepler6782");
         Planet planet = new Planet(10000, 100, 4, "Kepler748b", 5.8,
                 22.1);
         GeostationaryOrbita geostationaryOrbita = new GeostationaryOrbita(planet, sattelite);
-        assertTrue(Equals(geostationaryOrbita.getHeightRise(), geostationaryOrbita.getHeightOrbita()));
+        assertTrue(geostationaryOrbita.heightRise()> geostationaryOrbita.heightOrbita());
     }
 
-    public boolean Equals(double a, double b) {
-        if (a > b) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+
 }

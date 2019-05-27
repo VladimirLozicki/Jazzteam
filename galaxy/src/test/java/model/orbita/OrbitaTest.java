@@ -13,7 +13,7 @@ public class OrbitaTest {
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
         Orbita orbita = new Orbita(planet, sattelite);
-        orbita.printResult("moving on orbit");
+        orbita.print("moving on orbita");
         assertEquals(orbita.accelerationGravity(), 1.0);
     }
 
@@ -23,7 +23,6 @@ public class OrbitaTest {
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
         Orbita orbita = new Orbita( planet, sattelite);
-        orbita.printResult("will fly away");
         assertEquals(orbita.accelerationGravity(), 4.0);
     }
 
@@ -33,7 +32,6 @@ public class OrbitaTest {
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
         Orbita orbita = new Orbita(planet, sattelite);
-        orbita.printResult("fall on the");
         assertEquals(orbita.accelerationGravity(), 0.01);
     }
 
