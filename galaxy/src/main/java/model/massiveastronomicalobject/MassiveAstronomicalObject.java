@@ -5,15 +5,12 @@ import model.AstronomicalObject;
 public class MassiveAstronomicalObject extends AstronomicalObject {
     private double minLuminocity;
     private double maxLuminocity;
+    private double luminocity;
 
-    MassiveAstronomicalObject(){
 
+    public MassiveAstronomicalObject( double radius) {
+        super(radius);
     }
-    public MassiveAstronomicalObject(double minLuminocity, double maxLuminocity) {
-        this.minLuminocity=minLuminocity;
-        this.maxLuminocity=maxLuminocity;
-    }
-
 
     public double getMinLuminocity() {
         return minLuminocity;
@@ -30,4 +27,7 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
     public void setMaxLuminocity(double maxLuminocity) {
         this.maxLuminocity = maxLuminocity;
     }
+
+
+
 }

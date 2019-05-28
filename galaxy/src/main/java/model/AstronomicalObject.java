@@ -4,7 +4,6 @@ public class AstronomicalObject {
 
     private double weight;
     private double radius;
-    private double temperature;
     private String name;
     private double velocity;
 
@@ -12,8 +11,8 @@ public class AstronomicalObject {
 
     }
 
-    public AstronomicalObject(double velocity) {
-        this.velocity = velocity;
+    public AstronomicalObject(double radius) {
+        this.radius=radius;
     }
     public AstronomicalObject(double w, double r, String n) {
         this.weight = w;
@@ -23,7 +22,6 @@ public class AstronomicalObject {
     public AstronomicalObject(double w, double r, double t, String n) {
         this.weight = w;
         this.radius = r;
-        this.temperature = t;
         this.name = n;
     }
 
@@ -51,13 +49,6 @@ public class AstronomicalObject {
         this.name = name;
     }
 
-    public double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
 
     public double getVelocity() {
         return velocity;

@@ -4,7 +4,6 @@ import model.AstronomicalObject;
 
 public class Planet extends AstronomicalObject{
 
-
     private double rotationPeriod;
     private double density;
     private double secondCosmicVelocity;
@@ -12,17 +11,16 @@ public class Planet extends AstronomicalObject{
     Planet(){
 
     }
-
     Planet(double weight, double radius, String n){
         super(weight,radius,n);
     }
-
-    public Planet(double weight, double radius, double temperature, String n, double density,
+    public Planet(double weight, double radius,  String n, double density,
                   double rotationPeriod){
-        super(weight,radius,temperature,n);
+        super(weight,radius,n);
         this.density=density;
         this.rotationPeriod=rotationPeriod;
     }
+
     public double getRotationPeriod() {
         return rotationPeriod;
     }
