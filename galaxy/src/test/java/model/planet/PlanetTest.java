@@ -20,12 +20,13 @@ public class PlanetTest {
             6200, 6700, 0, 25, 22,
             24);
     Star sun = new Star(0.8, 1.3);
+    ArrayList<String> list = new ArrayList<>();
     @Test
     public void testCreatePlanetWithLife() {
         Planet planet = new Planet(5.6e24, 6500, 4, "Kepler748b", 5.8,
                 22.1);
         Star myStars = new Star(1);
-        ArrayList<String> list = new ArrayList<>();
+
         if (planet.getDensity() > planetEarthType.getMaxDensity()) {
             list.add("density is more normal ");
         } else if (planet.getDensity() < planetEarthType.getMinDensity()) {

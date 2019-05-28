@@ -46,4 +46,6 @@ public class Planet extends AstronomicalObject{
     public void setSecondCosmicVelocity(double secondCosmicVelocity) {
         this.secondCosmicVelocity = secondCosmicVelocity;
     }
+
+
 }

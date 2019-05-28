@@ -17,9 +17,4 @@ public class Orbita {
     public double accelerationGravity(){
         return (G*planet.getWeight())/(planet.getRadius()*planet.getRadius());
     }
-
-    public void print(String message) {
-        logger.info(sattelite.getName() + " " + message + " " + planet.getName());
-    }
-
 }

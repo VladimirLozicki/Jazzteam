@@ -13,7 +13,6 @@ public class OrbitaTest {
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
         Orbita orbita = new Orbita(planet, sattelite);
-        orbita.print("moving on orbita");
         assertEquals(orbita.accelerationGravity(), 1.0);
     }
 
@@ -22,7 +21,7 @@ public class OrbitaTest {
         Planet planet = new Planet(100.0, 5.0, 10, "Kepler74", 5.0,
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
-        Orbita orbita = new Orbita( planet, sattelite);
+        Orbita orbita = new Orbita(planet, sattelite);
         assertEquals(orbita.accelerationGravity(), 4.0);
     }
 

@@ -14,8 +14,8 @@ public class GeostationaryOrbitaTest {
         Planet planet = new Planet(10000, 100, 4, "Kepler748b", 5.8,
                 22.1);
         GeostationaryOrbita geostationaryOrbita = new GeostationaryOrbita(planet, sattelite);
-        int actual = (int) geostationaryOrbita.heightOrbita();
-        int expected = (int) geostationaryOrbita.heightRise();
+        int actual = (int)geostationaryOrbita.heightOrbita();
+        int expected =(int)geostationaryOrbita.heightRise();
         assertEquals(actual, expected);
     }
 
@@ -25,7 +25,7 @@ public class GeostationaryOrbitaTest {
         Planet planet = new Planet(10000, 100, 4, "Kepler748b", 5.8,
                 22.1);
         GeostationaryOrbita geostationaryOrbita = new GeostationaryOrbita(planet, sattelite);
-        assertFalse(geostationaryOrbita.heightRise()> geostationaryOrbita.heightOrbita());
+        assertFalse(geostationaryOrbita.heightRise() > geostationaryOrbita.heightOrbita());
     }
 
     @Test
@@ -36,6 +36,4 @@ public class GeostationaryOrbitaTest {
         GeostationaryOrbita geostationaryOrbita = new GeostationaryOrbita(planet, sattelite);
         assertTrue(geostationaryOrbita.heightRise()> geostationaryOrbita.heightOrbita());
     }
-
-
 }

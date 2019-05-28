@@ -17,8 +17,4 @@ public class GeostationaryOrbita extends Orbita{
         return sattelite.getVelocity()*sattelite.getVelocity()/2*accelerationGravity();
     }
 
-    @Override
-    public void print(String message) {
-        super.print(message);
-    }
 }
