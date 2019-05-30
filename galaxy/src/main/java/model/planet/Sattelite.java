@@ -23,6 +23,10 @@ public class Sattelite extends Planet{
 
     private double weight;
 
+
+    public Sattelite(){
+
+    }
     public Sattelite(String name) {
         this.name = name;
     }
@@ -37,6 +41,7 @@ public class Sattelite extends Planet{
         this.setVelocity(velocity);
         this.setName(name);
     }
+
     public Sattelite(double weight) {
         this.weight = weight;
     }

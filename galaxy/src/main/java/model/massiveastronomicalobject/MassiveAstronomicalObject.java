@@ -6,7 +6,9 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
     private double minLuminocity;
     private double maxLuminocity;
     private double luminocity;
+   public  MassiveAstronomicalObject(){
 
+    }
 
     public MassiveAstronomicalObject( double radius) {
         super(radius);

@@ -19,11 +19,6 @@ public class AstronomicalObject {
         this.radius = r;
         this.name = n;
     }
-    public AstronomicalObject(double w, double r, double t, String n) {
-        this.weight = w;
-        this.radius = r;
-        this.name = n;
-    }
 
     public void setWeight(double weight) {
         this.weight = weight;

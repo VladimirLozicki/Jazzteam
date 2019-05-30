@@ -4,11 +4,14 @@ import model.AstronomicalObject;
 
 public class Planet extends AstronomicalObject{
 
+
+
+
     private double rotationPeriod;
     private double density;
     private double secondCosmicVelocity;
 
-    Planet(){
+   public  Planet(){
 
     }
     Planet(double weight, double radius, String n){
