@@ -1,27 +1,28 @@
 package model.planet;
 
 import model.AstronomicalObject;
+import model.massiveastronomicalobject.Star;
+import model.orbita.Orbita;
 
-public class Planet extends AstronomicalObject{
-
-
-
+public class Planet extends AstronomicalObject {
 
     private double rotationPeriod;
     private double density;
     private double secondCosmicVelocity;
 
-   public  Planet(){
+    public Planet() {
 
     }
-    Planet(double weight, double radius, String n){
-        super(weight,radius,n);
+
+    Planet(double weight, double radius, String n) {
+        super(weight, radius, n);
     }
-    public Planet(double weight, double radius,  String n, double density,
-                  double rotationPeriod){
-        super(weight,radius,n);
-        this.density=density;
-        this.rotationPeriod=rotationPeriod;
+
+    public Planet(double weight, double radius, String n, double density,
+                  double rotationPeriod) {
+        super(weight, radius, n);
+        this.density = density;
+        this.rotationPeriod = rotationPeriod;
     }
 
     public double getRotationPeriod() {
@@ -47,6 +48,5 @@ public class Planet extends AstronomicalObject{
     public void setSecondCosmicVelocity(double secondCosmicVelocity) {
         this.secondCosmicVelocity = secondCosmicVelocity;
     }
-
 
 }

@@ -1,5 +1,10 @@
 package model;
 
+import model.massiveastronomicalobject.Star;
+import model.orbita.GeostationaryOrbita;
+import model.planet.Planet;
+import model.planet.Sattelite;
+
 public class AstronomicalObject {
 
     private double weight;
@@ -12,8 +17,9 @@ public class AstronomicalObject {
     }
 
     public AstronomicalObject(double radius) {
-        this.radius=radius;
+        this.radius = radius;
     }
+
     public AstronomicalObject(double w, double r, String n) {
         this.weight = w;
         this.radius = r;
@@ -52,4 +58,5 @@ public class AstronomicalObject {
     public void setVelocity(double velocity) {
         this.velocity = velocity;
     }
+
 }

@@ -20,7 +20,7 @@ public class PlanetTest {
                 6200, 6700, 0, 25, 22,
                 24);
         Star sun = new Star(10000, 1.0);
-        Orbita orbita = new Orbita(planetEarthType, sun, 149600000);
+        Orbita orbita = new Orbita.Builder(planetEarthType).star(sun).height(149600000.0).build();
         double actual = getAttitude(sun, orbita);
         assertEquals(actual, attitude);
     }
@@ -30,7 +30,7 @@ public class PlanetTest {
         Planet planet = new Planet(670.0, 670.0, "Kepler748b",
                 17.0, 35.0);
         Star myStars = new Star(1.0, 0.6);
-        Orbita orbita = new Orbita(planet, myStars, 10000);
+        Orbita orbita = new Orbita.Builder(planet).star(myStars).height(1000.0).build();
         double actual = getAttitude(myStars, orbita);
         assertTrue(actual < attitude);
 
@@ -41,7 +41,7 @@ public class PlanetTest {
         Planet planet1 = new Planet(6000.0, 650.0, "Kepler748b",
                 17.0, 35.0);
         Star myStars = new Star(100, 0.5);
-        Orbita orbita = new Orbita(planet1, myStars, 100);
+        Orbita orbita = new Orbita.Builder(planet1).star(myStars).height(100.0).build();
         double actual = getAttitude(myStars, orbita);
         assertTrue(actual > attitude);
     }

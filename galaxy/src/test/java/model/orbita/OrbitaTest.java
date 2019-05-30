@@ -12,9 +12,8 @@ public class OrbitaTest {
         Planet planet = new Planet(100.0, 10.0, "Kepler48b", 5.0,
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
-        Orbita orbita = new Orbita(planet, sattelite);
+        Orbita orbita = new Orbita.Builder(planet).sattelite(sattelite).build();
         assertEquals(orbita.accelerationGravity(), 1.0);
-
     }
 
     @Test
@@ -22,7 +21,7 @@ public class OrbitaTest {
         Planet planet = new Planet(100.0, 5.0, "Kepler74", 5.0,
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
-        Orbita orbita = new Orbita(planet, sattelite);
+        Orbita orbita = new Orbita.Builder(planet).sattelite(sattelite).build();
         assertEquals(orbita.accelerationGravity(), 4.0);
     }
 
@@ -31,7 +30,7 @@ public class OrbitaTest {
         Planet planet = new Planet(100.0, 100.0, "Mars", 5.0,
                 15.0);
         Sattelite sattelite = new Sattelite("Europe");
-        Orbita orbita = new Orbita(planet, sattelite);
+        Orbita orbita = new Orbita.Builder(planet).sattelite(sattelite).build();
         assertEquals(orbita.accelerationGravity(), 0.01);
     }
 
