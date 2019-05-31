@@ -17,6 +17,7 @@ public class GeostationaryOrbitaTest {
         Planet planet = new Planet(10000, 100, "Kepler748b");
         GeostationaryOrbita geostationaryOrbita = new GeostationaryOrbita.GeostationaryBuilder(planet, sattelite).build();
         int actual = (int) geostationaryOrbita.heightOrbita(planet);
+
         int expected = (int) geostationaryOrbita.heightRise(sattelite, planet);
         assertEquals(actual, expected);
     }

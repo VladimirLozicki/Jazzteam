@@ -25,6 +25,7 @@ public class PlanetTest {
         assertEquals(actual, attitude);
     }
 
+
     @Test
     public void testCheckMoreDistance() {
         Planet planet = new Planet(670.0, 670.0, "Kepler748b");
@@ -45,7 +46,7 @@ public class PlanetTest {
     }
 
     public double getAttitude(Star star, Orbita orbita) {
-        return star.temperature() / orbita.getHeight();
+        return star.getTemperature() / orbita.getHeight();
     }
 
 

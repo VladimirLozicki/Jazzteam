@@ -1,6 +1,6 @@
 package models;
 
-        import model.planet.Sattelite;
+import model.planet.Sattelite;
 import org.testng.annotations.Test;
 import services.Service;
 

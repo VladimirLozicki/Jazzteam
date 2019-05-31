@@ -5,7 +5,7 @@ import model.planet.Planet;
 import model.planet.Sattelite;
 
 public class Orbita {
-    public  double constG = 1;
+    public double constG = 1;
     public double height;
     public Planet planet;
     public Sattelite sattelite;
@@ -56,6 +56,8 @@ public class Orbita {
     public double accelerationGravity(Planet planet) {
         return (constG * planet.getWeight()) / (Math.pow(planet.getRadius(), 2));
     }
+
+
 
     public double powerGravity(Planet planet, Sattelite sattelite) {
         return (constG * planet.getWeight() * sattelite.getWeight()) / Math.pow(height, 2);

@@ -10,8 +10,7 @@ public class Star extends MassiveAstronomicalObject {
         this.luminocity = luminocity;
     }
 
-    public double temperature() {
-        return luminocity / sigma * Math.PI * getRadius()*getRadius();
+    public double getTemperature() {
+        return luminocity / sigma * Math.PI * getRadius() * getRadius();
     }
-
 }

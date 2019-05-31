@@ -9,6 +9,7 @@ public class GeostationaryOrbita extends Orbita {
         return Math.cbrt(constG * planet.getWeight());
     }
 
+
     public double heightRise(Sattelite sattelite, Planet planet) {
         return sattelite.getVelocity() * sattelite.getVelocity() / 2 * accelerationGravity(planet);
     }
