@@ -25,7 +25,6 @@ public class PlanetTest {
         assertEquals(actual, attitude);
     }
 
-
     @Test
     public void testCheckMoreDistance() {
         Planet planet = new Planet(670.0, 670.0, "Kepler748b");

@@ -16,21 +16,12 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
         super();
     }
 
-    public double getMinLuminocity() {
-        return minLuminocity;
+
+    public double getLuminocity() {
+        return luminocity;
     }
 
-    public void setMinLuminocity(double minLuminocity) {
-        this.minLuminocity = minLuminocity;
+    public void setLuminocity(double luminocity) {
+        this.luminocity = luminocity;
     }
-
-    public double getMaxLuminocity() {
-        return maxLuminocity;
-    }
-
-    public void setMaxLuminocity(double maxLuminocity) {
-        this.maxLuminocity = maxLuminocity;
-    }
-
-
 }

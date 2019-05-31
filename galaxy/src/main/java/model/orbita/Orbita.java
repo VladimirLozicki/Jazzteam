@@ -13,7 +13,6 @@ public class Orbita {
 
 
     Orbita() {
-
     }
 
     public static class Builder {
@@ -53,13 +52,12 @@ public class Orbita {
         height = builder.height;
     }
 
-    public double accelerationGravity(Planet planet) {
+    public double accelerationGravity() {
         return (constG * planet.getWeight()) / (Math.pow(planet.getRadius(), 2));
     }
 
 
-
-    public double powerGravity(Planet planet, Sattelite sattelite) {
+    public double powerGravity() {
         return (constG * planet.getWeight() * sattelite.getWeight()) / Math.pow(height, 2);
     }
 

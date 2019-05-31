@@ -5,13 +5,13 @@ import model.planet.Sattelite;
 
 public class GeostationaryOrbita extends Orbita {
 
-    public double heightOrbita(Planet planet) {
+    public double heightOrbita() {
         return Math.cbrt(constG * planet.getWeight());
     }
 
 
-    public double heightRise(Sattelite sattelite, Planet planet) {
-        return sattelite.getVelocity() * sattelite.getVelocity() / 2 * accelerationGravity(planet);
+    public double heightRise() {
+        return sattelite.getVelocity() * sattelite.getVelocity() / 2 * accelerationGravity();
     }
 
     public static class GeostationaryBuilder extends Orbita.Builder {
