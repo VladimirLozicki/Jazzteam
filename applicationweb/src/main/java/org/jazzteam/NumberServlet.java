@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class NumberServlet extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp)
             throws ServletException, IOException {
         MultiplicationNumber multiplicationNumber = new MultiplicationNumber();
@@ -20,7 +21,11 @@ public class NumberServlet extends HttpServlet {
         String k = String.valueOf(multiplicationNumber.multiplicationOfNumbers(s));
 
         request.setAttribute("KEY", k);
+        try{
         request.getRequestDispatcher("multi.jsp").forward(request, resp);
+        }catch (Exception e){
+            e.getMessage();
+        }
     }
 }
 

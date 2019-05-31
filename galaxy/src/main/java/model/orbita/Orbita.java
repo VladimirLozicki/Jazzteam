@@ -4,25 +4,23 @@ import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Sattelite;
 
-import java.util.logging.Logger;
-
 public class Orbita {
-    public final double G = 1;
-    private static final Logger logger = Logger.getGlobal();
-
+    public  double constG = 1;
     public double height;
     public Planet planet;
     public Sattelite sattelite;
     public Star star;
 
 
-Orbita(){}
+    Orbita() {
+
+    }
 
     public static class Builder {
-        private Planet planet;
-        private Sattelite sattelite;
-        private Star star;
-        private double height;
+        Planet planet;
+        Sattelite sattelite;
+        Star star;
+        double height;
 
         public Builder(Planet planet) {
             this.planet = planet;
@@ -34,7 +32,7 @@ Orbita(){}
         }
 
         public Builder star(Star star) {
-            this.planet = planet;
+            this.star = star;
             return this;
         }
 
@@ -55,12 +53,12 @@ Orbita(){}
         height = builder.height;
     }
 
-    public double accelerationGravity() {
-        return (G * planet.getWeight()) / (Math.pow(planet.getRadius(), 2));
+    public double accelerationGravity(Planet planet) {
+        return (constG * planet.getWeight()) / (Math.pow(planet.getRadius(), 2));
     }
 
-    public double PowerGravity() {
-        return (G * planet.getWeight() * sattelite.getWeight()) / Math.pow(height, 2);
+    public double powerGravity(Planet planet, Sattelite sattelite) {
+        return (constG * planet.getWeight() * sattelite.getWeight()) / Math.pow(height, 2);
     }
 
     public double getHeight() {

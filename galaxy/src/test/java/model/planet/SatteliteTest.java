@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import static org.testng.Assert.*;
+import static junit.framework.Assert.assertEquals;
 
 
 public class SatteliteTest {
@@ -54,9 +54,9 @@ public class SatteliteTest {
 
     private ArrayList<String> getConsist(Planet planet, Sattelite sattelite, Orbita orbita) {
         ArrayList list = new ArrayList();
-        if (orbita.PowerGravity() > 1000) {
+        if (orbita.powerGravity(planet, sattelite) > 1000) {
             list.add("gravity more");
-        } else if (orbita.PowerGravity() < 100) {
+        } else if (orbita.powerGravity(planet, sattelite) < 100) {
             list.add("gravity less");
         } else if (sattelite.getVelocity() < 0) {
             list.add("velocity less");

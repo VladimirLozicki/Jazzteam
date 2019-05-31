@@ -3,8 +3,8 @@ package model.planet;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "sattelite")
-public class Sattelite extends Planet{
+@Table(name = "sattelite")
+public class Sattelite extends Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -24,30 +24,29 @@ public class Sattelite extends Planet{
     private double weight;
 
 
-    public Sattelite(){
+    public Sattelite() {
 
     }
+
     public Sattelite(String name) {
         this.name = name;
     }
 
+    public Sattelite(double weight) {
+        this.weight = weight;
+        this.name = name;
+    }
 
     public Sattelite(double velocity, double weight) {
         this.setVelocity(velocity);
-        this.weight = weight;
+        this.setWeight(weight);
     }
 
     public Sattelite(double velocity, String name) {
         this.setVelocity(velocity);
-        this.setName(name);
+        this.name = name;
     }
-
-    public Sattelite(double weight) {
-        this.weight = weight;
-    }
-
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
@@ -61,7 +60,7 @@ public class Sattelite extends Planet{
         return "model.planet.Sattelite{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", weight='" + weight  +
+                ", weight='" + weight +
                 '}';
     }
 }

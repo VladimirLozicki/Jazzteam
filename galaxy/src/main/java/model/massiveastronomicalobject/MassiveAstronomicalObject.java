@@ -13,7 +13,7 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
     }
 
     public MassiveAstronomicalObject(double radius) {
-        super(radius);
+        super();
     }
 
     public double getMinLuminocity() {

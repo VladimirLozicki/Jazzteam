@@ -7,16 +7,22 @@ import java.io.IOException;
 
 public class Servlet extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
 
             String username = request.getParameter("login");
             String password = request.getParameter("password");
-            if (username.equals("admin") && password.equals("admin")) {
-                resp.sendRedirect("/ok.jsp");
-            } else {
+
+            try {
+                if (username.equals("admin") && password.equals("admin")) {
+                    resp.sendRedirect("/ok.jsp");
+                } else {
 
 
-                request.getRequestDispatcher("/error.jsp").forward(request, resp);
+                    request.getRequestDispatcher("/error.jsp").forward(request, resp);
+                }
+            }catch (Exception e){
+                e.getMessage();
             }
     }
 }

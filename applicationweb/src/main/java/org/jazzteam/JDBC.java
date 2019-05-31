@@ -15,7 +15,7 @@ public class JDBC {
         Equals equals = new Equals();
         try {
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection(url, username, password);
+            Connection connection = DriverManager.getConnection(url, username,password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT password FROM users WHERE username='ivan'");
             String actual = "";

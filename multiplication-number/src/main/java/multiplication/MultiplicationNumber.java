@@ -9,7 +9,6 @@ public class MultiplicationNumber {
 
     private String sourceExpression;
 
-    // TODO Иван строку переделать на файл
     public String getStringFromFile(File file) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));

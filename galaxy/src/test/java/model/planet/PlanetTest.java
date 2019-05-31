@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
 
-import static org.testng.Assert.assertEquals;
+import static junit.framework.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class PlanetTest {
@@ -27,8 +27,7 @@ public class PlanetTest {
 
     @Test
     public void testCheckMoreDistance() {
-        Planet planet = new Planet(670.0, 670.0, "Kepler748b",
-                17.0, 35.0);
+        Planet planet = new Planet(670.0, 670.0, "Kepler748b");
         Star myStars = new Star(1.0, 0.6);
         Orbita orbita = new Orbita.Builder(planet).star(myStars).height(1000.0).build();
         double actual = getAttitude(myStars, orbita);
@@ -38,8 +37,7 @@ public class PlanetTest {
 
     @Test
     public void testCheckLessDistance() {
-        Planet planet1 = new Planet(6000.0, 650.0, "Kepler748b",
-                17.0, 35.0);
+        Planet planet1 = new Planet(6000.0, 650.0, "Kepler748b");
         Star myStars = new Star(100, 0.5);
         Orbita orbita = new Orbita.Builder(planet1).star(myStars).height(100.0).build();
         double actual = getAttitude(myStars, orbita);
@@ -47,7 +45,8 @@ public class PlanetTest {
     }
 
     public double getAttitude(Star star, Orbita orbita) {
-        return star.Temperature() / orbita.getHeight();
+        return star.temperature() / orbita.getHeight();
     }
+
 
 }

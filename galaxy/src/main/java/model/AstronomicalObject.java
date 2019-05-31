@@ -1,16 +1,11 @@
 package model;
 
-import model.massiveastronomicalobject.Star;
-import model.orbita.GeostationaryOrbita;
-import model.planet.Planet;
-import model.planet.Sattelite;
-
 public class AstronomicalObject {
 
-    private double weight;
-    private double radius;
-    private String name;
-    private double velocity;
+     double weight;
+     double radius;
+     String name;
+     double velocity;
 
     public AstronomicalObject() {
 
