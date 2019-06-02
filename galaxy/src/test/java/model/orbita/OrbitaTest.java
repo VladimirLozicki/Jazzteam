@@ -29,6 +29,26 @@ public class OrbitaTest {
         Sattelite sattelite = new Sattelite("Europe");
         Orbita orbita = new Orbita.Builder(planet).sattelite(sattelite).build();
         assertEquals(orbita.accelerationGravity(), 0.01);
+
+    }
+
+    @Test
+    public void testAccelerationGravity() {
+        double actual = getSystem().accelerationGravity();
+        assertEquals(actual, 68.75);
+    }
+
+    @Test
+    public void testpowerGravity() {
+        double actual = getSystem().powerGravity();
+        assertEquals(actual, 68.75);
+    }
+
+    public Orbita getSystem() {
+        Planet planet = new Planet(687500.0, 100.0, "Kepler48b");
+        Sattelite sattelite = new Sattelite(100.0);
+        Orbita orbita = new Orbita.Builder(planet).sattelite(sattelite).height(1000).build();
+        return orbita;
     }
 
 }

@@ -1,7 +1,7 @@
 package model.massiveastronomicalobject;
 
 public class YellowDwarfTest {
-    double attitude = 2.09999508929799;
+    //double attitude = 2.09999508929799;
 //
 //    @Test
 //    public void testGetResults() {

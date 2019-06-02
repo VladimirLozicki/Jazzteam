@@ -29,28 +29,28 @@ public class Planet extends AstronomicalObject {
         this.rotationPeriod = rotationPeriod;
     }
 
-    public double getRotationPeriod() {
-        return rotationPeriod;
-    }
-
-    public void setRotationPeriod(double rotationPeriod) {
-        this.rotationPeriod = rotationPeriod;
-    }
-
-    public double getDensity() {
-        return density;
-    }
-
-    public void setDensity(double density) {
-        this.density = density;
-    }
-
-    public double getSecondCosmicVelocity() {
-        return secondCosmicVelocity;
-    }
-
-    public void setSecondCosmicVelocity(double secondCosmicVelocity) {
-        this.secondCosmicVelocity = secondCosmicVelocity;
-    }
+//    public double getRotationPeriod() {
+//        return rotationPeriod;
+//    }
+//
+//    public void setRotationPeriod(double rotationPeriod) {
+//        this.rotationPeriod = rotationPeriod;
+//    }
+//
+//    public double getDensity() {
+//        return density;
+//    }
+//
+//    public void setDensity(double density) {
+//        this.density = density;
+//    }
+//
+//    public double getSecondCosmicVelocity() {
+//        return secondCosmicVelocity;
+//    }
+//
+//    public void setSecondCosmicVelocity(double secondCosmicVelocity) {
+//        this.secondCosmicVelocity = secondCosmicVelocity;
+//    }
 
 }

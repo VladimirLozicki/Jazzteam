@@ -6,7 +6,7 @@ import model.planet.Sattelite;
 public class GeostationaryOrbita extends Orbita {
 
     public double heightOrbita() {
-        return Math.cbrt(constG * planet.getWeight());
+        return Math.cbrt(G * planet.getWeight());
     }
 
 
