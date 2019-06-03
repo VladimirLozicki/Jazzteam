@@ -4,16 +4,27 @@ import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Sattelite;
 
-public class Orbita {
+import java.sql.Time;
+import java.util.Date;
+import java.util.TimerTask;
+import java.util.logging.Logger;
+
+public class Orbita  {
+
     public final double G = 1;
     public double height;
     public Planet planet;
     public Sattelite sattelite;
     public Star star;
 
-    Orbita() {
+    Orbita() {}
+    public static int i = 0;
+    public void run(int time) {
+        while(i<time){
+            System.out.println("Timer ran " + sattelite.getVelocity());
+            i++;
+        }
     }
-
 
     public double getHeight() {
         return height;

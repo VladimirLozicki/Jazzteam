@@ -1,12 +1,18 @@
 package model.orbita;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import model.planet.Planet;
 import model.planet.Sattelite;
 import org.testng.annotations.Test;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Logger;
+
 import static org.testng.Assert.assertEquals;
 
 public class OrbitaTest {
+
     @Test
     public void testCreatBalanceSystem() {
         Planet planet = new Planet(100.0, 10.0, "Kepler48b");
@@ -51,4 +57,15 @@ public class OrbitaTest {
         return orbita;
     }
 
+    @Test
+    public void getStem() {
+        Planet planet = new Planet(687500.0, 100.0, "Kepler48b");
+        Sattelite sattelite = new Sattelite(100.0, 100.0);
+        Orbita orbita = new Orbita.Builder(planet).sattelite(sattelite).height(1000).build();
+//        Timer timer = new Timer();
+//        TimerTask task  = new Orbita();
+//           timer.schedule(task, 3, 500);
+//           task.run();
+        orbita.run(100);
+    }
 }

@@ -27,7 +27,7 @@ public class JDBC {
             }
             resultSet.close();
             statement.close();
-            connection.close();
+                                                                                                                                                                                                                                                                                                                                      connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
