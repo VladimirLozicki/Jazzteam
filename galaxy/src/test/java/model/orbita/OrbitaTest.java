@@ -66,6 +66,6 @@ public class OrbitaTest {
 //        TimerTask task  = new Orbita();
 //           timer.schedule(task, 3, 500);
 //           task.run();
-        orbita.run(100);
+           orbita.run(100);
     }
 }
