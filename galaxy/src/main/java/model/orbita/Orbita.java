@@ -11,10 +11,8 @@ public class Orbita {
     public Sattelite sattelite;
     public Star star;
 
-
     Orbita() {
     }
-
 
 
     public double getHeight() {
@@ -66,5 +64,14 @@ public class Orbita {
     public double powerGravity() {
         return (G * planet.getWeight() * sattelite.getWeight()) / Math.pow(getHeight(), 2);
     }
+
+//    public double getVelocity(int time, double velocity_0, double acceleration, double radius) {
+//        double l=Math.PI*2*radius;
+//        return (velocity- velocity_0)/time;
+//        ;
+//    }
+
+
+
 
 }
