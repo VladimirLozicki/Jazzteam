@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import model.planet.Sattelite;
 import org.hibernate.Session;

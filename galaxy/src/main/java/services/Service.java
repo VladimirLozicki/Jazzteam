@@ -1,6 +1,6 @@
 package services;
 
-import DAO.DAO;
+import dao.DAO;
 import model.planet.Sattelite;
 
 public class Service {

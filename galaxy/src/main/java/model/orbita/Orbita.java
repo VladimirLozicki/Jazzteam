@@ -4,27 +4,36 @@ import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Sattelite;
 
-import java.sql.Time;
-import java.util.Date;
+import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Logger;
 
-public class Orbita  {
+public class Orbita {
 
-    public final double G = 1;
+    protected final static double G = 1;
     public double height;
     public Planet planet;
     public Sattelite sattelite;
     public Star star;
 
-    Orbita() {}
-    public static int i = 0;
-    public void run(int time) {
-        while(i<time){
-            System.out.println("Timer ran " + sattelite.getVelocity());
-            i++;
-        }
+    Orbita() {
     }
+
+
+    public void run(){
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("Inside Timer Task" + System.currentTimeMillis());
+            }
+        };
+
+        //System.out.println("Current time" + System.currentTimeMillis());
+
+        timer.schedule(task, 100, 1000);
+    }
+
 
     public double getHeight() {
         return height;

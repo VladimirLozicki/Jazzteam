@@ -11,7 +11,7 @@ import static org.testng.AssertJUnit.assertFalse;
 
 public class GeostationaryOrbitaTest {
 
-    
+
     @Test
     public void testGoOutOnOrbita() {
         Sattelite sattelite = new Sattelite(6.5, "Moon");

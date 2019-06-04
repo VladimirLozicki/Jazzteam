@@ -14,9 +14,9 @@
         <module>exception-handling</module>
         <module>multithreading</module>
         <module>patterns</module>
-        <module>singlelinkedlist</module>
+        <module>singlelinked-list</module>
         <module>galaxy</module>
-        <module>applicationweb</module>
+        <module>application-web</module>
     </modules>
 
     <properties>

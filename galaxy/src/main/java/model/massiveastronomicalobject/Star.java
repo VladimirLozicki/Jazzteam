@@ -3,7 +3,7 @@ package model.massiveastronomicalobject;
 
 public class Star extends MassiveAstronomicalObject {
     private double luminocity;
-    private double sigma = 1;
+    protected final static double SIGMA = 1;
 
     public Star(double radius, double luminocity) {
         super.setRadius(radius);
@@ -11,6 +11,6 @@ public class Star extends MassiveAstronomicalObject {
     }
 
     public double getTemperature() {
-        return luminocity / sigma * Math.PI * getRadius() * getRadius();
+        return luminocity / SIGMA * Math.PI * getRadius() * getRadius();
     }
 }
