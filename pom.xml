@@ -17,6 +17,7 @@
         <module>singlelinked-list</module>
         <module>galaxy</module>
         <module>application-web</module>
+        <module>SpringMVC</module>
     </modules>
 
     <properties>
