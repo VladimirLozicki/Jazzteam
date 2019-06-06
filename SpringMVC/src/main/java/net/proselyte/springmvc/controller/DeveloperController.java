@@ -26,7 +26,6 @@ public class DeveloperController {
         model.addAttribute("name", developer.getName());
         model.addAttribute("specilaty", developer.getSpecialty());
         model.addAttribute("experience", developer.getExperience());
-
         return "result";
     }
 }
