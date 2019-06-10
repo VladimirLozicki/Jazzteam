@@ -8,21 +8,21 @@
 <h2>Result use-case</h2>
 <table>
   <tr>
-    <td>Velocity</td>
-    <td>${velocity}</td>
+    <td>density</td>
+    <td>${density}</td>
   </tr>
   <tr>
   <tr>
-    <td>Name</td>
+    <td>rotationPeriod</td>
+    <td>${rotationPeriod}</td>
+  </tr>
+  <tr>
+    <td>secondCosmicVelocity</td>
+    <td>${secondCosmicVelocity}</td>
+  </tr>
+  <tr>
+    <td>name</td>
     <td>${name}</td>
-  </tr>
-  <tr>
-    <td>Specialty</td>
-    <td>${specilaty}</td>
-  </tr>
-  <tr>
-    <td>Experience</td>
-    <td>${experience}</td>
   </tr>
 </table>
 </body>

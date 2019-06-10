@@ -1,0 +1,7 @@
+org/jazzteam/ListServlet.class
+org/jazzteam/Servlet.class
+org/jazzteam/NumberServlet.class
+org/jazzteam/singleton/Equals.class
+org/jazzteam/JDBCTest.class
+org/jazzteam/singleton/Singleton.class
+org/jazzteam/JDBC.class

@@ -14,10 +14,9 @@
         <module>exception-handling</module>
         <module>multithreading</module>
         <module>patterns</module>
-        <module>singlelinked-list</module>
+        <module>single-list</module>
         <module>galaxy</module>
-        <module>application-web</module>
-        <module>SpringMVC</module>
+        <module>webapp</module>
     </modules>
 
     <properties>

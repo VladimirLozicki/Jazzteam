@@ -5,6 +5,6 @@
     <title>Home Page</title>
 </head>
 <body>
-  <h3><a href="/developer">Use-case</a></h3>
+  <h3><a href="/planet">Use-case</a></h3>
 </body>
 </html>
