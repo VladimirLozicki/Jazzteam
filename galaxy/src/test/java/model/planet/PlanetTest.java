@@ -1,7 +1,7 @@
 package model.planet;
 
 import model.massiveastronomicalobject.Star;
-import model.orbita.Orbita;
+import model.orbita.Orbit;
 import org.testng.annotations.Test;
 
 import java.util.logging.Logger;
@@ -20,8 +20,8 @@ public class PlanetTest {
                 6200, 6700, 0, 25, 22,
                 24);
         Star sun = new Star(10000, 1.0);
-        Orbita orbita = new Orbita.Builder(planetEarthType).star(sun).height(149600000.0).build();
-        double actual = getAttitude(sun, orbita);
+        Orbit orbit = new Orbit.Builder(planetEarthType).star(sun).height(149600000.0).build();
+        double actual = getAttitude(sun, orbit);
         assertEquals(actual, attitude);
     }
 
@@ -29,8 +29,8 @@ public class PlanetTest {
     public void testCheckMoreDistance() {
         Planet planet = new Planet(670.0, 670.0, "Kepler748b");
         Star myStars = new Star(1.0, 0.6);
-        Orbita orbita = new Orbita.Builder(planet).star(myStars).height(1000.0).build();
-        double actual = getAttitude(myStars, orbita);
+        Orbit orbit = new Orbit.Builder(planet).star(myStars).height(1000.0).build();
+        double actual = getAttitude(myStars, orbit);
         assertTrue(actual < attitude);
 
     }
@@ -39,13 +39,13 @@ public class PlanetTest {
     public void testCheckLessDistance() {
         Planet planet1 = new Planet(6000.0, 650.0, "Kepler748b");
         Star myStars = new Star(100, 0.5);
-        Orbita orbita = new Orbita.Builder(planet1).star(myStars).height(100.0).build();
-        double actual = getAttitude(myStars, orbita);
+        Orbit orbit = new Orbit.Builder(planet1).star(myStars).height(100.0).build();
+        double actual = getAttitude(myStars, orbit);
         assertTrue(actual > attitude);
     }
 
-    public double getAttitude(Star star, Orbita orbita) {
-        return star.getTemperature() / orbita.getHeight();
+    public double getAttitude(Star star, Orbit orbit) {
+        return star.getTemperature() / orbit.getHeight();
     }
 
 

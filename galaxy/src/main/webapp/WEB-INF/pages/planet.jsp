@@ -1,34 +1,23 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
-  <title>Developer</title>
+  <title>Planet</title>
 </head>
 <body>
 
-<h2>Enter developer information</h2>
-<form:form method="post" action="addPlanet">
+<h2>Create parameter system </h2>
+<form:form method="post" action="addOrbit">
   <table>
     <tr>
-      <td><form:label path="density">density</form:label></td>
-      <td><form:input path="density" /></td>
+      <td><form:label path="height">radius</form:label></td>
+      <td><form:input path="height" /></td>
     </tr>
     <tr>
-      <td><form:label path="rotationPeriod">rotationPeriod</form:label></td>
-      <td><form:input path="rotationPeriod" /></td>
-    </tr>
-    <tr>
-      <td><form:label path="secondCosmicVelocity">secondCosmicVelocity</form:label></td>
-      <td><form:input path="secondCosmicVelocity" /></td>
-    </tr>
-    <tr>
-      <td><form:label path="name">name</form:label></td>
-      <td><form:input path="name" /></td>
-    </tr>
-      <td colspan="2">
-        <input type="submit" value="Submit"/>
-      </td>
+      <td><form:label path="velocity">velocity</form:label></td>
+      <td><form:input path="velocity" /></td>
     </tr>
   </table>
+  <input type="submit" value="Submit"/>
 </form:form>
 </body>
 </html>

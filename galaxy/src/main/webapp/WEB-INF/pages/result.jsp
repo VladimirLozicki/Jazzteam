@@ -1,29 +1,20 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
-<head>
-  <title>Developer Info</title>
+<head
 </head>
 <body>
 
-<h2>Result use-case</h2>
+<h2>Orbit</h2>
 <table>
   <tr>
-    <td>density</td>
-    <td>${density}</td>
+    <td>height</td>
+    <td>${height}</td>
   </tr>
   <tr>
-  <tr>
-    <td>rotationPeriod</td>
-    <td>${rotationPeriod}</td>
-  </tr>
-  <tr>
-    <td>secondCosmicVelocity</td>
-    <td>${secondCosmicVelocity}</td>
-  </tr>
-  <tr>
-    <td>name</td>
-    <td>${name}</td>
+    <td>velocity</td>
+    <td>${velocity}</td>
   </tr>
 </table>
+<div>${uyb}</div>
 </body>
 </html>

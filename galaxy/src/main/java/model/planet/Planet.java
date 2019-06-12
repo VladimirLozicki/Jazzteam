@@ -3,8 +3,13 @@ package model.planet;
 import model.AstronomicalObject;
 import org.apache.maven.model.Developer;
 
-public class Planet extends AstronomicalObject {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "satellite")
+public class Planet extends AstronomicalObject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private double rotationPeriod;
     private double density;
     private double secondCosmicVelocity;
@@ -60,5 +65,11 @@ public class Planet extends AstronomicalObject {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getGet() {
+        String s=String.valueOf(getVelocity()*4);
+        return s;
     }
 }

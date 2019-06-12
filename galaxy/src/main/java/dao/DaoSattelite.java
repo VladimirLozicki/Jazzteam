@@ -1,60 +1,56 @@
 package dao;
 
-import model.planet.Sattelite;
+import model.planet.Satellite;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import utils.HibernateSessionFactoryUtil;
 
-import javax.transaction.Transactional;
-
-public class DAO {
+public class DaoSattelite {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Sattelite findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Sattelite.class, id);
+    public Satellite findById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Satellite.class, id);
     }
-
-    @Transactional
-    public Sattelite create(Sattelite sattelite) {
+    public Satellite create(Satellite satellite) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(sattelite);
+        session.save(satellite);
         transaction.commit();
         session.close();
-        return sattelite;
+        return satellite;
     }
 
-    public Sattelite save(Sattelite sattelite) {
+    public Satellite save(Satellite satellite) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(sattelite);
+        session.save(satellite);
         transaction.commit();
         session.close();
-        return sattelite;
-    }
-
-
-    public Sattelite update(Sattelite sattelite) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(sattelite);
-        transaction.commit();
-        session.close();
-        return sattelite;
+        return satellite;
     }
 
 
-    public Sattelite delete(Sattelite sattelite) {
+    public Satellite update(Satellite satellite) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(sattelite);
+        session.update(satellite);
         transaction.commit();
         session.close();
-        return sattelite;
+        return satellite;
+    }
+
+
+    public Satellite delete(Satellite satellite) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(satellite);
+        transaction.commit();
+        session.close();
+        return satellite;
     }
 
 }

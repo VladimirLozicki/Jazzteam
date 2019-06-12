@@ -1,6 +1,6 @@
 package utils;
 
-import model.planet.Sattelite;
+import model.planet.Planet;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -12,8 +12,12 @@ public class HibernateSessionFactoryUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
+              //  Configuration configuration = new Configuration().configure();
+              //  configuration.addAnnotatedClass(Satellite.class);
+              //  StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+              //  sessionFactory = configuration.buildSessionFactory(builder.build());
                 Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(Sattelite.class);
+                configuration.addAnnotatedClass(Planet.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 
