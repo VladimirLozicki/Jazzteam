@@ -1,23 +1,36 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-  <title>Planet</title>
+    <title>Planet</title>
 </head>
 <body>
 
 <h2>Create parameter system </h2>
 <form:form method="post" action="addOrbit">
-  <table>
-    <tr>
-      <td><form:label path="height">radius</form:label></td>
-      <td><form:input path="height" /></td>
-    </tr>
-    <tr>
-      <td><form:label path="velocity">velocity</form:label></td>
-      <td><form:input path="velocity" /></td>
-    </tr>
-  </table>
-  <input type="submit" value="Submit"/>
+    <table>
+        <tr>
+            <td><form:label path="planet.weight">weight</form:label></td>
+            <td><form:input path="planet.weight"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="planet.radius">radius</form:label></td>
+            <td><form:input path="planet.radius"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="height">height</form:label></td>
+            <td><form:input path="height"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="satellite.velocity">velocity</form:label></td>
+            <td><form:input path="satellite.velocity"/></td>
+        </tr>
+
+        <tr>
+            <td><form:label path="acceleration">acceleration</form:label></td>
+            <td><form:input path="acceleration"/></td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit"/>
 </form:form>
 </body>
 </html>

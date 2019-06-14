@@ -14,20 +14,20 @@ public class ServicePlanet {
         return daoPlanet.findById(id);
     }
 
-    public void savePlanet(Planet sattelite) {
-        daoPlanet.save(sattelite);
+    public void savePlanet(Planet satellite) {
+        daoPlanet.save(satellite);
     }
 
-    public void deletePlanet(Planet sattelite) {
-        daoPlanet.delete(sattelite);
+    public void deletePlanet(Planet satellite) {
+        daoPlanet.delete(satellite);
     }
 
-    public void updatePlanet(Planet sattelite) {
-        daoPlanet.update(sattelite);
+    public void updatePlanet(Planet satellite) {
+        daoPlanet.update(satellite);
     }
 
-    public void createPlanet(Planet sattelite) {
-        daoPlanet.create(sattelite);
+    public void createPlanet(Planet satellite) {
+        daoPlanet.create(satellite);
     }
 }
 

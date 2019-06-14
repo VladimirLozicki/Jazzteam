@@ -7,7 +7,7 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import utils.HibernateSessionFactoryUtil;
 
-public class DaoSattelite {
+public class DaoSatellite {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -15,6 +15,7 @@ public class DaoSattelite {
     public Satellite findById(int id) {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Satellite.class, id);
     }
+
     public Satellite create(Satellite satellite) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();

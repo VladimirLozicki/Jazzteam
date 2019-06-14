@@ -1,6 +1,12 @@
 package model.planet;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "satellite")
@@ -8,43 +14,9 @@ public class Satellite extends Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private double acceleration;
     @Column(name = "name")
     private String name;
-    private double velocity;
-
-
-    @Override
-    public double getVelocity() {
-        return velocity;
-    }
-
-    @Override
-    public void setVelocity(double velocity) {
-        this.velocity = velocity;
-    }
-
-    public double getAcceleration() {
-        return acceleration;
-    }
-
-    public void setAcceleration(double acceleration) {
-        this.acceleration = acceleration;
-    }
-
-
-    private double acceleration;
-
-    @Override
-    public double getWeight() {
-        return weight;
-    }
-
-    @Override
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    private double weight;
 
 
     public Satellite() {
@@ -68,6 +40,16 @@ public class Satellite extends Planet {
         this.setVelocity(velocity);
         this.name = name;
     }
+
+    public double getAcceleration() {
+        return acceleration;
+    }
+
+    public void setAcceleration(double acceleration) {
+        this.acceleration = acceleration;
+    }
+
+
     public String getName() {
         return name;
     }
@@ -82,7 +64,7 @@ public class Satellite extends Planet {
         return "model.planet.Satellite{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", weight='" + weight +
+                // ", weight='" + weight +
                 '}';
     }
 }

@@ -8,49 +8,52 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
-public  class Orbit {
-    public Star star;
+public class Orbit {
     private static final Logger logger = Logger.getGlobal();
-    protected static final double G = 1;
-     Satellite satellite= new Satellite();
-    Planet planet = new Planet();
-    private  double height;
-    public double getVelocity() {
-        return (satellite.getVelocity());
-    }
-    public void setHeight(double height) {
-        this.height = height;
-    }
-    public double getHeight() {
-        return height;
-    }
+    protected final static double G = 1;
+    private static int i = 0;
+    private double height;
+    private double acceleration;
+    Star star;
+    Satellite satellite;
+    Planet planet;
 
     public Orbit() {
     }
 
-    public static int i=0;
-    public String run(){
+    public int run() {
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
-           @Override
+            @Override
             public void run() {
-               i++;
-             //  getVelocity(i);
+                i++;
             }
         };
-        timer.schedule(task, 1, 100);
-        String message="";
-        if(i<20){
-            message="velocity very small";
-        }
-        if(i>20 && i<50){
-            message ="velocity normal ";
-        }
-        if(i>50){
-            message="velocity very big";
-        }
-        return message;
+        timer.schedule(task, 1, 1000);
+        return i;
+    }
 
+    public double getWay() {
+        return getVelocity() * run();
+    }
+
+    public double getVelocity() {
+        if (getSatellite().getVelocity() + getAcceleration() * run() <= 0) {
+            return 0;
+        }
+        return getSatellite().getVelocity() + getAcceleration() * run();
+    }
+
+    public String getMessage() {
+
+        if (getHeight() > getVelocity() * run()) {
+            return "satellite falls on the planet";
+        } else if (getHeight() == getVelocity() * run()) {
+            return "satellite located on orbit planet";
+        } else if (getHeight() < getVelocity() * run()) {
+            return "satellite leaves orbit planet";
+        }
+        return "";
     }
 
     public static class Builder {
@@ -63,7 +66,7 @@ public  class Orbit {
             this.planet = planet;
         }
 
-        public Builder sattelite(Satellite satellite) {
+        public Builder satellite(Satellite satellite) {
             this.satellite = satellite;
             return this;
         }
@@ -95,8 +98,54 @@ public  class Orbit {
         return (G * planet.getWeight()) / (Math.pow(planet.getRadius(), 2));
     }
 
+
     public double powerGravity() {
         return (G * planet.getWeight() * satellite.getWeight()) / Math.pow(getHeight(), 2);
+    }
+
+
+    public double getWeight() {
+        return planet.getWeight();
+    }
+
+    public double getAcceleration() {
+        return acceleration;
+    }
+
+    public void setAcceleration(double acceleration) {
+        this.acceleration = acceleration;
+    }
+
+    public Star getStar() {
+        return star;
+    }
+
+    public void setStar(Star star) {
+        this.star = star;
+    }
+
+    public Satellite getSatellite() {
+        return satellite;
+    }
+
+    public void setSatellite(Satellite satellite) {
+        this.satellite = satellite;
+    }
+
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getHeight() {
+        return height;
     }
 
 }

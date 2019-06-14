@@ -16,10 +16,10 @@ public class GeostationaryOrbitTest {
     public void testGoOutOnOrbit() {
         Satellite satellite = new Satellite(6.5, "Moon");
         Planet planet = new Planet(10000, 100, "Kepler748b");
-        GeostationaryOrbit geostationaryOrbita =
+        GeostationaryOrbit geostationaryOrbit =
                 new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
-        int actual = (int) geostationaryOrbita.heightOrbita();
-        int expected = (int) geostationaryOrbita.heightRise();
+        int actual = (int) geostationaryOrbit.heightOrbit();
+        int expected = (int) geostationaryOrbit.heightRise();
         assertEquals(actual, expected);
     }
 
@@ -28,14 +28,14 @@ public class GeostationaryOrbitTest {
     public void testNotOutOnOrbit() {
         Satellite satellite = new Satellite(3.5, "Gf893");
         Planet planet = new Planet(10000, 100, "Kepler748b");
-        GeostationaryOrbit geostationaryOrbita = new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
-        assertFalse(geostationaryOrbita.heightRise() > geostationaryOrbita.heightOrbita());
+        GeostationaryOrbit geostationaryOrbit = new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
+        assertFalse(geostationaryOrbit.heightRise() > geostationaryOrbit.heightOrbit());
     }
 
 
     @Test
     public void testBeyondLimitsOrbit() {
-        assertTrue(getOrbit().heightRise() > getOrbit().heightOrbita());
+        assertTrue(getOrbit().heightRise() > getOrbit().heightOrbit());
     }
 
     @Test
@@ -46,9 +46,9 @@ public class GeostationaryOrbitTest {
     public GeostationaryOrbit getOrbit() {
         Satellite satellite = new Satellite(10, "Kepler6782");
         Planet planet = new Planet(10000, 100, "Kepler748b");
-        GeostationaryOrbit geostationaryOrbita =
+        GeostationaryOrbit geostationaryOrbit =
                 new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
-        return geostationaryOrbita;
+        return geostationaryOrbit;
     }
 
 }

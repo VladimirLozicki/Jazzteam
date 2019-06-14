@@ -16,7 +16,7 @@ public class SatelliteTest {
     public void testSatellite() {
         Planet planetEarthType = new Planet(81400, 10, "Mars");
         Satellite satellite = new Satellite(100, 19000);
-        Orbit orbit = new Orbit.Builder(planetEarthType).sattelite(satellite).height(1500.0).build();
+        Orbit orbit = new Orbit.Builder(planetEarthType).satellite(satellite).height(1500.0).build();
         assertEquals(getConsist(planetEarthType, satellite, orbit).size(), 0);
     }
 
@@ -24,7 +24,7 @@ public class SatelliteTest {
     public void testMoreGravitySatellite() {
         Planet planetEarthType = new Planet(814000, 10, "Mars");
         Satellite satellite = new Satellite(100, 19000);
-        Orbit orbit = new Orbit.Builder(planetEarthType).sattelite(satellite).height(1500.0).build();
+        Orbit orbit = new Orbit.Builder(planetEarthType).satellite(satellite).height(1500.0).build();
         assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "gravity more");
     }
 
@@ -32,7 +32,7 @@ public class SatelliteTest {
     public void testLessGravitySatellite() {
         Planet planetEarthType = new Planet(810, 10, "Mars");
         Satellite satellite = new Satellite(100, 19000);
-        Orbit orbit = new Orbit.Builder(planetEarthType).sattelite(satellite).height(1500.0).build();
+        Orbit orbit = new Orbit.Builder(planetEarthType).satellite(satellite).height(1500.0).build();
         assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "gravity less");
     }
 
@@ -40,15 +40,16 @@ public class SatelliteTest {
     public void testVelocityMoreSatellite() {
         Planet planetEarthType = new Planet(81400, 10, "Mars");
         Satellite satellite = new Satellite(1000, 19000);
-        Orbit orbit = new Orbit.Builder(planetEarthType).sattelite(satellite).height(1500.0).build();
+        Orbit orbit = new Orbit.Builder(planetEarthType).satellite(satellite).height(1500.0).build();
         assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "velocity more");
     }
+
 
     @Test
     public void testVelocityLessSatellite() {
         Planet planetEarthType = new Planet(81400, 10, "Mars");
         Satellite satellite = new Satellite(-2, 19000);
-        Orbit orbit = new Orbit.Builder(planetEarthType).sattelite(satellite).height(1500.0).build();
+        Orbit orbit = new Orbit.Builder(planetEarthType).satellite(satellite).height(1500.0).build();
         assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "velocity less");
     }
 

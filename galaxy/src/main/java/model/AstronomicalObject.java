@@ -2,10 +2,10 @@ package model;
 
 public class AstronomicalObject {
 
-    double weight;
-    double radius;
-    String name;
-    double velocity;
+    private double weight;
+    private double radius;
+    private String name;
+    private double velocity;
 
     public AstronomicalObject() {
 

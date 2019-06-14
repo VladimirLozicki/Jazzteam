@@ -3,7 +3,12 @@ package model.planet;
 import model.AstronomicalObject;
 import org.apache.maven.model.Developer;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "satellite")
@@ -69,7 +74,7 @@ public class Planet extends AstronomicalObject {
 
 
     public String getGet() {
-        String s=String.valueOf(getVelocity()*4);
+        String s = String.valueOf(getVelocity() * 4);
         return s;
     }
 }

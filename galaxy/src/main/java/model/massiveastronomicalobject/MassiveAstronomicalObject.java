@@ -4,7 +4,7 @@ import model.AstronomicalObject;
 
 
 public class MassiveAstronomicalObject extends AstronomicalObject {
-    private double luminocity;
+    private double luminosity;
 
     public MassiveAstronomicalObject() {
 
@@ -16,10 +16,10 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
 
 
     public double getLuminocity() {
-        return luminocity;
+        return luminosity;
     }
 
-    public void setLuminocity(double luminocity) {
-        this.luminocity = luminocity;
+    public void setLuminocity(double luminosity) {
+        this.luminosity = luminosity;
     }
 }

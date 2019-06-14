@@ -1,33 +1,33 @@
 package services;
 
-import dao.DaoSattelite;
+import dao.DaoSatellite;
 import model.planet.Satellite;
 
 public class ServiceSattelite {
 
-    private DaoSattelite daoSattelite = new DaoSattelite();
+    private DaoSatellite daoSatellite = new DaoSatellite();
 
     public ServiceSattelite() {
 
     }
 
     public Satellite findUser(int id) {
-        return daoSattelite.findById(id);
+        return daoSatellite.findById(id);
     }
 
     public void saveSattelite(Satellite satellite) {
-        daoSattelite.save(satellite);
+        daoSatellite.save(satellite);
     }
 
     public void deleteSattelite(Satellite satellite) {
-        daoSattelite.delete(satellite);
+        daoSatellite.delete(satellite);
     }
 
     public void updateSattelite(Satellite satellite) {
-        daoSattelite.update(satellite);
+        daoSatellite.update(satellite);
     }
 
     public void createSattelite(Satellite satellite) {
-        daoSattelite.create(satellite);
+        daoSatellite.create(satellite);
     }
 }
