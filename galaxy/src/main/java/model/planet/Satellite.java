@@ -14,7 +14,7 @@ public class Satellite extends Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private double acceleration;
+    //private double acceleration;
     @Column(name = "name")
     private String name;
 
@@ -41,13 +41,13 @@ public class Satellite extends Planet {
         this.name = name;
     }
 
-    public double getAcceleration() {
-        return acceleration;
-    }
-
-    public void setAcceleration(double acceleration) {
-        this.acceleration = acceleration;
-    }
+//    public double getAcceleration() {
+//        return acceleration;
+//    }
+//
+//    public void setAcceleration(double acceleration) {
+//        this.acceleration = acceleration;
+//    }
 
 
     public String getName() {

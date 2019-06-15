@@ -17,7 +17,7 @@ public class GeostationaryOrbitTest {
         Satellite satellite = new Satellite(6.5, "Moon");
         Planet planet = new Planet(10000, 100, "Kepler748b");
         GeostationaryOrbit geostationaryOrbit =
-                new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
+                (GeostationaryOrbit) new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
         int actual = (int) geostationaryOrbit.heightOrbit();
         int expected = (int) geostationaryOrbit.heightRise();
         assertEquals(actual, expected);
@@ -28,7 +28,7 @@ public class GeostationaryOrbitTest {
     public void testNotOutOnOrbit() {
         Satellite satellite = new Satellite(3.5, "Gf893");
         Planet planet = new Planet(10000, 100, "Kepler748b");
-        GeostationaryOrbit geostationaryOrbit = new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
+        GeostationaryOrbit geostationaryOrbit =(GeostationaryOrbit) new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
         assertFalse(geostationaryOrbit.heightRise() > geostationaryOrbit.heightOrbit());
     }
 
@@ -43,11 +43,11 @@ public class GeostationaryOrbitTest {
         Assert.assertEquals(getOrbit().heightRise(), 50.0);
     }
 
+
     public GeostationaryOrbit getOrbit() {
         Satellite satellite = new Satellite(10, "Kepler6782");
         Planet planet = new Planet(10000, 100, "Kepler748b");
-        GeostationaryOrbit geostationaryOrbit =
-                new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
+        GeostationaryOrbit geostationaryOrbit = (GeostationaryOrbit) new GeostationaryOrbit.GeostationaryBuilder(planet, satellite).build();
         return geostationaryOrbit;
     }
 

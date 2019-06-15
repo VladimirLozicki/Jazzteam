@@ -19,6 +19,7 @@ public class Orbit {
     Planet planet;
 
     public Orbit() {
+
     }
 
     public int run() {

@@ -1,29 +1,34 @@
 package model.planet;
 
 import model.AstronomicalObject;
-import org.apache.maven.model.Developer;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
-@Entity
-@Table(name = "satellite")
 public class Planet extends AstronomicalObject {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private double rotationPeriod;
     private double density;
     private double secondCosmicVelocity;
-    private String name;
 
     public Planet() {
 
     }
 
+    @Override
+    public double getWeight() {
+        return super.getWeight();
+    }
+
+    @Override
+    public void setWeight(double weight) {
+        super.setWeight(weight);
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
 
     public Planet(double radius) {
         super(radius);
@@ -62,19 +67,5 @@ public class Planet extends AstronomicalObject {
         return secondCosmicVelocity;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public String getGet() {
-        String s = String.valueOf(getVelocity() * 4);
-        return s;
-    }
 }
