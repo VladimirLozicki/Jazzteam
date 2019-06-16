@@ -1,6 +1,6 @@
 package utils;
 
-import model.planet.Planet;
+import model.orbita.Orbit;
 import model.planet.Satellite;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -13,15 +13,10 @@ public class HibernateSessionFactoryUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-              //  Configuration configuration = new Configuration().configure();
-              //  configuration.addAnnotatedClass(Satellite.class);
-              //  StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-              //  sessionFactory = configuration.buildSessionFactory(builder.build());
-                Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(Satellite.class);
-                StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-                sessionFactory = configuration.buildSessionFactory(builder.build());
-
+                Configuration configuration1 = new Configuration().configure();
+                configuration1.addAnnotatedClass(Orbit.class);
+                StandardServiceRegistryBuilder builder1 = new StandardServiceRegistryBuilder().applySettings(configuration1.getProperties());
+                sessionFactory = configuration1.buildSessionFactory(builder1.build());
             } catch (Exception e) {
                 System.out.println("Исключение!" + e);
             }

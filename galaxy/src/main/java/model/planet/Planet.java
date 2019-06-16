@@ -1,13 +1,34 @@
 package model.planet;
 
 import model.AstronomicalObject;
+
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Planet extends AstronomicalObject {
-    private double rotationPeriod;
+
+    static double rotationPeriod;
     private double density;
     private double secondCosmicVelocity;
 
     public Planet() {
 
+    }
+
+    protected  double getPeriod() {
+        return rotationPeriod;
+    }
+
+
+    @Override
+    public double getVelocity() {
+        return super.getVelocity();
+    }
+
+    @Override
+    public void setVelocity(double velocity) {
+        super.setVelocity(velocity);
     }
 
     @Override

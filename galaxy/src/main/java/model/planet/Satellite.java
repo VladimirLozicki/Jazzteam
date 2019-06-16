@@ -1,6 +1,9 @@
 package model.planet;
 
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +16,22 @@ import javax.persistence.Table;
 public class Satellite extends Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    //private double acceleration;
+    private long id;
     @Column(name = "name")
     private String name;
+    @Column(name = "velocity")
+    private  double velocity;
 
+
+    @Override
+    public double getRadius() {
+        return super.getRadius();
+    }
+
+    @Override
+    public void setRadius(double radius) {
+        super.setRadius(radius);
+    }
 
     public Satellite() {
 
@@ -38,16 +52,14 @@ public class Satellite extends Planet {
 
     public Satellite(double velocity, String name) {
         this.setVelocity(velocity);
-        this.name = name;
+        this.setName(name);
     }
-
-//    public double getAcceleration() {
-//        return acceleration;
-//    }
-//
-//    public void setAcceleration(double acceleration) {
-//        this.acceleration = acceleration;
-//    }
+    public Satellite(double velocity, double weight, double radius, String name) {
+        this.setVelocity(velocity);
+        this.setWeight(weight);
+        this.setRadius(radius);
+        this.setName(name);
+    }
 
 
     public String getName() {
@@ -66,5 +78,15 @@ public class Satellite extends Planet {
                 ", name='" + name + '\'' +
                 // ", weight='" + weight +
                 '}';
+    }
+
+    @Override
+    public double getVelocity() {
+        return velocity;
+    }
+
+    @Override
+    public void setVelocity(double velocity) {
+        this.velocity = velocity;
     }
 }

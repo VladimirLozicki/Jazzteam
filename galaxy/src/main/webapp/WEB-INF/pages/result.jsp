@@ -29,9 +29,14 @@
         </tr>
     </table>
 </form>
+
 <input type="submit" value="Get condition system" id="button">
-<div> Your system : ${result}</div>
-<div> speed satellite : ${result1}</div>
-<div> way satellite : ${result2}</div>
+<form:form  action="save" method="post">
+    <div name="condition" > Your system : ${result}</div>
+    <div name="speed"> speed satellite : ${result1}</div>
+    <div name="way"> way satellite : ${result2}</div>
+<input type="submit" value="Save condition system" id="button1" >
+</form:form>
+
 </body>
 </html>

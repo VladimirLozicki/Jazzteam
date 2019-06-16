@@ -18,7 +18,7 @@ public class GeostationaryOrbit extends Orbit {
         }
 
         @Override
-        public Orbit build() {
+        public Orbit build1() {
             return new GeostationaryOrbit(this);
         }
 
