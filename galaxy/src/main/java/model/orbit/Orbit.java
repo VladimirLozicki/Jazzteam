@@ -1,31 +1,62 @@
-package model.orbita;
+package model.orbit;
 
 import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Satellite;
+import org.springframework.ui.ModelMap;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.transaction.Transactional;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
 @Entity
-@Table(name = "orbit")
 public class Orbit {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Transient
+    private double height;
+
+    private double acceleration;
+
+    @Transient//@OneToOne(cascade = CascadeType.ALL)
     Satellite satellite;
-    @Transient
+
+
+    @Transient// @OneToOne( cascade = CascadeType.ALL)
     Planet planet;
+
+    @Transient
+    Star star;
+
+//    @OneToMany
+//    private Set<Orbit> elements;
+//
+//    public void setElements(Set<Orbit> elements) {
+//        this.elements = elements;
+//    }
 
     private static final Logger logger = Logger.getGlobal();
     @Transient
@@ -33,12 +64,7 @@ public class Orbit {
     @Transient
     private static int i = 0;
 
-    @Column(name = "height")
-    private double height;
-    @Column(name = "a")
-    private String a;
-    @Column(name = "acceleration")
-    private double acceleration;
+
 
 
     public Orbit(double height, double acceleration) {
@@ -92,22 +118,27 @@ public class Orbit {
 
     public static class Builder {
         Planet planet;
-        Satellite satellite;
+        public Satellite satellite;
+
+
         Star star;
         double height;
         double acceleration;
-        String a;
+        double velocity;
 
-        public Builder(Planet planet) {
+        public Builder() {
+
+        }
+
+        public Builder planet(Planet planet) {
             this.planet = planet;
-
+            return this;
         }
 
         public Builder satellite(Satellite satellite) {
             this.satellite = satellite;
             return this;
         }
-
         public Builder star(Star star) {
             this.star = star;
             return this;
@@ -123,10 +154,11 @@ public class Orbit {
             return this;
         }
 
-        public Builder a(String name) {
-            this.a = name;
+        public Builder velocity(double velocity) {
+            this.velocity = velocity;
             return this;
         }
+
 
         public Orbit build1() {
             return new Orbit(this);
@@ -138,7 +170,7 @@ public class Orbit {
         satellite = builder.satellite;
         height = builder.height;
         acceleration = builder.acceleration;
-        a = builder.a;
+       // velocity = builder.velocity;
     }
 
 
@@ -146,6 +178,13 @@ public class Orbit {
         return (G * getPlanet().getWeight()) / (Math.pow(getPlanet().getRadius(), 2));
     }
 
+    public Star getStar() {
+        return star;
+    }
+
+    public void setStar(Star star) {
+        this.star = star;
+    }
 
     public double powerGravity() {
         return (G * planet.getWeight() * satellite.getWeight()) / Math.pow(getHeight(), 2);

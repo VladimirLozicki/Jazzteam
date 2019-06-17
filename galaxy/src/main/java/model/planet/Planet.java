@@ -2,21 +2,50 @@ package model.planet;
 
 import model.AstronomicalObject;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
+@Entity
 public class Planet extends AstronomicalObject {
 
-    static double rotationPeriod;
-    private double density;
-    private double secondCosmicVelocity;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+//    @Transient
+//    static double rotationPeriod;
+//    @Transient
+//    private double density;
+//    @Transient
+//    private double secondCosmicVelocity;
 
     public Planet() {
 
     }
 
-    protected  double getPeriod() {
-        return rotationPeriod;
+
+    public Planet(double weight, double radius, String n) {
+        super(weight, radius, n);
+
     }
+
+    public Planet(double weight, double radius, String n, double density,
+                  double rotationPeriod) {
+        super(weight, radius, n);
+        // this.density = density;
+        // this.rotationPeriod = rotationPeriod;
+    }
+
+
+//    protected  double getPeriod() {
+//        return rotationPeriod;
+//    }
 
 
     @Override
@@ -53,38 +82,34 @@ public class Planet extends AstronomicalObject {
         super(radius);
     }
 
-
-    public Planet(double weight, double radius, String n) {
-        super(weight, radius, n);
-
+    public int getId() {
+        return id;
     }
 
-    public Planet(double weight, double radius, String n, double density,
-                  double rotationPeriod) {
-        super(weight, radius, n);
-        this.density = density;
-        this.rotationPeriod = rotationPeriod;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public double getDensity() {
-        return density;
-    }
 
-    public void setDensity(double density) {
-        this.density = density;
-    }
+//    public double getDensity() {
+//        return density;
+//    }
+//
+//    public void setDensity(double density) {
+//        this.density = density;
+//    }
 
-    public double getRotationPeriod() {
-        return rotationPeriod;
-    }
+//    public double getRotationPeriod() {
+//        return rotationPeriod;
+//    }
+//
+//    public void setRotationPeriod(double rotationPeriod) {
+//        this.rotationPeriod = rotationPeriod;
+//    }
 
-    public void setRotationPeriod(double rotationPeriod) {
-        this.rotationPeriod = rotationPeriod;
-    }
-
-    public double getSecondCosmicVelocity() {
-        return secondCosmicVelocity;
-    }
+//    public double getSecondCosmicVelocity() {
+//        return secondCosmicVelocity;
+//    }
 
 
 }

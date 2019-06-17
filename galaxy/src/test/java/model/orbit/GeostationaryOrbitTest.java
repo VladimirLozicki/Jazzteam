@@ -1,4 +1,4 @@
-package model.orbita;
+package model.orbit;
 
 import junit.framework.Assert;
 import model.planet.Planet;

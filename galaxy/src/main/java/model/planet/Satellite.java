@@ -9,42 +9,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "satellite")
 public class Satellite extends Planet {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "velocity")
-    private double velocity;
-
-
-    @Override
-    public double getRadius() {
-        return super.getRadius();
-    }
-
-    @Override
-    public void setRadius(double radius) {
-        super.setRadius(radius);
-    }
 
     public Satellite() {
 
     }
 
-    public Satellite(String name) {
-        this.name = name;
-    }
-
     public Satellite(double weight) {
         this.setWeight(weight);
+    }
+
+    public Satellite(String name) {
+        this.setName(name);
     }
 
     public Satellite(double velocity, double weight) {
@@ -65,31 +47,48 @@ public class Satellite extends Planet {
     }
 
 
+    @Override
     public String getName() {
-        return name;
+        return super.getName();
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 
     @Override
-    public String toString() {
-        return "model.planet.Satellite{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                // ", weight='" + weight +
-                '}';
+    public void setName(String name) {
+        super.setName(name);
+    }
+
+    @Override
+    public double getRadius() {
+        return super.getRadius();
+    }
+
+    @Override
+    public void setRadius(double radius) {
+        super.setRadius(radius);
+    }
+
+    @Override
+    public int getId() {
+        return super.getId();
+    }
+
+    @Override
+    public void setId(int id) {
+        super.setId(id);
     }
 
     @Override
     public double getVelocity() {
-        return velocity;
+        return super.getVelocity();
     }
 
     @Override
-    public void setVelocity(double velocity) {
-        this.velocity = velocity;
+    public double getWeight() {
+        return super.getWeight();
+    }
+
+    @Override
+    public void setWeight(double weight) {
+        super.setWeight(weight);
     }
 }

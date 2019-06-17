@@ -1,13 +1,13 @@
-package model.orbita;
+package model.orbit;
 
-import model.orbita.Orbit;
 import model.planet.Planet;
 import model.planet.Satellite;
 
 public class GeostationaryOrbit extends Orbit {
     public static class GeostationaryBuilder extends Orbit.Builder {
         public GeostationaryBuilder(Planet planet, Satellite satellite) {
-            super(planet);
+            super();
+            this.planet=planet;
             this.satellite=satellite;
 
         }

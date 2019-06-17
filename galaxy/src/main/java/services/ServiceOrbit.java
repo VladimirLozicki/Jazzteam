@@ -1,10 +1,7 @@
 package services;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import dao.DaoOrbit;
-import dao.DaoPlanet;
-import model.orbita.Orbit;
-import model.planet.Planet;
+import model.orbit.Orbit;
 
 public class ServiceOrbit {
     private DaoOrbit daoPlanet = new DaoOrbit();

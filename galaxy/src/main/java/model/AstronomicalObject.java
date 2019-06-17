@@ -1,10 +1,15 @@
 package model;
 
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
+
+@MappedSuperclass
 public class AstronomicalObject {
 
     private double weight;
     private double radius;
     private String name;
+    @Transient
     private double velocity;
 
     public AstronomicalObject() {
