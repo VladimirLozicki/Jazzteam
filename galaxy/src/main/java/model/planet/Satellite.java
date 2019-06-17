@@ -16,11 +16,13 @@ import javax.persistence.Table;
 public class Satellite extends Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "velocity")
-    private  double velocity;
+    private double velocity;
 
 
     @Override
@@ -54,6 +56,7 @@ public class Satellite extends Planet {
         this.setVelocity(velocity);
         this.setName(name);
     }
+
     public Satellite(double velocity, double weight, double radius, String name) {
         this.setVelocity(velocity);
         this.setWeight(weight);

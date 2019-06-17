@@ -21,16 +21,15 @@ public class ServiceOrbit {
         daoPlanet.save(satellite);
     }
 
-//    public void deletePlanet(Planet satellite) {
-//        daoPlanet.delete(satellite);
-//    }
-//
-    public void updatePlanet(Orbit satellite) {
-        //daoPlanet.update(satellite);
+    public void deletePlanet(Orbit satellite) {
+        daoPlanet.delete(satellite);
     }
-//
-//    public void createPlanet(Planet satellite) {
-//        daoPlanet.create(satellite);
-//    }
 
+    public void updatePlanet(Orbit satellite) {
+        daoPlanet.update(satellite);
+    }
+
+    public void createPlanet(Orbit satellite) {
+        daoPlanet.create(satellite);
+    }
 }

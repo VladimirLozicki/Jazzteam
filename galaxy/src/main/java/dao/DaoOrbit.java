@@ -1,7 +1,7 @@
 package dao;
 
+
 import model.orbita.Orbit;
-import model.planet.Planet;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,7 +38,7 @@ public class DaoOrbit {
     }
 
 
-    public Planet update(Planet planet) {
+    public Orbit update(Orbit planet) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.update(planet);
@@ -48,7 +48,7 @@ public class DaoOrbit {
     }
 
 
-    public Planet delete(Planet planet) {
+    public Orbit delete(Orbit planet) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(planet);

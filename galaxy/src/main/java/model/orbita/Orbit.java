@@ -128,9 +128,6 @@ public class Orbit {
             return this;
         }
 
-//         this.planet.setWeight();
-//            this.planet.setRadius();
-
         public Orbit build1() {
             return new Orbit(this);
         }

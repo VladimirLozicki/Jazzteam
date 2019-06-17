@@ -2,10 +2,8 @@ package model.planet;
 
 import model.AstronomicalObject;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
-@Embeddable
+
 public class Planet extends AstronomicalObject {
 
     static double rotationPeriod;

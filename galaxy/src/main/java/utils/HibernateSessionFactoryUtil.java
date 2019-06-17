@@ -9,10 +9,17 @@ import org.hibernate.cfg.Configuration;
 public class HibernateSessionFactoryUtil {
     private static SessionFactory sessionFactory;
 
-    private HibernateSessionFactoryUtil() {}
+    private HibernateSessionFactoryUtil() {
+    }
+
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
+                Configuration configuration = new Configuration().configure();
+                configuration.addAnnotatedClass(Satellite.class);
+                StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+                sessionFactory = configuration.buildSessionFactory(builder.build());
+
                 Configuration configuration1 = new Configuration().configure();
                 configuration1.addAnnotatedClass(Orbit.class);
                 StandardServiceRegistryBuilder builder1 = new StandardServiceRegistryBuilder().applySettings(configuration1.getProperties());
