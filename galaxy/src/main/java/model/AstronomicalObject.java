@@ -9,7 +9,6 @@ public class AstronomicalObject {
     private double weight;
     private double radius;
     private String name;
-    @Transient
     private double velocity;
 
     public AstronomicalObject() {

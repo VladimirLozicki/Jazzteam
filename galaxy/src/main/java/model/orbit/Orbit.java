@@ -3,21 +3,11 @@ package model.orbit;
 import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Satellite;
-import org.springframework.ui.ModelMap;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.transaction.Transactional;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
@@ -37,6 +27,7 @@ public class Orbit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+
     private double height;
 
     private double acceleration;
@@ -51,12 +42,6 @@ public class Orbit {
     @Transient
     Star star;
 
-//    @OneToMany
-//    private Set<Orbit> elements;
-//
-//    public void setElements(Set<Orbit> elements) {
-//        this.elements = elements;
-//    }
 
     private static final Logger logger = Logger.getGlobal();
     @Transient
@@ -76,6 +61,7 @@ public class Orbit {
     public Orbit() {
 
     }
+
 
     public Orbit(double height) {
         this.height = height;

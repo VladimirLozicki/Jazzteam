@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Table(name = "satellite")
 public class Satellite extends Planet {
 
 

@@ -15,25 +15,30 @@
             <td>radius</td>
             <td>${radius}</td>
         </tr>
-<%--        <tr>--%>
-<%--            <td>height</td>--%>
-<%--            <td>${height}</td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>velocity</td>--%>
-<%--            <td>${velocity}</td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>name</td>--%>
-<%--            <td>${name}</td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>acceleration</td>--%>
-<%--            <td>${acceleration}</td>--%>
-<%--        </tr>--%>
+        <tr>
+            <td>name</td>
+            <td>${planet_name}</td>
+        </tr>
+        <tr>
+            <td>height</td>
+            <td>${height}</td>
+        </tr>
+        <tr>
+            <td>velocity</td>
+            <td>${velocity}</td>
+        </tr>
+        <tr>
+            <td>name</td>
+            <td>${name}</td>
+        </tr>
+        <tr>
+            <td>acceleration</td>
+            <td>${acceleration}</td>
+        </tr>
     </table>
-<input type="submit" value="Save condition system" id="button1" >
+<input type="submit" value="Save condition system" id="button1" onclick="">
 </form:form>
+
 <div name="condition" > Your system : ${result}</div>
 <div name="speed"> speed satellite : ${result1}</div>
 <div name="way"> way satellite : ${result2}</div>

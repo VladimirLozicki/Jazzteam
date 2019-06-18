@@ -12,6 +12,7 @@ import javax.persistence.Transient;
 
 
 @Entity
+@Table(name = "planet")
 public class Planet extends AstronomicalObject {
 
     @Id
@@ -89,27 +90,5 @@ public class Planet extends AstronomicalObject {
     public void setId(int id) {
         this.id = id;
     }
-
-
-//    public double getDensity() {
-//        return density;
-//    }
-//
-//    public void setDensity(double density) {
-//        this.density = density;
-//    }
-
-//    public double getRotationPeriod() {
-//        return rotationPeriod;
-//    }
-//
-//    public void setRotationPeriod(double rotationPeriod) {
-//        this.rotationPeriod = rotationPeriod;
-//    }
-
-//    public double getSecondCosmicVelocity() {
-//        return secondCosmicVelocity;
-//    }
-
 
 }
