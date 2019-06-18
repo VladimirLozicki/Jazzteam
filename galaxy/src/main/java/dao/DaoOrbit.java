@@ -22,42 +22,42 @@ public class DaoOrbit {
     }
 
     @Transactional
-    public Orbit create(Orbit planet) {
+    public Orbit create(Orbit orbit) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(planet);
+        session.save(orbit);
         transaction.commit();
         session.close();
-        return planet;
+        return orbit;
     }
 
-    public Orbit save(Orbit planet) {
+    public Orbit save(Orbit orbit) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(planet);
+        session.save(orbit);
         transaction.commit();
         session.close();
-        return planet;
-    }
-
-
-    public Orbit update(Orbit planet) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction transaction = session.beginTransaction();
-        session.update(planet);
-        transaction.commit();
-        session.close();
-        return planet;
+        return orbit;
     }
 
 
-    public Orbit delete(Orbit planet) {
+    public Orbit update(Orbit orbit) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(planet);
+        session.update(orbit);
         transaction.commit();
         session.close();
-        return planet;
+        return orbit;
+    }
+
+
+    public Orbit delete(Orbit orbit) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.delete(orbit);
+        transaction.commit();
+        session.close();
+        return orbit;
     }
 
 

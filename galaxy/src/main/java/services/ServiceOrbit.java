@@ -15,19 +15,19 @@ public class ServiceOrbit {
         return daoPlanet.findById(id);
     }
 
-    public void savePlanet(Orbit satellite) {
-        daoPlanet.save(satellite);
+    public void save(Orbit orbit) {
+        daoPlanet.save(orbit);
     }
 
-    public void deletePlanet(Orbit satellite) {
-        daoPlanet.delete(satellite);
+    public void delete(Orbit orbit) {
+        daoPlanet.delete(orbit);
     }
 
-    public void updatePlanet(Orbit satellite) {
-        daoPlanet.update(satellite);
+    public void update(Orbit orbit) {
+        daoPlanet.update(orbit);
     }
 
-    public void createPlanet(Orbit satellite) {
-        daoPlanet.create(satellite);
+    public void create(Orbit orbit) {
+        daoPlanet.create(orbit);
     }
 }

@@ -19,7 +19,7 @@ public class JDBCTest extends JDBC{
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT password FROM users WHERE username='ivan'");
             String actual = "";
-            String expected = "54321";
+            String expected = "12345";
             while (resultSet.next()) {
                 actual = resultSet.getString(1);
             }

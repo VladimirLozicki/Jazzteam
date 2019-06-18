@@ -1,6 +1,8 @@
 package org.jazzteam.singleton;
-import mylist.*;
-public class Singleton extends  MyList{
+
+import mylist.MyList;
+
+public class Singleton extends MyList {
 
     private static Singleton instance;
 

@@ -1,3 +1,11 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: vladimirlozickiy
+  Date: 2019-06-18
+  Time: 17:29
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
@@ -36,16 +44,7 @@
             <td>${acceleration}</td>
         </tr>
     </table>
-<input type="submit" value="Get condition system">
+    <div name="condition" > Your system : ${result}</div>
 </form:form>
-
-<div name="condition" > Your system : ${result}</div>
-<div name="speed"> speed satellite : ${result1}</div>
-<div name="way"> way satellite : ${result2}</div>
-
-<input type="submit" value="Get condition system" id="button1" >
-
-
-
 </body>
 </html>

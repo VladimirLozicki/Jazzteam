@@ -7,10 +7,10 @@ import static org.testng.Assert.*;
 public class MassiveAstronomicalObjectTest {
 
     @Test
-    public void testGetLuminocity() {
+    public void testGetLuminosity() {
     }
 
     @Test
-    public void testSetLuminocity() {
+    public void testSetLuminosity() {
     }
 }

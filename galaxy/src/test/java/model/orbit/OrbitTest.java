@@ -54,16 +54,16 @@ public class OrbitTest {
 
     @Test
     public void testGetMessage() {
-        String actual=getSystem().getMessage();
-        String expected="satellite falls on the planet";
-        assertEquals(actual,expected );
+        String actual = getSystem().getMessage();
+        String expected = "satellite falls on the planet";
+        assertEquals(actual, expected);
     }
 
     @Test
     public void testGetVelocity() {
 
         Planet planet = new Planet(687500.0, 100.0, "Kepler48b");
-        Satellite satellite = new Satellite(100.0, 4.0 );
+        Satellite satellite = new Satellite(100.0, 4.0);
         Orbit orbit = new Orbit.Builder().planet(planet).satellite(satellite).height(1000).acceleration(1).build1();
         assertEquals(orbit.satellite.getVelocity(), 100.0);
     }

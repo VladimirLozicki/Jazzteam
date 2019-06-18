@@ -1,10 +1,13 @@
 package model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
 
 @MappedSuperclass
 public class AstronomicalObject {
+
 
     private double weight;
     private double radius;

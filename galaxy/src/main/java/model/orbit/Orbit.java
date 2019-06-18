@@ -3,59 +3,69 @@ package model.orbit;
 import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Satellite;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Orbit {
+    private static final Logger logger = Logger.getGlobal();
 
-    public int getId() {
-        return id;
-    }
+    @Transient
+    protected final static double G = 1;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    @Transient
+    private static int i = 0;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
 
     private double height;
 
     private double acceleration;
 
-    @Transient//@OneToOne(cascade = CascadeType.ALL)
-    Satellite satellite;
+    @OneToOne(cascade = {CascadeType.ALL})
+    public Satellite satellite;
 
 
-    @Transient// @OneToOne( cascade = CascadeType.ALL)
-    Planet planet;
+    @OneToOne(cascade = {CascadeType.ALL})
+    protected Planet planet;
+
+
+    public Satellite getSatellite() {
+        return satellite;
+    }
+
+    public void setSatellite(Satellite satellite) {
+        this.satellite = satellite;
+    }
+
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
+    }
+
+
+    public Orbit(Planet planet) {
+        this.setPlanet(planet);
+    }
 
     @Transient
     Star star;
-
-
-    private static final Logger logger = Logger.getGlobal();
-    @Transient
-    protected final static double G = 1;
-    @Transient
-    private static int i = 0;
-
-
-
-
-    public Orbit(double height, double acceleration) {
-        this.height = height;
-        this.acceleration = acceleration;
-    }
 
 
     public Orbit() {
@@ -104,9 +114,7 @@ public class Orbit {
 
     public static class Builder {
         Planet planet;
-        public Satellite satellite;
-
-
+        Satellite satellite;
         Star star;
         double height;
         double acceleration;
@@ -125,6 +133,7 @@ public class Orbit {
             this.satellite = satellite;
             return this;
         }
+
         public Builder star(Star star) {
             this.star = star;
             return this;
@@ -156,7 +165,7 @@ public class Orbit {
         satellite = builder.satellite;
         height = builder.height;
         acceleration = builder.acceleration;
-       // velocity = builder.velocity;
+        // velocity = builder.velocity;
     }
 
 
@@ -185,21 +194,6 @@ public class Orbit {
         this.acceleration = acceleration;
     }
 
-    public Satellite getSatellite() {
-        return satellite;
-    }
-
-    public void setSatellite(Satellite satellite) {
-        this.satellite = satellite;
-    }
-
-    public Planet getPlanet() {
-        return planet;
-    }
-
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
-    }
 
     public void setHeight(double height) {
         this.height = height;
@@ -207,6 +201,14 @@ public class Orbit {
 
     public double getHeight() {
         return height;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }
