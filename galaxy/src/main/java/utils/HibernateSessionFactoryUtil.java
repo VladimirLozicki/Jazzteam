@@ -18,15 +18,15 @@ public class HibernateSessionFactoryUtil {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration().configure();
-                               configuration .addAnnotatedClass(Planet.class)
-                                             .addAnnotatedClass(Orbit.class)
-                                       .addAnnotatedClass(Satellite.class);
+                configuration.addAnnotatedClass(Planet.class)
+                        .addAnnotatedClass(Orbit.class)
+                        .addAnnotatedClass(Satellite.class);
                 StandardServiceRegistryBuilder builder1 = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder1.build());
 
             } catch (Exception e) {
-               e.getMessage();
+                e.getMessage();
             }
         }
         return sessionFactory;

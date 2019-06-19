@@ -5,6 +5,8 @@
     <title>Home Page</title>
 </head>
 <body>
-<h3><a href="/planet">Use-case create system</a></h3>
+<form:form>
+<h3><a href="/planet">Use-case create system planet-satellite</a></h3>
 </body>
+</form:form>
 </html>

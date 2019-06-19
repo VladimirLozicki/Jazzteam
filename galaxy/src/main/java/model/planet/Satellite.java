@@ -20,6 +20,19 @@ import javax.persistence.Transient;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Satellite extends Planet {
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
 
     public Satellite() {
@@ -50,7 +63,6 @@ public class Satellite extends Planet {
         this.setRadius(radius);
         this.setName(name);
     }
-
 
     @Override
     public String getName() {

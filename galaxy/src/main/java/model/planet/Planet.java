@@ -21,9 +21,17 @@ import javax.persistence.Transient;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Planet extends AstronomicalObject {
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
 
     public Planet() {
 
@@ -33,7 +41,6 @@ public class Planet extends AstronomicalObject {
         super(weight, radius, n);
 
     }
-
 
     @Override
     public double getVelocity() {
@@ -65,10 +72,4 @@ public class Planet extends AstronomicalObject {
     public String getName() {
         return super.getName();
     }
-
-  //  public Planet(double radius) {
-     //   super(radius);
-   // }
-
-
 }

@@ -12,7 +12,11 @@ public class OrbitTest {
     public void testCreatBalanceSystem() {
         Planet planet = new Planet(100.0, 10.0, "Kepler48b");
         Satellite satellite = new Satellite("Europe");
-        Orbit orbit = new Orbit.Builder().planet(planet).satellite(satellite).height(1000).build1();
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .satellite(satellite)
+                .height(1000)
+                .build1();
         assertEquals(orbit.accelerationGravity(), 1.0);
     }
 
@@ -20,7 +24,10 @@ public class OrbitTest {
     public void testSatelliteGoLimitPlanet() {
         Planet planet = new Planet(100.0, 5.0, "Kepler74");
         Satellite satellite = new Satellite("Europe");
-        Orbit orbit = new Orbit.Builder().planet(planet).satellite(satellite).build1();
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .satellite(satellite)
+                .build1();
         assertEquals(orbit.accelerationGravity(), 4.0);
     }
 
@@ -28,7 +35,10 @@ public class OrbitTest {
     public void testSatelliteFallOnPlanet() {
         Planet planet = new Planet(100.0, 100.0, "Mars");
         Satellite satellite = new Satellite("Europe");
-        Orbit orbit = new Orbit.Builder().planet(planet).satellite(satellite).build1();
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .satellite(satellite)
+                .build1();
         assertEquals(orbit.accelerationGravity(), 0.01);
 
     }
@@ -48,7 +58,11 @@ public class OrbitTest {
     public Orbit getSystem() {
         Planet planet = new Planet(687500.0, 100.0, "Kepler48b");
         Satellite satellite = new Satellite(100.0);
-        Orbit orbit = new Orbit.Builder().planet(planet).satellite(satellite).height(1000).build1();
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .satellite(satellite)
+                .height(1000)
+                .build1();
         return orbit;
     }
 
@@ -64,7 +78,12 @@ public class OrbitTest {
 
         Planet planet = new Planet(687500.0, 100.0, "Kepler48b");
         Satellite satellite = new Satellite(100.0, 4.0);
-        Orbit orbit = new Orbit.Builder().planet(planet).satellite(satellite).height(1000).acceleration(1).build1();
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .satellite(satellite)
+                .height(1000)
+                .acceleration(1)
+                .build1();
         assertEquals(orbit.satellite.getVelocity(), 100.0);
     }
 }

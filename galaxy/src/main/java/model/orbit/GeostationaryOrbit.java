@@ -7,8 +7,8 @@ public class GeostationaryOrbit extends Orbit {
     public static class GeostationaryBuilder extends Orbit.Builder {
         public GeostationaryBuilder(Planet planet, Satellite satellite) {
             super();
-            this.planet=planet;
-            this.satellite=satellite;
+            this.planet = planet;
+            this.satellite = satellite;
 
         }
 

@@ -2,32 +2,38 @@ package services;
 
 import dao.DaoOrbit;
 import model.orbit.Orbit;
+import org.hibernate.Session;
 import org.springframework.ui.ModelMap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ServiceOrbit {
-    private DaoOrbit daoPlanet = new DaoOrbit();
+
+    private DaoOrbit daoOrbit = new DaoOrbit();
 
     public ServiceOrbit() {
 
     }
 
-    public Orbit findUser(int id) {
-        return daoPlanet.findById(id);
+    public Orbit find(int id) {
+        return daoOrbit.findById(id);
     }
 
     public void save(Orbit orbit) {
-        daoPlanet.save(orbit);
+        daoOrbit.save(orbit);
     }
 
     public void delete(Orbit orbit) {
-        daoPlanet.delete(orbit);
+        daoOrbit.delete(orbit);
     }
 
     public void update(Orbit orbit) {
-        daoPlanet.update(orbit);
+        daoOrbit.update(orbit);
     }
 
     public void create(Orbit orbit) {
-        daoPlanet.create(orbit);
+        daoOrbit.create(orbit);
     }
+
 }

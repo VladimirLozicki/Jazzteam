@@ -3,7 +3,6 @@ package model.orbit;
 import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Satellite;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,17 +19,17 @@ import java.util.logging.Logger;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Orbit {
-    private static final Logger logger = Logger.getGlobal();
-
-    @Transient
-    protected final static double G = 1;
-
-    @Transient
-    private static int i = 0;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Transient
+    protected final static double G = 1;
+
+    private int time=run();
+
+    private static int i=0;
+    private static final Logger logger = Logger.getGlobal();
     private double height;
 
     private double acceleration;
@@ -38,54 +37,26 @@ public class Orbit {
     @OneToOne(cascade = {CascadeType.ALL})
     public Satellite satellite;
 
-
     @OneToOne(cascade = {CascadeType.ALL})
-    protected Planet planet;
-
-
-    public Satellite getSatellite() {
-        return satellite;
-    }
-
-    public void setSatellite(Satellite satellite) {
-        this.satellite = satellite;
-    }
-
-    public Planet getPlanet() {
-        return planet;
-    }
-
-    public void setPlanet(Planet planet) {
-        this.planet = planet;
-    }
-
-
-    public Orbit(Planet planet) {
-        this.setPlanet(planet);
-    }
+    public Planet planet;
 
     @Transient
     Star star;
-
 
     public Orbit() {
 
     }
 
-
-    public Orbit(double height) {
-        this.height = height;
-    }
-
     public int run() {
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
+
             @Override
             public void run() {
                 i++;
             }
         };
-        timer.schedule(task, 1, 1000);
+        timer.schedule(task, 1000,  10000);
         return i;
     }
 
@@ -112,13 +83,16 @@ public class Orbit {
         return "";
     }
 
+    public int getTime() {
+        return time;
+    }
+
     public static class Builder {
         Planet planet;
         Satellite satellite;
         Star star;
         double height;
         double acceleration;
-        double velocity;
 
         public Builder() {
 
@@ -149,12 +123,6 @@ public class Orbit {
             return this;
         }
 
-        public Builder velocity(double velocity) {
-            this.velocity = velocity;
-            return this;
-        }
-
-
         public Orbit build1() {
             return new Orbit(this);
         }
@@ -165,12 +133,27 @@ public class Orbit {
         satellite = builder.satellite;
         height = builder.height;
         acceleration = builder.acceleration;
-        // velocity = builder.velocity;
     }
 
 
     public double accelerationGravity() {
         return (G * getPlanet().getWeight()) / (Math.pow(getPlanet().getRadius(), 2));
+    }
+
+    public Satellite getSatellite() {
+        return satellite;
+    }
+
+    public void setSatellite(Satellite satellite) {
+        this.satellite = satellite;
+    }
+
+    public Planet getPlanet() {
+        return planet;
+    }
+
+    public void setPlanet(Planet planet) {
+        this.planet = planet;
     }
 
     public Star getStar() {

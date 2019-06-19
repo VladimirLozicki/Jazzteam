@@ -5,7 +5,7 @@
 <body>
 
 <h2>Orbit</h2>
-<form:form  action="save" method="post">
+<form:form method="post" action="save">
     <table>
         <tr>
             <td>weight</td>
@@ -28,6 +28,10 @@
             <td>${velocity}</td>
         </tr>
         <tr>
+            <td>time</td>
+            <td>${time}</td>
+        </tr>
+        <tr>
             <td>name</td>
             <td>${satellite_name}</td>
         </tr>
@@ -36,15 +40,17 @@
             <td>${acceleration}</td>
         </tr>
     </table>
-<input type="submit" value="Get condition system">
+    <input type="submit" value="save system">
+
+</form:form>
+
+<form:form method="get" action="get">
+<input type="submit" value="get system">
 </form:form>
 
 <div name="condition" > Your system : ${result}</div>
 <div name="speed"> speed satellite : ${result1}</div>
 <div name="way"> way satellite : ${result2}</div>
-
-<input type="submit" value="Get condition system" id="button1" >
-
 
 
 </body>
