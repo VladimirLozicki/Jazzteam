@@ -56,9 +56,5 @@
     <div name="way"> way satellite : ${result2}</div>
 </form:form>
 
-<form:form method="get" action="g">
-    <input type="submit" value="get system">
-</form:form>
-
 </body>
 </html>

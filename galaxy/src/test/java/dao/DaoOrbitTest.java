@@ -34,7 +34,7 @@ public class DaoOrbitTest {
 
         ServiceOrbit service = new ServiceOrbit();
         service.create(orbit);
-        assertNotNull(service.find(1));
+        assertNotNull(service.find(129));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class DaoOrbitTest {
 
         ServiceOrbit service = new ServiceOrbit();
         service.create(orbit);
-        assertNotNull(service.find(1));
+        assertNotNull(service.find(129));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class DaoOrbitTest {
                 .build1();
         service.create(orbit);
         service.create(orbit1);
-        assertNotEquals(service.find(1), service.find(2));
+        assertNotEquals(service.find(129), service.find(2));
 
     }
 
@@ -77,7 +77,7 @@ public class DaoOrbitTest {
         
         ServiceOrbit service = new ServiceOrbit();
         service.save(orbit);
-        Orbit orbit1 =   service.find(1);
+        Orbit orbit1 =   service.find(129);
         service.delete(orbit);
         assertNotEquals(orbit, orbit1);
     }

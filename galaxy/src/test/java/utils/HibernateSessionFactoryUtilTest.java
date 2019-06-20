@@ -27,7 +27,6 @@ public class HibernateSessionFactoryUtilTest {
       assertNotNull(get());
     }
 
-
     public SessionFactory get(){
         Configuration configuration = new Configuration().configure();
         configuration.addAnnotatedClass(Planet.class);

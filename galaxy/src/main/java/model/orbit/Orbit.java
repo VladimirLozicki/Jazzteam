@@ -3,6 +3,7 @@ package model.orbit;
 import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Satellite;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.logging.Logger;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -24,14 +25,10 @@ public class Orbit {
     private int id;
 
     @Transient
-    protected final static double G = 1;
-
-    private int time=run();
-
-    private static int i=0;
-    private static final Logger logger = Logger.getGlobal();
+    protected static final double G = 1;
+    private int time = run();
+    private static int i = 0;
     private double height;
-
     private double acceleration;
 
     @OneToOne(cascade = {CascadeType.ALL})
@@ -41,10 +38,9 @@ public class Orbit {
     public Planet planet;
 
     @Transient
-    Star star;
+    public Star star;
 
     public Orbit() {
-
     }
 
     public int run() {
@@ -56,7 +52,7 @@ public class Orbit {
                 i++;
             }
         };
-        timer.schedule(task, 1000,  10000);
+        timer.schedule(task, 10, 10000000);
         return i;
     }
 
@@ -71,7 +67,7 @@ public class Orbit {
         return getSatellite().getVelocity() + getAcceleration() * run();
     }
 
-    public String getMessage() {
+    public String getStateOfSystem() {
 
         if (getHeight() > getVelocity() * run()) {
             return "satellite falls on the planet";
@@ -133,6 +129,7 @@ public class Orbit {
         satellite = builder.satellite;
         height = builder.height;
         acceleration = builder.acceleration;
+        star=builder.star;
     }
 
 
@@ -177,10 +174,6 @@ public class Orbit {
         this.acceleration = acceleration;
     }
 
-
-    public void setHeight(double height) {
-        this.height = height;
-    }
 
     public double getHeight() {
         return height;

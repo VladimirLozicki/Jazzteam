@@ -10,8 +10,7 @@ import static junit.framework.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class PlanetTest {
-    private static final Logger logger = Logger.getGlobal();
-    double attitude = 2.09999508929799;
+    private double attitude = 2.09999508929799;
 
     @Test
     public void testCreatePlanetWithLife() {

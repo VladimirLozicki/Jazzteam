@@ -10,16 +10,17 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
 
     }
 
-    public MassiveAstronomicalObject(double radius) {
-        super();
+    public MassiveAstronomicalObject(double radius, double luminosity) {
+        super(radius);
+        this.luminosity = luminosity;
     }
 
 
-    public double getLuminocity() {
+    public double getLuminosity() {
         return luminosity;
     }
 
-    public void setLuminocity(double luminosity) {
+    public void setLuminosity(double luminosity) {
         this.luminosity = luminosity;
     }
 }

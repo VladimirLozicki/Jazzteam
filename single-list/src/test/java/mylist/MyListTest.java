@@ -9,10 +9,6 @@ import static org.testng.Assert.*;
 public class MyListTest {
 
     @Test
-    public void testOneElement() {
-    }
-
-    @Test
     public void testAddFront() {
         MyList<Integer> myList = new MyList();
         myList.addBack(5);
@@ -38,7 +34,4 @@ public class MyListTest {
         assertEquals(myList.List().get(0), expected);
     }
 
-    @Test
-    public void testList() {
-    }
 }
