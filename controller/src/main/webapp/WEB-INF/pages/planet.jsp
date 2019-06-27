@@ -25,26 +25,14 @@
             <td><form:input path="height"/></td>
         </tr>
         <tr>
-            <td><form:label path="satellite.velocity">velocity satellite</form:label></td>
-            <td><form:input path="satellite.velocity"/></td>
-        </tr>
-        <tr>
-            <td><form:label path="satellite.name">name satellite</form:label></td>
-            <td><form:input path="satellite.name"/></td>
-        </tr>
-
-        <tr>
-            <td><form:label path="acceleration">acceleration satellite</form:label></td>
+            <td><form:label path="acceleration">acceleration</form:label></td>
             <td><form:input path="acceleration"/></td>
         </tr>
     </table>
-    <input type="submit" value="start"/>
+    <input type="submit" value="add"/>
 
 </form:form>
 
-<form:form method="get" action="getSystem">
-    <input type="submit" value="get system">
-</form:form>
 
 </body>
 </html>

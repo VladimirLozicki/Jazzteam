@@ -1,6 +1,7 @@
 package dao;
 
 
+import model.orbit.Galaxy;
 import model.orbit.Orbit;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,12 +16,12 @@ public class DaoOrbit {
     @Autowired
     private SessionFactory sessionFactory;
 
-    public Orbit findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Orbit.class, id);
+    public Galaxy findById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Galaxy.class, id);
     }
 
     @Transactional
-    public Orbit create(Orbit orbit) {
+    public Galaxy create(Galaxy orbit) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(orbit);
@@ -29,7 +30,8 @@ public class DaoOrbit {
         return orbit;
     }
 
-    public Orbit save(Orbit orbit) {
+    @Transactional
+    public Galaxy save(Galaxy orbit) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.save(orbit);
@@ -38,8 +40,8 @@ public class DaoOrbit {
         return orbit;
     }
 
-
-    public Orbit update(Orbit orbit) {
+    @Transactional
+    public Galaxy update(Galaxy orbit) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.update(orbit);
@@ -49,7 +51,8 @@ public class DaoOrbit {
     }
 
 
-    public Orbit delete(Orbit orbit) {
+    @Transactional
+    public Galaxy delete(Galaxy orbit) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.delete(orbit);
@@ -57,5 +60,4 @@ public class DaoOrbit {
         session.close();
         return orbit;
     }
-
 }

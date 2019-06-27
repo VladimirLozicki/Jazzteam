@@ -14,5 +14,4 @@ public class Star extends MassiveAstronomicalObject {
         return getLuminosity() / SIGMA * Math.PI * getRadius() * getRadius();
     }
 
-
 }

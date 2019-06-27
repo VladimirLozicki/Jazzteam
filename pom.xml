@@ -17,6 +17,7 @@
         <module>single-list</module>
         <module>galaxy</module>
         <module>webapp</module>
+        <module>controller</module>
     </modules>
 
     <properties>

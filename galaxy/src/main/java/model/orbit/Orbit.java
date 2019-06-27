@@ -1,5 +1,6 @@
 package model.orbit;
 
+import model.AstronomicalObject;
 import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Satellite;
@@ -17,8 +18,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Orbit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,11 +28,9 @@ public class Orbit {
 
     @Transient
     protected static final double G = 1;
-    private int time = run();
     private static int i = 0;
     private double height;
     private double acceleration;
-
     @OneToOne(cascade = {CascadeType.ALL})
     public Satellite satellite;
 
@@ -43,45 +43,41 @@ public class Orbit {
     public Orbit() {
     }
 
-    public int run() {
+    public void run() {
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
 
             @Override
             public void run() {
                 i++;
+             //   calculateVelocity(i);public
+             //   getStateObject();
+              //  deleteOrbit();
             }
         };
         timer.schedule(task, 10, 10000000);
-        return i;
     }
 
-    public double getWay() {
-        return getVelocity() * run();
-    }
+//       public void calculateVelocity(int i) {
+//        setNewVelocity(getSatellite().getVelocity() + getAcceleration() * i);
+//    }
+//
+//    public void deleteOrbit(){
+//        if(getNewVelocity()==0){
+//
+//        }
+//    }
 
-    public double getVelocity() {
-        if (getSatellite().getVelocity() + getAcceleration() * run() <= 0) {
-            return 0;
-        }
-        return getSatellite().getVelocity() + getAcceleration() * run();
-    }
-
-    public String getStateOfSystem() {
-
-        if (getHeight() > getVelocity() * run()) {
-            return "satellite falls on the planet";
-        } else if (getHeight() == getVelocity() * run()) {
-            return "satellite located on orbit planet";
-        } else if (getHeight() < getVelocity() * run()) {
-            return "satellite leaves orbit planet";
-        }
-        return "";
-    }
-
-    public int getTime() {
-        return time;
-    }
+//    public String getStateObject() {
+//        if (newVelocity == 0) {
+//            return "satellite falls on the planet";
+//        } else if (newVelocity == 8) {
+//            return "satellite located on orbit planet";
+//        } else if (newVelocity > 8) {
+//            return "satellite leaves orbit planet";
+//        }
+//        return "";
+//    }
 
     public static class Builder {
         Planet planet;
@@ -113,6 +109,7 @@ public class Orbit {
             this.height = height;
             return this;
         }
+
 
         public Builder acceleration(double acceleration) {
             this.acceleration = acceleration;
@@ -151,14 +148,6 @@ public class Orbit {
 
     public void setPlanet(Planet planet) {
         this.planet = planet;
-    }
-
-    public Star getStar() {
-        return star;
-    }
-
-    public void setStar(Star star) {
-        this.star = star;
     }
 
     public double powerGravity() {

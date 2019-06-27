@@ -1,6 +1,6 @@
 package utils;
 
-import com.fasterxml.classmate.AnnotationConfiguration;
+import model.orbit.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import model.planet.Satellite;
@@ -18,9 +18,11 @@ public class HibernateSessionFactoryUtil {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(Planet.class)
-                        .addAnnotatedClass(Orbit.class)
-                        .addAnnotatedClass(Satellite.class);
+                configuration
+                .addAnnotatedClass(Orbit.class)
+                   .addAnnotatedClass(Planet.class)
+                      .addAnnotatedClass(Satellite.class)
+                        .addAnnotatedClass(Galaxy.class);
                 StandardServiceRegistryBuilder builder1 = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder1.build());
