@@ -1,24 +1,17 @@
 package controller;
 
-import model.orbit.Galaxy;
 import model.orbit.Orbit;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import services.ServiceOrbit;
-
-import java.util.List;
-
-
+import org.json.*;
 @Controller
 public class OrbitController {
-    List<Orbit> orbits;
-
     @GetMapping(value = "/")
     public String index() {
         return "/index";
@@ -43,11 +36,12 @@ public class OrbitController {
     }
 
 
-//    @GetMapping(value = "/add")
-//    public String addOrbit(ModelMap model) {
-//        model.addAttribute("orbits", orbits);
-//        return "planet";
-//    }
+    @PostMapping(value = "/planet")
+    public String add(@RequestParam(name = "data") String jsonObject, ModelMap modelMap) {
+        JSONObject jsonObject1 = new JSONObject(jsonObject);
+       // modelMap.addAttribute("weight", orbit.getPlanet().getWeight());
+        return "result";
+    }
 
     public void setOrbit(ModelMap model, Orbit orbit) {
         model.addAttribute("weight", orbit.getPlanet().getWeight());
