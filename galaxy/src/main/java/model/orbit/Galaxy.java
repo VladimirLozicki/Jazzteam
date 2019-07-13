@@ -1,6 +1,5 @@
 package model.orbit;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import model.massiveastronomicalobject.MassiveAstronomicalObject;
 import model.planet.Planet;
 

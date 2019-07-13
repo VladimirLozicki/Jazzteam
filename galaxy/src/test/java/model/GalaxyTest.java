@@ -1,7 +1,7 @@
 package model;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.google.gson.Gson;
 import model.massiveastronomicalobject.MassiveAstronomicalObject;
 import model.orbit.Galaxy;
 import model.orbit.Orbit;
@@ -78,10 +78,10 @@ public class GalaxyTest {
         Galaxy galaxy = new Galaxy();
         galaxy.setOrbit(list);
         MassiveAstronomicalObject massiveAstronomicalObject = new MassiveAstronomicalObject(1, 1.0);
-
-        Gson gson = new Gson();
-        galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        String json = gson.toJson(galaxy);
-        System.out.println(json);
+//
+//        Gson gson = new Gson();
+//        galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
+//        String json = gson.toJson(galaxy);
+//        System.out.println(json);
     }
 }

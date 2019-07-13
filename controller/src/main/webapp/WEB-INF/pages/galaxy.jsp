@@ -58,8 +58,9 @@
     <input type="hidden" id="hidden">
 </form>
 <button id="start"> start</button>
-<input type="submit" value="upload">
-
+<form method="post" action="result">
+    <input type="submit" value="upload">
+</form>
 <script>
     var checkbox;
     function insertRow(id) {
@@ -143,7 +144,7 @@
             "star_weight": document.getElementById('star_weight').value,
             "star_radius": document.getElementById('star_radius').value
         };
-       data=JSON.stringify(galaxy);
+        data=JSON.stringify(galaxy);
     }
 
     $("#start").click(function () {
