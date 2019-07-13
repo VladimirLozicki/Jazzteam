@@ -6,7 +6,7 @@
 </head>
 <body>
 <form:form>
-<h3><a href="/planet">Use-case create system planet-satellite</a></h3>
+<h3><a href="/galaxy">Use-case create system planet-satellite</a></h3>
 </body>
 </form:form>
 </html>

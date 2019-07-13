@@ -2,6 +2,7 @@ package model;
 
 
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
 
 @MappedSuperclass
 public class AstronomicalObject {
@@ -15,10 +16,14 @@ public class AstronomicalObject {
 
     }
 
-    public AstronomicalObject(double radius) {
-        this.radius = radius;
+    public AstronomicalObject(double weight, double radius) {
+        this.weight = weight;
+        this.radius=radius;
     }
 
+    public AstronomicalObject(double weight) {
+        this.weight = weight;
+    }
 
     public AstronomicalObject(double w, double r, String n) {
         this.weight = w;

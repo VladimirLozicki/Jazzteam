@@ -23,6 +23,11 @@ public class Planet extends AstronomicalObject {
 
     }
 
+    public Planet(double weight, double radius) {
+        super(weight, radius);
+
+    }
+
     public Planet(double weight, double radius, String n) {
         super(weight, radius, n);
 

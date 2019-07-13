@@ -1,4 +1,5 @@
 package model.orbit;
+
 import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
 import model.planet.Satellite;
@@ -68,8 +69,6 @@ public class Orbit {
         acceleration = builder.acceleration;
     }
 
-
-
     public Planet getPlanet() {
         return planet;
     }
@@ -77,9 +76,6 @@ public class Orbit {
     public void setPlanet(Planet planet) {
         this.planet = planet;
     }
-
-
-
 
     public double getAcceleration() {
         return acceleration;

@@ -1,6 +1,8 @@
 package model.orbit;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import model.massiveastronomicalobject.MassiveAstronomicalObject;
+import model.planet.Planet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,20 +14,29 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.logging.Logger;
 
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class  Galaxy {
+public class Galaxy {
+    private static final Logger logger = Logger.getGlobal();
+    @Transient
+    private MassiveAstronomicalObject massiveAstronomicalObject;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private int id;
     private static int i = 0;
+    @OneToMany(cascade = {CascadeType.ALL})
+    private List<Orbit> orbit;
     @Transient
     protected static final double G = 1;
+
     public MassiveAstronomicalObject getMassiveAstronomicalObject() {
         return massiveAstronomicalObject;
     }
@@ -33,9 +44,6 @@ public class  Galaxy {
     public void setMassiveAstronomicalObject(MassiveAstronomicalObject massiveAstronomicalObject) {
         this.massiveAstronomicalObject = massiveAstronomicalObject;
     }
-
-    @Transient
-    MassiveAstronomicalObject massiveAstronomicalObject;
 
 
     public List<Orbit> getOrbit() {
@@ -46,13 +54,9 @@ public class  Galaxy {
         this.orbit = orbit;
     }
 
-    @OneToMany(cascade = {CascadeType.ALL})
-    private List<Orbit> orbit;
-
 
     public Galaxy() {
     }
-
 
     public void run() {
         Timer timer = new Timer();
@@ -61,14 +65,39 @@ public class  Galaxy {
             @Override
             public void run() {
                 i++;
-                //   calculateVelocity(i);public
-                //   getStateObject();
-                //  deleteOrbit();
+                getStateObject();
             }
         };
         timer.schedule(task, 10, 10000000);
     }
 
+    private void toBumpInto(int i) {
+        Planet planet = getOrbit().get(i).getPlanet();
+        massiveAstronomicalObject.setWeight(planet.getWeight()
+                + massiveAstronomicalObject.getWeight());
+        planet.setWeight(0);
+    }
+
+    public void getStateObject() {
+        for (int j = 0; j < getOrbit().size(); j++) {
+            double h = getOrbit().get(j).getHeight();
+            if (h == 0) {
+                toBumpInto(j);
+                delete(j);
+            }
+            if (h > getMassiveAstronomicalObject().getRadius() * 5) {
+                flewAway(i);
+            }
+        }
+    }
+
+    private void delete(int i) {
+        getOrbit().remove(i);
+    }
+
+    private void flewAway(int i) {
+        logger.info(getOrbit().get(i).getId() + "planet flew away");
+    }
 
     //       public void calculateVelocity(int i) {
 //        setNewVelocity(getSatellite().getVelocity() + getAcceleration() * i);
@@ -80,16 +109,6 @@ public class  Galaxy {
 //        }
 //    }
 
-    //    public String getStateObject() {
-//        if (newVelocity == 0) {
-//            return "satellite falls on the planet";
-//        } else if (newVelocity == 8) {
-//            return "satellite located on orbit planet";
-//        } else if (newVelocity > 8) {
-//            return "satellite leaves orbit planet";
-//        }
-//        return "";
-//    }
 
 //    public double accelerationGravity() {
 //        return (G *getPlanet().getWeight()) / (Math.pow(getPlanet().getRadius(), 2));
@@ -100,7 +119,7 @@ public class  Galaxy {
 //    }
 
 
-//    public double heightOrbit() {
+    //    public double heightOrbit() {
 //        return Math.cbrt(G * planet.getWeight());
 //    }
 //
