@@ -1,8 +1,6 @@
 package model.orbit;
 
-import model.massiveastronomicalobject.Star;
 import model.planet.Planet;
-import model.planet.Satellite;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -12,29 +10,28 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
 
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Orbit {
+    private double way;
+    private double newVelocity;
+    private double height;
+    private double acceleration;
+    private String condition;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-
-    private double height;
-    private double acceleration;
     @OneToOne(cascade = {CascadeType.ALL})
     public Planet planet;
-
 
     public Orbit() {
     }
 
     public static class Builder {
         Planet planet;
-        Star star;
         double height;
         double acceleration;
 
@@ -52,7 +49,6 @@ public class Orbit {
             return this;
         }
 
-
         public Builder acceleration(double acceleration) {
             this.acceleration = acceleration;
             return this;
@@ -67,6 +63,18 @@ public class Orbit {
         planet = builder.planet;
         height = builder.height;
         acceleration = builder.acceleration;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
+    }
+
+    public double accelerationGravity() {
+        return (getPlanet().getWeight()) / (Math.pow(getPlanet().getRadius(), 2));
     }
 
     public Planet getPlanet() {
@@ -85,7 +93,6 @@ public class Orbit {
         this.acceleration = acceleration;
     }
 
-
     public double getHeight() {
         return height;
     }
@@ -98,4 +105,19 @@ public class Orbit {
         this.id = id;
     }
 
+    public double getNewVelocity() {
+        return newVelocity;
+    }
+
+    public void setNewVelocity(double newVelocity) {
+        this.newVelocity = newVelocity;
+    }
+
+    public double getWay() {
+        return way;
+    }
+
+    public void setWay(double way) {
+        this.way = way;
+    }
 }

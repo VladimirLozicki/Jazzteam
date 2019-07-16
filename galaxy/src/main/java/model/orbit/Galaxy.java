@@ -13,7 +13,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,8 +32,11 @@ public class Galaxy {
     private static int i = 0;
     @OneToMany(cascade = {CascadeType.ALL})
     private List<Orbit> orbit;
-    @Transient
-    protected static final double G = 1;
+    private int time;
+
+    private void setTime(int i) {
+        this.time = i;
+    }
 
     public MassiveAstronomicalObject getMassiveAstronomicalObject() {
         return massiveAstronomicalObject;
@@ -64,10 +66,11 @@ public class Galaxy {
             @Override
             public void run() {
                 i++;
-                getStateObject();
+                setTime(i);
+                getStateGalaxy();
             }
         };
-        timer.schedule(task, 10, 10000000);
+        timer.schedule(task, 1, 10);
     }
 
     private void toBumpInto(int i) {
@@ -77,17 +80,31 @@ public class Galaxy {
         planet.setWeight(0);
     }
 
-    public void getStateObject() {
+    private void getStateGalaxy() {
         for (int j = 0; j < getOrbit().size(); j++) {
+            Orbit orbit = getOrbit().get(j);
             double h = getOrbit().get(j).getHeight();
-            if (h == 0) {
+            orbit.setNewVelocity(orbit.getPlanet().getVelocity() + orbit.getAcceleration() * getTime());
+            orbit.setWay(orbit.getNewVelocity()*getTime());
+            if (h == 1) {
                 toBumpInto(j);
+                orbit.setCondition("planet fall on star");
                 delete(j);
             }
+            if(h >1 && h<getMassiveAstronomicalObject().getRadius() * 5){
+                orbit.setCondition("planet on the orbit ");
+            }
+
             if (h > getMassiveAstronomicalObject().getRadius() * 5) {
-                flewAway(i);
+                flewAway(getTime());
+                orbit.setCondition("planet flew away ");
             }
         }
+    }
+
+
+    public int getTime() {
+        return time;
     }
 
     private void delete(int i) {
@@ -95,42 +112,7 @@ public class Galaxy {
     }
 
     private void flewAway(int i) {
-        logger.info(getOrbit().get(i).getId() + "planet flew away");
+        delete(i);
     }
 
-    //       public void calculateVelocity(int i) {
-//        setNewVelocity(getSatellite().getVelocity() + getAcceleration() * i);
-//    }
-//
-//    public void deleteOrbit(){
-//        if(getNewVelocity()==0){
-//
-//        }
-//    }
-
-
-//    public double accelerationGravity() {
-//        return (G *getPlanet().getWeight()) / (Math.pow(getPlanet().getRadius(), 2));
-//    }
-//
-//    public double powerGravity() {
-//        return (G * planet.getWeight() * satellite.getWeight()) / Math.pow(getHeight(), 2);
-//    }
-
-
-    //    public double heightOrbit() {
-//        return Math.cbrt(G * planet.getWeight());
-//    }
-//
-//
-//    public double heightRise() {
-//        return satellite.getVelocity() * satellite.getVelocity() / 2 * accelerationGravity();
-//    }
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
