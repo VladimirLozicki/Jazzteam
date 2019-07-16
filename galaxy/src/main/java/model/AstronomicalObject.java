@@ -18,7 +18,7 @@ public class AstronomicalObject {
 
     public AstronomicalObject(double weight, double radius) {
         this.weight = weight;
-        this.radius=radius;
+        this.radius = radius;
     }
 
     public AstronomicalObject(double weight) {

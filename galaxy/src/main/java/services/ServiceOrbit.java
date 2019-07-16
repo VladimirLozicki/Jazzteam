@@ -11,30 +11,30 @@ import java.util.List;
 
 public class ServiceOrbit {
 
- private DaoOrbit daoOrbit = new DaoOrbit();
+    private DaoOrbit daoOrbit = new DaoOrbit();
 
- public ServiceOrbit() {
+    public ServiceOrbit() {
 
- }
+    }
 
- public Galaxy find(int id) {
-  return daoOrbit.findById(id);
- }
+    public Galaxy find(int id) {
+        return daoOrbit.findById(id);
+    }
 
- public void save(Galaxy orbit) {
-  daoOrbit.save(orbit);
- }
+    public void save(Galaxy orbit) {
+        daoOrbit.save(orbit);
+    }
 
- public void delete(Galaxy orbit) {
-  daoOrbit.delete(orbit);
- }
+    public void delete(Galaxy orbit) {
+        daoOrbit.delete(orbit);
+    }
 
- public void update(Galaxy orbit) {
-  daoOrbit.update(orbit);
- }
+    public void update(Galaxy orbit) {
+        daoOrbit.update(orbit);
+    }
 
- public void create(Galaxy orbit) {
-  daoOrbit.create(orbit);
- }
+    public void create(Galaxy orbit) {
+        daoOrbit.create(orbit);
+    }
 
 }

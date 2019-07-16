@@ -19,9 +19,9 @@ public class HibernateSessionFactoryUtil {
             try {
                 Configuration configuration = new Configuration().configure();
                 configuration
-                .addAnnotatedClass(Orbit.class)
-                   .addAnnotatedClass(Planet.class)
-                      .addAnnotatedClass(Satellite.class)
+                        .addAnnotatedClass(Orbit.class)
+                        .addAnnotatedClass(Planet.class)
+                        .addAnnotatedClass(Satellite.class)
                         .addAnnotatedClass(Galaxy.class);
                 StandardServiceRegistryBuilder builder1 = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties());
