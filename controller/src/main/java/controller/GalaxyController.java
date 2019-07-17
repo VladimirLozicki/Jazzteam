@@ -34,6 +34,7 @@ public class GalaxyController {
         galaxy = gson.fromJson(jsonObject, Galaxy.class);
     }
 
+
     @GetMapping(value = "/result")
     public String add1(Model modelMap) {
         galaxy.run();

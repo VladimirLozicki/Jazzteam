@@ -1,23 +1,21 @@
 <html>
 <head>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <style>
         TABLE {
             width: 400px;
             border-collapse: collapse;
         }
-
         TD, TH {
             padding: 3px;
             border: 1px solid black;
         }
-
         TH {
             background: #b0e0e6;
         }
-
         button {
             width: 70px;
             height: 20px;
@@ -46,9 +44,8 @@
                required/></p>
 </form>
 
-<button class="button" type="button" onclick="insertRow('table'); ">Add</button>
-
-<table id="table">
+<input class="arrow-button" type="button" onclick="insertRow('table');" value="add">
+<table id="table" class="table-view">
     <tr>
         <td>delete</td>
         <td>id</td>
@@ -70,14 +67,13 @@
     <input type="hidden" id="hidden">
 </form>
 
-<button class="button" id="start"> start</button>
+<button class="arrow-button" id="start" value="start">start</button>
 <form method="get" action="/result">
-    <button class="button" type="submit" value="upload"> upload</button>
+    <button class="arrow-button" type="submit" value="upload">upload</button>
 </form>
 
 <script>
     var checkbox;
-
     function insertRow(id) {
         if (document.getElementById("weight").value.length == 0 ||
             document.getElementById("radius").value.length == 0 ||
@@ -157,10 +153,10 @@
                 "planet": {
                     "weight": row[i].cells[1].innerHTML,
                     "radius": row[i].cells[2].innerHTML,
-                    "velocity": row[i].cells[5].innerHTML
+                    "velocity": row[i].cells[4].innerHTML
                 },
                 "height": row[i].cells[3].innerHTML,
-                "acceleration": row[i].cells[4].innerHTML
+                "acceleration": row[i].cells[5].innerHTML
             };
             orbits.push(orbit);
         }

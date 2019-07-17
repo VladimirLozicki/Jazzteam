@@ -67,10 +67,10 @@ public class Galaxy {
             public void run() {
                 i++;
                 setTime(i);
-                getStateGalaxy();
+                getStateGalaxy(i);
             }
         };
-        timer.schedule(task, 1, 10);
+        timer.schedule(task, 10, 1000);
     }
 
     private void toBumpInto(int i) {
@@ -80,23 +80,25 @@ public class Galaxy {
         planet.setWeight(0);
     }
 
-    private void getStateGalaxy() {
+    private void getStateGalaxy(int i) {
         for (int j = 0; j < getOrbit().size(); j++) {
             Orbit orbit = getOrbit().get(j);
-            double h = getOrbit().get(j).getHeight();
-            orbit.setNewVelocity(orbit.getPlanet().getVelocity() + orbit.getAcceleration() * getTime());
-            orbit.setWay(orbit.getNewVelocity()*getTime());
-            if (h == 1) {
-                toBumpInto(j);
+          //  double h = getOrbit().get(j).getHeight();
+            orbit.setNewVelocity(orbit.getPlanet().getVelocity() + orbit.getAcceleration() * i);
+            orbit.setWay(orbit.getNewVelocity()*i);
+            orbit.setNewHeight(orbit.getHeight()+orbit.getWay());
+            if (orbit.getNewHeight() == 1) {
+               // toBumpInto(j);
                 orbit.setCondition("planet fall on star");
-                delete(j);
+              //  delete(j);
             }
-            if(h >1 && h<getMassiveAstronomicalObject().getRadius() * 5){
+
+            if(orbit.getNewHeight() >1 && orbit.getNewHeight()<getMassiveAstronomicalObject().getRadius() * 5){
                 orbit.setCondition("planet on the orbit ");
             }
 
-            if (h > getMassiveAstronomicalObject().getRadius() * 5) {
-                flewAway(getTime());
+            if (orbit.getNewHeight() > getMassiveAstronomicalObject().getRadius() * 5) {
+              //  flewAway(getTime());
                 orbit.setCondition("planet flew away ");
             }
         }

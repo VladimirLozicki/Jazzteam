@@ -1,7 +1,6 @@
 package model.orbit;
 
 import model.planet.Planet;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,9 +19,21 @@ public class Orbit {
     private double height;
     private double acceleration;
     private String condition;
+    private double newHeight;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    public double getNewHeight() {
+        return newHeight;
+    }
+
+    public void setNewHeight(double newHeight) {
+        this.newHeight = newHeight;
+    }
+
+
+
 
     @OneToOne(cascade = {CascadeType.ALL})
     public Planet planet;

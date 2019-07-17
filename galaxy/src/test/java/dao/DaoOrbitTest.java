@@ -1,30 +1,34 @@
-//package dao;
-//
-//import model.orbit.Galaxy;
-//import model.orbit.Orbit;
-//import model.planet.Planet;
-//import model.planet.Satellite;
-//import org.testng.TestException;
-//import org.testng.annotations.Test;
-//import services.ServiceOrbit;
-//
-//import java.io.FileNotFoundException;
-//
-//import static org.testng.Assert.*;
-//
-//public class DaoOrbitTest {
-//
-//    @Test(expectedExceptions = NullPointerException.class)
-//    public void testFindById() throws FileNotFoundException {
-//        Orbit orbit = new Orbit.Builder()
-//                .height(1000)
-//                .build1();
-//
-//        ServiceOrbit service = new ServiceOrbit();
-//        service.save(orbit);
-//        service.find(2).getPlanet();
-//    }
-//
+package dao;
+
+import model.orbit.Galaxy;
+import model.orbit.Orbit;
+import model.planet.Planet;
+import model.planet.Satellite;
+import org.testng.TestException;
+import org.testng.annotations.Test;
+import services.ServiceOrbit;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+import static org.testng.Assert.*;
+
+public class DaoOrbitTest {
+ArrayList<Orbit> list;
+    @Test(expectedExceptions = NullPointerException.class)
+    public void testFindById() throws FileNotFoundException {
+        Galaxy galaxy = new Galaxy();
+
+        Orbit orbit = new Orbit.Builder()
+                .height(1000)
+                .build1();
+     list.add(orbit);
+     galaxy.setOrbit(list);
+        ServiceOrbit service = new ServiceOrbit();
+        service.save(galaxy);
+        service.find(2).getOrbit();
+    }
+
 //    @Test
 //    public void testCreate() {
 //        Galaxy galaxy=new Galaxy();
@@ -83,4 +87,4 @@
 //        service.delete(orbit);
 //        assertNotEquals(orbit, orbit1);
 //    }
-//}
+}
