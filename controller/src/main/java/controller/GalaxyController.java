@@ -48,7 +48,7 @@ public class GalaxyController {
 
     @PostMapping(value = "/save")
     public String save(ModelMap modelMap) {
-        serviceGalaxy.save(galaxy);
+        serviceGalaxy.create(galaxy);
         setSystem(modelMap, galaxy);
         return "result";
     }

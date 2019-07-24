@@ -28,7 +28,7 @@ public class DaoOrbitTest {
         orbits.add(orbit);
         galaxy.setOrbit(orbits);
         ServiceGalaxy service = new ServiceGalaxy();
-        service.create(galaxy);
+        service.save(galaxy);
         assertNotNull(service.find(1));
         service.delete(galaxy);
     }

@@ -153,10 +153,10 @@
                 "planet": {
                     "weight": row[i].cells[2].innerHTML,
                     "radius": row[i].cells[3].innerHTML,
-                    "velocity": row[i].cells[6].innerHTML,
+                    "velocity": row[i].cells[6].innerHTML
                 },
                 "height": row[i].cells[4].innerHTML,
-                "acceleration": row[i].cells[5].innerHTML,
+                "acceleration": row[i].cells[5].innerHTML
             };
             orbits.push(orbit);
         }
