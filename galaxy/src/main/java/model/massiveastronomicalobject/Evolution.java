@@ -1,4 +1,4 @@
-package model.massiveastronomicalobject;
+package model.massiveAstronomicalObject;
 
 public interface Evolution {
      Object getEvolution(Object object);

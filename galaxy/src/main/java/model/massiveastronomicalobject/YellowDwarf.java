@@ -1,4 +1,4 @@
-package model.massiveastronomicalobject;
+package model.massiveAstronomicalObject;
 
 public class YellowDwarf implements  Evolution{
     private RedGigant redGigant;

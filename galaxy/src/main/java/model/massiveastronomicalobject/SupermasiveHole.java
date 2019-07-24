@@ -1,4 +1,4 @@
-package model.massiveastronomicalobject;
+package model.massiveAstronomicalObject;
 
 public class SupermasiveHole extends BlackHole {
     SupermasiveHole(double radius, double luminosity) {

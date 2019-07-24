@@ -2,7 +2,7 @@ package dao;
 
 
 import model.orbit.Galaxy;
-import model.orbit.Orbit;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,53 +11,111 @@ import utils.HibernateSessionFactoryUtil;
 
 import javax.transaction.Transactional;
 
+import static utils.HibernateSessionFactoryUtil.getSessionFactory;
+
 
 public class DaoOrbit {
+
     @Autowired
     private SessionFactory sessionFactory;
 
+
+    @Transactional
     public Galaxy findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Galaxy.class, id);
+        Galaxy galaxy;
+        Session session = getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        galaxy=session.get(Galaxy.class, id);
+        transaction.commit();
+        session.close();
+        return galaxy;
     }
 
     @Transactional
-    public Galaxy create(Galaxy orbit) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+    public Galaxy create(Galaxy galaxy) {
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(orbit);
+        session.save(galaxy);
         transaction.commit();
         session.close();
-        return orbit;
+        return galaxy;
     }
 
     @Transactional
-    public Galaxy save(Galaxy orbit) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+    public Galaxy save(Galaxy galaxy) {
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(orbit);
+        session.save(galaxy);
         transaction.commit();
         session.close();
-        return orbit;
+        return galaxy;
     }
+
+//    @Transactional
+//    public Galaxy save(Galaxy galaxy) {
+//        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+//        Transaction transaction = session.beginTransaction();
+//        transaction.commit();
+//        try {
+//            session.save(galaxy);
+//            transaction.commit();
+//            session.flush();
+//        } finally {
+//            if (session.isOpen()) {
+//                session.close();
+//            }
+//        }
+
+//        Session session;
+//        try {
+//            session = getSessionFactory().getCurrentSession();
+//        } catch (HibernateException ex) {
+//            session = getSessionFactory().openSession();
+//        }
+//        Transaction transaction = null;
+//        try {
+//            transaction = session.beginTransaction();
+//            session.save(galaxy);
+//            transaction.commit();
+//        } catch (HibernateException ex) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//        } finally {
+//            if (session.isOpen()) {
+//                session.close();
+//            }
+//        }
+
+
+//        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+//        Transaction transaction = session.beginTransaction();
+//        session.save(galaxy);
+//        transaction.commit();
+//        session.close();
+     //   return galaxy;
+  //  }
+
 
     @Transactional
-    public Galaxy update(Galaxy orbit) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+    public Galaxy update(Galaxy galaxy) {
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(orbit);
+        session.update(galaxy);
         transaction.commit();
         session.close();
-        return orbit;
+        return galaxy;
     }
 
 
     @Transactional
-    public Galaxy delete(Galaxy orbit) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+    public Galaxy delete(Galaxy galaxy) {
+        Session session = getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(orbit);
+        session.delete(galaxy);
         transaction.commit();
         session.close();
-        return orbit;
+        return galaxy;
     }
+
 }
