@@ -1,6 +1,6 @@
 package model.massiveAstronomicalObject;
 
-import model.AstronomicalObject;
+import model.planet.AstronomicalObject;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,22 +17,11 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    public MassiveAstronomicalObject() {
-
-    }
     @Transient
     private double luminosity;
 
-    public int getId() {
-        return id;
+    public MassiveAstronomicalObject() {
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-
 
     public MassiveAstronomicalObject(double weight) {
         super(weight);
@@ -68,6 +57,14 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
     @Override
     public String getName() {
         return super.getName();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 

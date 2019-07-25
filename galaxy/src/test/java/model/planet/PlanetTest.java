@@ -23,7 +23,7 @@
 //                .planet(planetEarthType)
 //                .star(sun)
 //                .height(149600000.0)
-//                .build1();
+//                .build();
 //        double actual = getAttitude(sun, orbit);
 //        assertEquals(actual, attitude);
 //    }
@@ -36,7 +36,7 @@
 //                .planet(planet)
 //                .star(myStars)
 //                .height(1000.0)
-//                .build1();
+//                .build();
 //        double actual = getAttitude(myStars, orbit);
 //        assertTrue(actual < attitude);
 //
@@ -50,7 +50,7 @@
 //                .planet(planet1)
 //                .star(myStars)
 //                .height(100.0)
-//                .build1();
+//                .build();
 //        double actual = getAttitude(myStars, orbit);
 //        assertTrue(actual > attitude);
 //    }

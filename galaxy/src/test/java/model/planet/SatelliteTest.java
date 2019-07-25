@@ -20,7 +20,7 @@
 //                .planet(planetEarthType)
 //                .satellite(satellite)
 //                .height(1500.0)
-//                .build1();
+//                .build();
 //        assertEquals(getConsist(planetEarthType, satellite, orbit).size(), 0);
 //    }
 //
@@ -32,7 +32,7 @@
 //                .planet(planetEarthType)
 //                .satellite(satellite)
 //                .height(1500.0)
-//                .build1();
+//                .build();
 //        assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "gravity more");
 //    }
 //
@@ -44,7 +44,7 @@
 //                .planet(planetEarthType)
 //                .satellite(satellite)
 //                .height(1500.0)
-//                .build1();
+//                .build();
 //        assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "gravity less");
 //    }
 //
@@ -56,7 +56,7 @@
 //                .planet(planetEarthType)
 //                .satellite(satellite)
 //                .height(1500.0)
-//                .build1();
+//                .build();
 //        assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "velocity more");
 //    }
 //
@@ -69,7 +69,7 @@
 //                .planet(planetEarthType)
 //                .satellite(satellite)
 //                .height(1500.0)
-//                .build1();
+//                .build();
 //        assertEquals(getConsist(planetEarthType, satellite, orbit).get(0), "velocity less");
 //    }
 //

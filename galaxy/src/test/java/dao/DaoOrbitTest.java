@@ -1,12 +1,11 @@
 package dao;
 
-import model.orbit.Galaxy;
+import model.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import org.testng.annotations.Test;
 import services.ServiceGalaxy;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import static org.testng.Assert.assertEquals;
@@ -24,7 +23,7 @@ public class DaoOrbitTest {
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
                 .height(1000)
-                .build1();
+                .build();
         orbits.add(orbit);
         galaxy.setOrbit(orbits);
         ServiceGalaxy service = new ServiceGalaxy();

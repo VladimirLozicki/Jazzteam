@@ -2,6 +2,7 @@ package model.orbit;
 
 
 import model.planet.Planet;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +12,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
 
-
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Orbit {
@@ -20,7 +19,6 @@ public class Orbit {
     private double height;
     private double acceleration;
     private String condition;
-
     private double firstVelocity;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +27,9 @@ public class Orbit {
     @OneToOne(cascade = {CascadeType.ALL})
     public Planet planet;
 
-
+    /**
+     * must be for bd
+     */
     public Orbit() {
     }
 
@@ -57,7 +57,7 @@ public class Orbit {
             return this;
         }
 
-        public Orbit build1() {
+        public Orbit build() {
             return new Orbit(this);
         }
     }
@@ -77,7 +77,7 @@ public class Orbit {
     }
 
     public double accelerationGravity() {
-        return (getPlanet().getWeight()) / Math.pow(getPlanet().getRadius()+getHeight(), 2);
+        return (getPlanet().getWeight()) / Math.pow(getPlanet().getRadius() + getHeight(), 2);
     }
 
 
@@ -86,7 +86,7 @@ public class Orbit {
     }
 
     public void setFirstVelocity(double velocity) {
-        this.firstVelocity=velocity;
+        this.firstVelocity = velocity;
     }
 
     public Planet getPlanet() {

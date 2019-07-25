@@ -1,16 +1,13 @@
 package services;
 
 import dao.DaoOrbit;
-import model.orbit.Galaxy;
+import model.Galaxy;
 
 
 public class ServiceGalaxy {
 
     private DaoOrbit daoOrbit = new DaoOrbit();
 
-    public ServiceGalaxy() {
-
-    }
 
     public Galaxy find(int id) {
         return daoOrbit.findById(id);

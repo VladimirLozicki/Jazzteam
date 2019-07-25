@@ -1,14 +1,13 @@
 package utils;
 
 import model.massiveAstronomicalObject.MassiveAstronomicalObject;
-import model.orbit.Galaxy;
+import model.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import model.planet.Satellite;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class HibernateSessionFactoryUtil {
     private    static SessionFactory sessionFactory;

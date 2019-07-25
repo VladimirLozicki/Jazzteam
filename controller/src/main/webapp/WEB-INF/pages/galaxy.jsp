@@ -52,6 +52,7 @@
         <td>id</td>
         <td>weight</td>
         <td>radius</td>
+        hibernate_sequence
         <td>height</td>
         <td>acceleration</td>
         <td>velocity</td>
@@ -90,8 +91,8 @@
             alert("enter numbers greater than 1")
         } else {
             var tbody = document.getElementById(id);
-            row = document.createElement("tr");
-            cellCounter = document.getElementById("table").rows.length;
+            var row = document.createElement("tr");
+            var cellCounter = document.getElementById("table").rows.length;
 
             button = document.createElement("input");
             button.type = 'button';
@@ -142,7 +143,6 @@
         $(this).parents('tr').remove();
     });
 
-    var galaxy;
     var orbits = [];
     var data = {};
 
@@ -160,7 +160,7 @@
             };
             orbits.push(orbit);
         }
-        galaxy = {
+        var galaxy = {
             "massiveAstronomicalObject": {
                 "weight": document.getElementById('star_weight').value,
                 "radius": document.getElementById('star_radius').value
@@ -174,8 +174,7 @@
             alert("input parametr star");
         } else if (document.getElementById("table").rows.length == 1) {
             alert("table empty");
-        }
-        else {
+        } else {
             $.ajax({
                 url: "http://localhost:9090/galaxy",
                 type: "POST",

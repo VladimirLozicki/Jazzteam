@@ -1,7 +1,5 @@
 package model.planet;
 
-import model.AstronomicalObject;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
