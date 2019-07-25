@@ -3,6 +3,7 @@ package dao;
 import model.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import services.ServiceGalaxy;
 
@@ -15,7 +16,9 @@ import static org.testng.Assert.assertNull;
 
 public class DaoOrbitTest {
 
+
     @Test
+    @AfterMethod
     public void testCreate() {
         ArrayList<Orbit> orbits = new ArrayList<>();
         Galaxy galaxy = new Galaxy();
@@ -25,11 +28,11 @@ public class DaoOrbitTest {
                 .height(1000)
                 .build();
         orbits.add(orbit);
-        galaxy.setOrbit(orbits);
+        galaxy.setOrbits(orbits);
         ServiceGalaxy service = new ServiceGalaxy();
         service.save(galaxy);
         assertNotNull(service.find(1));
-        service.delete(galaxy);
+       // service.delete(galaxy);
     }
 
     @Test

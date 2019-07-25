@@ -62,7 +62,7 @@
 <div>Star_weight ${weight} </div>
 <div>Star_radius ${radius} </div>
 
-<form method="post" action="/updateResult">
+<form method="get" action="/result">
    <button class="arrow-button" id="result" value="result">result</button>
 </form>
 

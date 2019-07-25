@@ -32,7 +32,7 @@ public class Galaxy {
     private static int i = 0;
 
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
-    private List<Orbit> orbit;
+    private List<Orbit> orbits;
 
     public Galaxy() {
     }
@@ -45,22 +45,22 @@ public class Galaxy {
             public void run() {
                 i++;
                 setTime(i);
-                getStateGalaxy(i);
+                getStateGalaxy();
             }
         };
         timer.schedule(task, 10, 10);
     }
 
     private void toBumpInto(int i) {
-        Planet planet = getOrbit().get(i).getPlanet();
+        Planet planet = getOrbits().get(i).getPlanet();
         massiveAstronomicalObject.setWeight(planet.getWeight()
                 + massiveAstronomicalObject.getWeight());
         planet.setWeight(0);
     }
 
-    public void getStateGalaxy(int i) {
-        for (int j = 0; j < getOrbit().size(); j++) {
-            Orbit orbit = getOrbit().get(j);
+    public void getStateGalaxy() {
+        for (int j = 0; j < getOrbits().size(); j++) {
+            Orbit orbit = getOrbits().get(j);
             orbit.setNewVelocity(orbit.getPlanet().getVelocity() +
                     orbit.getAcceleration() * i - orbit.accelerationGravity());
             orbit.setFirstVelocity(Math.sqrt(massiveAstronomicalObject.getWeight()
@@ -96,12 +96,12 @@ public class Galaxy {
         this.massiveAstronomicalObject = massiveAstronomicalObject;
     }
 
-    public List<Orbit> getOrbit() {
-        return orbit;
+    public List<Orbit> getOrbits() {
+        return orbits;
     }
 
-    public void setOrbit(List<Orbit> orbit) {
-        this.orbit = orbit;
+    public void setOrbits(List<Orbit> orbit) {
+        this.orbits = orbit;
     }
 
     public int getId() {

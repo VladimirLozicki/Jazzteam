@@ -52,7 +52,6 @@
         <td>id</td>
         <td>weight</td>
         <td>radius</td>
-        hibernate_sequence
         <td>height</td>
         <td>acceleration</td>
         <td>velocity</td>
@@ -165,7 +164,7 @@
                 "weight": document.getElementById('star_weight').value,
                 "radius": document.getElementById('star_radius').value
             },
-            "orbit": orbits
+            "orbits": orbits
         };
         data = JSON.stringify(galaxy);
 
@@ -173,7 +172,7 @@
             document.getElementById("star_radius").value.length == 0) {
             alert("input parametr star");
         } else if (document.getElementById("table").rows.length == 1) {
-            alert("table empty");
+            alert("table empty, input orbit and click button add");
         } else {
             $.ajax({
                 url: "http://localhost:9090/galaxy",

@@ -27,7 +27,7 @@ public class GalaxyTest {
                 .acceleration(1)
                 .build();
         orbits.add(orbit1);
-        galaxy1.setOrbit(orbits);
+        galaxy1.setOrbits(orbits);
         MassiveAstronomicalObject massiveAstronomicalObject = new MassiveAstronomicalObject();
         galaxy1.setMassiveAstronomicalObject(massiveAstronomicalObject);
         serviceGalaxy.save(galaxy1);
@@ -47,12 +47,13 @@ public class GalaxyTest {
                 .acceleration(-0.5)
                 .build();
         orbits.add(orbit);
-        galaxy.setOrbit(orbits);
+        galaxy.setOrbits(orbits);
         MassiveAstronomicalObject massiveAstronomicalObject =
                 new MassiveAstronomicalObject(100, 10);
         galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        galaxy.getStateGalaxy(10);
-        assertEquals(galaxy.getOrbit().get(0).getCondition(), "planet fall on star");
+        Galaxy.setI(10);
+        galaxy.getStateGalaxy();
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet fall on star");
         orbits.remove(orbit);
     }
 
@@ -67,12 +68,13 @@ public class GalaxyTest {
                 .acceleration(0.1)
                 .build();
         orbits.add(orbit);
-        galaxy.setOrbit(orbits);
+        galaxy.setOrbits(orbits);
         MassiveAstronomicalObject massiveAstronomicalObject =
                 new MassiveAstronomicalObject(100, 10);
         galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        galaxy.getStateGalaxy(10);
-        assertEquals(galaxy.getOrbit().get(0).getCondition(), "planet on the orbit");
+        Galaxy.setI(10);
+        galaxy.getStateGalaxy();
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet on the orbit");
         orbits.remove(orbit);
     }
 
@@ -85,17 +87,18 @@ public class GalaxyTest {
                 .acceleration(1)
                 .build();
         orbits.add(orbit);
-        galaxy.setOrbit(orbits);
+        galaxy.setOrbits(orbits);
         MassiveAstronomicalObject massiveAstronomicalObject =
                 new MassiveAstronomicalObject(100, 10);
         galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        galaxy.getStateGalaxy(10);
-        assertEquals(galaxy.getOrbit().get(0).getCondition(), "planet flew away ");
+        Galaxy.setI(10);
+        galaxy.getStateGalaxy();
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet flew away ");
     }
 
     @Test
     public void testGetWay() {
-        assertEquals(getSystem().getOrbit().get(0).getPlanet().getVelocity() * 5, 500.0);
+        assertEquals(getSystem().getOrbits().get(0).getPlanet().getVelocity() * 5, 500.0);
     }
 
     private Galaxy getSystem() {
@@ -110,7 +113,7 @@ public class GalaxyTest {
                 .height(1000)
                 .build();
         orbits.add(orbit);
-        galaxy.setOrbit(orbits);
+        galaxy.setOrbits(orbits);
         galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
         return galaxy;
     }

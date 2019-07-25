@@ -1,14 +1,12 @@
 package controller;
 
 import model.Galaxy;
-import model.orbit.Orbit;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
 import services.ServiceGalaxy;
 
 import javax.transaction.Transactional;
@@ -39,12 +37,6 @@ public class GalaxyController {
         return result;
     }
 
-    @PostMapping(value = "/updateResult")
-    public String getCurrent(ModelMap modelMap) {
-        setSystem(modelMap, galaxy);
-        return result;
-    }
-
     @PostMapping(value = "/save")
     public String save(ModelMap modelMap) {
         serviceGalaxy.save(galaxy);
@@ -63,7 +55,7 @@ public class GalaxyController {
     }
 
     private void setSystem(ModelMap modelMap, Galaxy galaxy) {
-        modelMap.addAttribute("orbits", galaxy.getOrbit());
+        modelMap.addAttribute("orbits", galaxy.getOrbits());
         modelMap.addAttribute("time", galaxy.getTime());
         modelMap.addAttribute("weight", galaxy.getMassiveAstronomicalObject().getWeight());
         modelMap.addAttribute("radius", galaxy.getMassiveAstronomicalObject().getRadius());
