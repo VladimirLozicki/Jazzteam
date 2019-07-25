@@ -31,7 +31,7 @@ public class DaoOrbitTest {
         galaxy.setOrbits(orbits);
         ServiceGalaxy service = new ServiceGalaxy();
         service.save(galaxy);
-        assertNotNull(service.find(1));
+        assertNotNull(service.find(186));
        // service.delete(galaxy);
     }
 
@@ -40,7 +40,7 @@ public class DaoOrbitTest {
         Galaxy galaxy = new Galaxy();
         ServiceGalaxy service = new ServiceGalaxy();
         service.save(galaxy);
-       assertNotEquals(galaxy, service.find(1));
+       assertNotEquals(galaxy, service.find(186));
        service.delete(galaxy);
     }
 }
