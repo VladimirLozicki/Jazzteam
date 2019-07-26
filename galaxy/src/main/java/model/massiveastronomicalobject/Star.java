@@ -1,4 +1,4 @@
-package model.massiveAstronomicalObject;
+package model.massiveastronomicalobject;
 
 
 public class Star extends MassiveAstronomicalObject {

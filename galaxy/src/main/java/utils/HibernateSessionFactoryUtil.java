@@ -1,7 +1,7 @@
 package utils;
 
-import model.massiveAstronomicalObject.MassiveAstronomicalObject;
-import model.Galaxy;
+import model.massiveastronomicalobject.MassiveAstronomicalObject;
+import model.Galaxy.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import model.planet.Satellite;
@@ -10,12 +10,12 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateSessionFactoryUtil {
-    private    static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
     private HibernateSessionFactoryUtil() {
     }
 
-    public static  SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration().configure();

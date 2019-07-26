@@ -1,6 +1,6 @@
-package model;
+package model.Galaxy;
 
-import model.massiveAstronomicalObject.MassiveAstronomicalObject;
+import model.massiveastronomicalobject.MassiveAstronomicalObject;
 import model.orbit.Orbit;
 import model.planet.Planet;
 
@@ -34,6 +34,9 @@ public class Galaxy {
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Orbit> orbits;
 
+    /**
+     * must be for hibernate
+     */
     public Galaxy() {
     }
 
@@ -68,6 +71,7 @@ public class Galaxy {
             if (orbit.getNewVelocity() == orbit.getPlanet().getVelocity()) {
                 orbit.setCondition("planet on the orbit");
             }
+
             if (orbit.getNewVelocity() < orbit.getPlanet().getVelocity()) {
                 orbit.setCondition("planet fall on star");
                 toBumpInto(j);

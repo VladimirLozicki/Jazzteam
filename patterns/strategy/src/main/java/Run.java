@@ -1,6 +1,6 @@
 public class Run implements Activity {
     @Override
-    public String justDoit() {
+    public String justDoIt() {
         return "Running";
     }
 }

@@ -3,7 +3,6 @@
 <html>
 <head>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>Title</title>
     <style>
         TABLE {
@@ -63,7 +62,7 @@
 <div>Star_radius ${radius} </div>
 
 <form method="get" action="/result">
-   <button class="arrow-button" id="result" value="result">result</button>
+    <button class="arrow-button" id="result" value="result">result</button>
 </form>
 
 <form method="post" action="/save">

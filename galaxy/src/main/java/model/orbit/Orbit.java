@@ -1,6 +1,5 @@
 package model.orbit;
 
-
 import model.planet.Planet;
 
 import javax.persistence.CascadeType;
@@ -28,7 +27,7 @@ public class Orbit {
     public Planet planet;
 
     /**
-     * must be for bd
+     * must be for hibernate
      */
     public Orbit() {
     }

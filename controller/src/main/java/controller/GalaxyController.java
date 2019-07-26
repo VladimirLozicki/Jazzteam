@@ -1,6 +1,6 @@
 package controller;
 
-import model.Galaxy;
+import model.Galaxy.Galaxy;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

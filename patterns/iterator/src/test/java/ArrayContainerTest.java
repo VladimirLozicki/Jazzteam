@@ -4,7 +4,7 @@ import static org.testng.Assert.*;
 
 public class ArrayContainerTest {
     ArrayContainer arrayContainer = new ArrayContainer();
-    // TODO  добавить негативные тесты
+
     @Test
     public void testOneIteration() {
         assertEquals(getsIterator(1), "1");
@@ -42,7 +42,7 @@ public class ArrayContainerTest {
 
     public Object getsIterator(int count) {
 
-        Iterator iterator= arrayContainer.getIterator();
+        Iterator iterator = arrayContainer.getIterator();
         for (int i = 0; i < count; i++) {
             iterator.next();
         }

@@ -1,45 +1,26 @@
 package model;
-import model.massiveAstronomicalObject.MassiveAstronomicalObject;
+
+import model.Galaxy.Galaxy;
+import model.massiveastronomicalobject.MassiveAstronomicalObject;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import org.hibernate.Session;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import services.ServiceGalaxy;
+
 import java.util.ArrayList;
-import static org.testng.Assert.*;
+
+import static junit.framework.Assert.assertEquals;
 import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
 public class GalaxyTest {
 
-    Galaxy galaxy = new Galaxy();
-    ArrayList<Orbit> orbits = new ArrayList<>();
-    ServiceGalaxy serviceGalaxy = new ServiceGalaxy();
-
-    @Test
-    public void testSave() {
-        Galaxy galaxy1 = new Galaxy();
-        Planet planet = new Planet(1.0, 2.9, "name");
-        Orbit orbit = new Orbit.Builder()
-                .planet(planet)
-                .build();
-        orbits.add(orbit);
-        Orbit orbit1 = new Orbit.Builder()
-                .acceleration(1)
-                .build();
-        orbits.add(orbit1);
-        galaxy1.setOrbits(orbits);
-        MassiveAstronomicalObject massiveAstronomicalObject = new MassiveAstronomicalObject();
-        galaxy1.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        serviceGalaxy.save(galaxy1);
-        Galaxy newGalaxy = serviceGalaxy.find(132);
-        assertNotEquals(galaxy1, newGalaxy);
-        serviceGalaxy.delete(galaxy1);
-    }
+    private Galaxy galaxy = new Galaxy();
+    private ArrayList<Orbit> orbits = new ArrayList<>();
 
     @Test
     public void testToBumpInto() {
-        Galaxy galaxy = new Galaxy();
-        ArrayList<Orbit> orbits = new ArrayList<>();
         Planet planet = new Planet(100, 10, "name");
         planet.setVelocity(100);
         Orbit orbit = new Orbit.Builder()
@@ -54,13 +35,10 @@ public class GalaxyTest {
         Galaxy.setI(10);
         galaxy.getStateGalaxy();
         assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet fall on star");
-        orbits.remove(orbit);
     }
 
     @Test
     public void testPlanetOnTheOrbit() {
-        Galaxy galaxy = new Galaxy();
-        ArrayList<Orbit> orbits = new ArrayList<>();
         Planet planet = new Planet(100, 10, "name");
         planet.setVelocity(100);
         Orbit orbit = new Orbit.Builder()
@@ -75,7 +53,6 @@ public class GalaxyTest {
         Galaxy.setI(10);
         galaxy.getStateGalaxy();
         assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet on the orbit");
-        orbits.remove(orbit);
     }
 
     @Test
@@ -118,15 +95,15 @@ public class GalaxyTest {
         return galaxy;
     }
 
-    @Test
-    public void s() {
-        System.out.println(getMaxId());
+    @AfterMethod
+    public void delete() {
+        orbits.clear();
     }
 
-    private int getMaxId() {
+    @BeforeMethod
+    public void deleteBD() {
         Session session = getSessionFactory().openSession();
-        int id = (int) session.createSQLQuery("select max(id) from galaxy")
-                .uniqueResult();
-        return id;
+        session.createSQLQuery("DELETE TABLE galaxy");
+        session.close();
     }
 }

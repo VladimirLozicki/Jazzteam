@@ -1,32 +1,28 @@
 package services;
 
-import dao.DaoOrbit;
-import model.Galaxy;
+import dao.DaoGalaxy;
+import model.Galaxy.Galaxy;
 
 
 public class ServiceGalaxy {
 
-    private DaoOrbit daoOrbit = new DaoOrbit();
+    private DaoGalaxy daoGalaxy = new DaoGalaxy();
 
 
     public Galaxy find(int id) {
-        return daoOrbit.findById(id);
+        return daoGalaxy.findById(id);
     }
 
     public void save(Galaxy galaxy) {
-        daoOrbit.save(galaxy);
+        daoGalaxy.save(galaxy);
     }
 
     public void delete(Galaxy galaxy) {
-        daoOrbit.delete(galaxy);
+        daoGalaxy.delete(galaxy);
     }
 
     public void update(Galaxy galaxy) {
-        daoOrbit.update(galaxy);
-    }
-
-    public void create(Galaxy galaxy) {
-        daoOrbit.create(galaxy);
+        daoGalaxy.update(galaxy);
     }
 
 }

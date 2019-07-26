@@ -14,7 +14,7 @@
         <mapping class="model.orbit.Orbit"/>
         <mapping class="model.planet.Planet"/>
         <mapping class="model.planet.Satellite"/>
-        <mapping class="model.Galaxy"/>
-        <mapping class="model.massiveAstronomicalObject.MassiveAstronomicalObject"/>
+        <mapping class="model.Galaxy.Galaxy"/>
+        <mapping class="model.massiveastronomicalobject.MassiveAstronomicalObject"/>
     </session-factory>
 </hibernate-configuration>

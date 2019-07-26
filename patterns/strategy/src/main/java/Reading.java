@@ -1,6 +1,6 @@
 public class Reading implements Activity {
     @Override
-    public String justDoit() {
+    public String justDoIt() {
         return "Reading";
     }
 }

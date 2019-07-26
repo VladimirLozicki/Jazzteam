@@ -1,4 +1,4 @@
-package model.massiveAstronomicalObject;
+package model.massiveastronomicalobject;
 
 import model.planet.AstronomicalObject;
 
@@ -23,20 +23,11 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
     public MassiveAstronomicalObject() {
     }
 
-    public MassiveAstronomicalObject(double weight) {
-        super(weight);
-
-    }
-
     public MassiveAstronomicalObject(double weight, double radius) {
         super(weight, radius);
 
     }
 
-    public MassiveAstronomicalObject(double radius, double weight, double luminosity) {
-        super(radius, weight);
-        this.luminosity = luminosity;
-    }
 
 
     public double getLuminosity() {
