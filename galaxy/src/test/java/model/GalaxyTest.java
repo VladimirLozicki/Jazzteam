@@ -4,19 +4,26 @@ import model.Galaxy.Galaxy;
 import model.massiveastronomicalobject.MassiveAstronomicalObject;
 import model.orbit.Orbit;
 import model.planet.Planet;
-import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import services.ServiceGalaxy;
 
 import java.util.ArrayList;
 
 import static junit.framework.Assert.assertEquals;
-import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
-public class GalaxyTest {
+@ContextConfiguration(locations = {"classpath:beans.xml"})
+public class GalaxyTest extends AbstractTestNGSpringContextTests {
 
-    private Galaxy galaxy = new Galaxy();
+    @Autowired
+    ServiceGalaxy serviceGalaxy;
+
+    @Autowired
+    Galaxy galaxy;
+
     private ArrayList<Orbit> orbits = new ArrayList<>();
 
     @Test
@@ -98,12 +105,5 @@ public class GalaxyTest {
     @AfterMethod
     public void delete() {
         orbits.clear();
-    }
-
-    @BeforeMethod
-    public void deleteBD() {
-        Session session = getSessionFactory().openSession();
-        session.createSQLQuery("DELETE TABLE galaxy");
-        session.close();
     }
 }

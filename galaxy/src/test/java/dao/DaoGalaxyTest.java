@@ -4,47 +4,45 @@ import model.Galaxy.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.ServiceGalaxy;
 
 import java.util.ArrayList;
 
+import static junit.framework.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
-import static org.testng.Assert.assertNotNull;
 import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
-public class DaoGalaxyTest {
-    private Galaxy galaxy = new Galaxy();
+@ContextConfiguration(locations = {"classpath:beans.xml"})
+public class DaoGalaxyTest extends AbstractTestNGSpringContextTests {
+
+    @Autowired
+    ServiceGalaxy serviceGalaxy;
+
+    @Autowired
+    private Galaxy galaxy;
+
     private ArrayList<Orbit> orbits = new ArrayList<>();
-    private ServiceGalaxy service = new ServiceGalaxy();
 
     @Test
     public void testSave() {
-        getSystem();
-        service.save(galaxy);
-        Galaxy newGalaxy = service.find(getMaxId());
-        assertNotEquals(galaxy, newGalaxy);
+        serviceGalaxy.save(getSystem());
+        assertNotEquals(galaxy, serviceGalaxy.find(getMaxId()));
     }
 
     @Test
-    public void testUpdate() {
-        service.save(galaxy);
-        assertNotEquals(galaxy, service.find(getMaxId()));
+    public void testFindById() {
+        assertEquals(serviceGalaxy.find(853).getId(), 853);
     }
 
     @AfterMethod
     public void delete() {
         orbits.clear();
-        service.delete(galaxy);
-    }
-
-    @BeforeMethod
-    public void deleteBD() {
-        Session session = getSessionFactory().openSession();
-        session.createSQLQuery("DELETE TABLE galaxy");
-        session.close();
+        serviceGalaxy.delete(galaxy);
     }
 
     private int getMaxId() {
@@ -55,7 +53,7 @@ public class DaoGalaxyTest {
         return id;
     }
 
-    private void getSystem() {
+    private Galaxy getSystem() {
         Planet planet = new Planet(1.0, 2.9, "kepler");
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
@@ -63,5 +61,6 @@ public class DaoGalaxyTest {
                 .build();
         orbits.add(orbit);
         galaxy.setOrbits(orbits);
+        return galaxy;
     }
 }

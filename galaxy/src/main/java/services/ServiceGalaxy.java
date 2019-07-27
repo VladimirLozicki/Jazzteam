@@ -2,12 +2,20 @@ package services;
 
 import dao.DaoGalaxy;
 import model.Galaxy.Galaxy;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
 
-
+@ContextConfiguration("classpath:beans.xml")
 public class ServiceGalaxy {
 
-    private DaoGalaxy daoGalaxy = new DaoGalaxy();
+    @Qualifier("daoGalaxy")
+    private DaoGalaxy daoGalaxy;
 
+    /**
+     * must be for beans
+     */
+    public ServiceGalaxy() {
+    }
 
     public Galaxy find(int id) {
         return daoGalaxy.findById(id);
@@ -21,8 +29,7 @@ public class ServiceGalaxy {
         daoGalaxy.delete(galaxy);
     }
 
-    public void update(Galaxy galaxy) {
-        daoGalaxy.update(galaxy);
+    public ServiceGalaxy(DaoGalaxy provider) {
+        this.daoGalaxy = provider;
     }
-
 }

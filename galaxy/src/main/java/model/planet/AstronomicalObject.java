@@ -2,7 +2,6 @@ package model.planet;
 
 
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
 
 @MappedSuperclass
 public class AstronomicalObject {

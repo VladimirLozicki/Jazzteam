@@ -2,6 +2,7 @@ package controller;
 
 import model.Galaxy.Galaxy;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,9 +16,18 @@ import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
 @Controller
 public class GalaxyController {
-    private ServiceGalaxy serviceGalaxy = new ServiceGalaxy();
+
+    @Qualifier("serviceGalaxy")
+    private ServiceGalaxy serviceGalaxy;
+
+    @Qualifier("galaxy")
     private Galaxy galaxy;
+
     private String result = "result";
+
+    public GalaxyController(ServiceGalaxy serviceGalaxy) {
+        this.serviceGalaxy = serviceGalaxy;
+    }
 
     @GetMapping(value = "/")
     public String galaxyPage() {
