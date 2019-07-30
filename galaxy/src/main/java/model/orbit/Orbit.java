@@ -19,6 +19,8 @@ public class Orbit {
     private double acceleration;
     private String condition;
     private double firstVelocity;
+    private double secondVelocity;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -31,6 +33,7 @@ public class Orbit {
      */
     public Orbit() {
     }
+
 
     public static class Builder {
         Planet planet;
@@ -73,10 +76,6 @@ public class Orbit {
 
     public void setCondition(String condition) {
         this.condition = condition;
-    }
-
-    public double accelerationGravity() {
-        return (getPlanet().getWeight()) / Math.pow(getPlanet().getRadius() + getHeight(), 2);
     }
 
 
@@ -122,6 +121,18 @@ public class Orbit {
 
     public void setNewVelocity(double newVelocity) {
         this.newVelocity = newVelocity;
+    }
+
+    public double getSecondVelocity() {
+        return secondVelocity;
+    }
+
+    public void setSecondVelocity(double secondVelocity) {
+        this.secondVelocity = secondVelocity;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
     }
 
 }

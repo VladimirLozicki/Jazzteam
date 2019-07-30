@@ -1,6 +1,6 @@
 package dao;
 
-import model.Galaxy.Galaxy;
+import model.galaxy.Galaxy;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
 public class DaoGalaxy {
-
     @Transactional
     public Galaxy findById(int id) {
         Session session = getSessionFactory().openSession();

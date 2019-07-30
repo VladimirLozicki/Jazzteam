@@ -1,10 +1,10 @@
 package utils;
 
+import model.galaxy.Galaxy;
 import model.massiveastronomicalobject.MassiveAstronomicalObject;
-import model.Galaxy.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
-import model.planet.Satellite;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -22,14 +22,13 @@ public class HibernateSessionFactoryUtil {
                 configuration
                         .addAnnotatedClass(Orbit.class)
                         .addAnnotatedClass(Planet.class)
-                        .addAnnotatedClass(Satellite.class)
                         .addAnnotatedClass(MassiveAstronomicalObject.class)
                         .addAnnotatedClass(Galaxy.class);
                 StandardServiceRegistryBuilder builder1 = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder1.build());
 
-            } catch (Exception e) {
+            } catch (HibernateException e) {
                 e.getMessage();
             }
         }

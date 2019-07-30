@@ -1,6 +1,6 @@
 package controller;
 
-import model.Galaxy.Galaxy;
+import model.galaxy.Galaxy;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

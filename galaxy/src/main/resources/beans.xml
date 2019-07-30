@@ -7,5 +7,5 @@
     <bean id="serviceGalaxy" class="services.ServiceGalaxy">
         <constructor-arg ref="daoGalaxy"/>
     </bean>
-    <bean id="galaxy" class="model.Galaxy.Galaxy"> </bean>
+    <bean id="galaxy" class="model.galaxy.Galaxy"> </bean>
 </beans>

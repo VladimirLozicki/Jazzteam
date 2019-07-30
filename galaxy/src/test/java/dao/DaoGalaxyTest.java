@@ -1,6 +1,6 @@
 package dao;
 
-import model.Galaxy.Galaxy;
+import model.galaxy.Galaxy;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import org.hibernate.Session;
@@ -21,7 +21,7 @@ import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 public class DaoGalaxyTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
-    ServiceGalaxy serviceGalaxy;
+    private ServiceGalaxy serviceGalaxy;
 
     @Autowired
     private Galaxy galaxy;
@@ -36,7 +36,7 @@ public class DaoGalaxyTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void testFindById() {
-        assertEquals(serviceGalaxy.find(853).getId(), 853);
+        assertEquals(serviceGalaxy.find(getMaxId()).getId(), 911);
     }
 
     @AfterMethod

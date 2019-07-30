@@ -13,8 +13,7 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <mapping class="model.orbit.Orbit"/>
         <mapping class="model.planet.Planet"/>
-        <mapping class="model.planet.Satellite"/>
-        <mapping class="model.Galaxy.Galaxy"/>
+        <mapping class="model.galaxy.Galaxy"/>
         <mapping class="model.massiveastronomicalobject.MassiveAstronomicalObject"/>
     </session-factory>
 </hibernate-configuration>
