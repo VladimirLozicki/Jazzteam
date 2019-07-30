@@ -28,12 +28,12 @@ public class Orbit {
     @OneToOne(cascade = {CascadeType.ALL})
     public Planet planet;
 
-    /**
-     * must be for hibernate
-     */
-    public Orbit() {
-    }
 
+    public Orbit() {
+        /*
+         * must be for hibernate
+         */
+    }
 
     public static class Builder {
         Planet planet;

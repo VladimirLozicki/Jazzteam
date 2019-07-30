@@ -8,4 +8,6 @@
         <constructor-arg ref="daoGalaxy"/>
     </bean>
     <bean id="galaxy" class="model.galaxy.Galaxy"> </bean>
+    <bean id="planet" class="model.planet.Planet"> </bean>
+    <bean id="massiveObject" class="model.massiveastronomicalobject.MassiveAstronomicalObject"> </bean>
 </beans>

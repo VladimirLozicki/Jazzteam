@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.ServiceGalaxy;
 
@@ -22,85 +23,89 @@ public class GalaxyTest extends AbstractTestNGSpringContextTests {
     ServiceGalaxy serviceGalaxy;
 
     @Autowired
-    Galaxy galaxy;
+    private Galaxy galaxy;
+
+    @Autowired
+    private Planet planet;
+
+    @Autowired
+    private MassiveAstronomicalObject massiveAstronomicalObject;
 
     private ArrayList<Orbit> orbits = new ArrayList<>();
 
+    @BeforeMethod
+    public void createSystem() {
+        planet.setWeight(100);
+        planet.setRadius(10);
+        massiveAstronomicalObject.setWeight(100);
+        massiveAstronomicalObject.setRadius(10);
+        galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
+    }
+
+    @Test
+    public void testAccelerationGravity() {
+        Orbit orbit = new Orbit.Builder().height(0).build();
+        assertEquals(galaxy.accelerationGravity(orbit), 1.0);
+    }
+
     @Test
     public void testToBumpInto() {
-        Planet planet = new Planet(100, 10, "name");
         planet.setVelocity(3);
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
-                .acceleration(-0.5)
+                .acceleration(0)
                 .build();
+        orbit.setFirstVelocity(10);
+        orbit.setNewVelocity(5);
         orbits.add(orbit);
         galaxy.setOrbits(orbits);
-        MassiveAstronomicalObject massiveAstronomicalObject =
-                new MassiveAstronomicalObject(100, 10);
-        galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        Galaxy.setI(10);
-        orbit.setNewVelocity((int) orbit.getFirstVelocity());
-        galaxy.getStateGalaxy();
-        //assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet fall on star");
+        galaxy.planetFall(orbit);
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet fall on star");
     }
 
     @Test
     public void testPlanetOnTheOrbit() {
-        Planet planet = new Planet(100, 10, "name");
-        planet.setVelocity(100);
-        Orbit orbit = new Orbit.Builder()
-                .planet(planet)
-                .acceleration(0.1)
-                .build();
-        orbits.add(orbit);
-        galaxy.setOrbits(orbits);
-        MassiveAstronomicalObject massiveAstronomicalObject =
-                new MassiveAstronomicalObject(100, 10);
-        galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        Galaxy.setI(10);
-        galaxy.getStateGalaxy();
-        //assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet on the orbit");
-    }
-
-    @Test
-    public void testPlanetFlewAway() {
-        Planet planet = new Planet(100, 10, "name");
-        planet.setVelocity(100);
+        planet.setVelocity(10);
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
                 .acceleration(1)
                 .build();
         orbits.add(orbit);
         galaxy.setOrbits(orbits);
-        MassiveAstronomicalObject massiveAstronomicalObject =
-                new MassiveAstronomicalObject(100, 10);
-        galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        Galaxy.setI(10);
-        galaxy.getStateGalaxy();
-        //assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet flew away ");
+        galaxy.planetMoveOnTheOrbit(orbit);
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet on the orbit");
     }
 
     @Test
-    public void testGetWay() {
-        assertEquals(getSystem().getOrbits().get(0).getPlanet().getVelocity() * 5, 500.0);
-    }
-
-    private Galaxy getSystem() {
-        Galaxy galaxy = new Galaxy();
-        MassiveAstronomicalObject massiveAstronomicalObject =
-                new MassiveAstronomicalObject(100.0, 10.0);
-        ArrayList<Orbit> orbits = new ArrayList<>();
-        Planet planet = new Planet(687500.0, 100.0, "Kepler48b");
-        planet.setVelocity(100);
+    public void testPlanetFlewAway() {
+        planet.setVelocity(1000);
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
-                .height(1000)
+                .acceleration(2)
                 .build();
         orbits.add(orbit);
         galaxy.setOrbits(orbits);
-        galaxy.setMassiveAstronomicalObject(massiveAstronomicalObject);
-        return galaxy;
+        galaxy.flewAway(orbit);
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "the planet flies away");
+    }
+
+    @Test
+    public void testPlanetDied() {
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .acceleration(0)
+                .build();
+        orbits.add(orbit);
+        orbit.setNewVelocity(-1);
+        galaxy.setOrbits(orbits);
+        galaxy.planetDied(orbit);
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet died");
+    }
+
+    @Test
+    public void testBumpInto() {
+        galaxy.toBumpInto(planet);
+        assertEquals(massiveAstronomicalObject.getWeight(), 200.0);
     }
 
     @AfterMethod

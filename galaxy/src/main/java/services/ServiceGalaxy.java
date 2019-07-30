@@ -12,11 +12,10 @@ public class ServiceGalaxy {
     private DaoGalaxy daoGalaxy;
 
     public ServiceGalaxy() {
+        /*
+         * must be for beans
+         */
     }
-
-    /**
-     * must be for beans
-     */
 
     public ServiceGalaxy(DaoGalaxy provider) {
         this.daoGalaxy = provider;

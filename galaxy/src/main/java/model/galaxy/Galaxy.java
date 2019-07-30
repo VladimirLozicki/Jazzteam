@@ -15,6 +15,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.util.List;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -34,7 +35,6 @@ public class Galaxy {
 
     @OneToMany(cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
     private List<Orbit> orbits;
-
 
     public Galaxy() {
         /*
@@ -56,8 +56,7 @@ public class Galaxy {
         timer.schedule(task, 10, 10);
     }
 
-
-    private double accelerationGravity(Orbit orbit) {
+    public double accelerationGravity(Orbit orbit) {
         return massiveAstronomicalObject.getWeight()
                 / Math.pow(massiveAstronomicalObject.getRadius() + orbit.getHeight(), 2);
     }
@@ -73,19 +72,19 @@ public class Galaxy {
                 / (massiveAstronomicalObject.getRadius() + orbit.getHeight())));
     }
 
-    private void toBumpInto(Planet planet) {
+    public void toBumpInto(Planet planet) {
         massiveAstronomicalObject.setWeight(planet.getWeight() +
                 massiveAstronomicalObject.getWeight());
     }
 
-    private void planetMoveOnTheOrbit(Orbit orbit) {
+    public void planetMoveOnTheOrbit(Orbit orbit) {
         if (orbit.getNewVelocity() == orbit.getFirstVelocity()
                 && orbit.getAcceleration() == accelerationGravity(orbit)) {
             orbit.setCondition("planet on the orbit");
         }
     }
 
-    private void planetFall(Orbit orbit) {
+    public void planetFall(Orbit orbit) {
         if (orbit.getNewVelocity() < orbit.getFirstVelocity() &&
                 orbit.getAcceleration() <= accelerationGravity(orbit)
                 || orbit.getNewVelocity() >= orbit.getFirstVelocity()
@@ -95,7 +94,7 @@ public class Galaxy {
         }
     }
 
-    private void planetDied(Orbit orbit) {
+    public void planetDied(Orbit orbit) {
         if (orbit.getNewVelocity() < 0) {
             toBumpInto(orbit.planet);
             orbit.setCondition("planet died");
@@ -109,7 +108,7 @@ public class Galaxy {
         }
     }
 
-    private void flewAway(Orbit orbit) {
+    public void flewAway(Orbit orbit) {
         if (orbit.getNewVelocity() >= orbit.getFirstVelocity()
                 && orbit.getAcceleration() > accelerationGravity(orbit)
                 || orbit.getNewVelocity() < orbit.getFirstVelocity() &&
@@ -118,7 +117,7 @@ public class Galaxy {
         }
     }
 
-    public void getStateGalaxy() {
+    private void getStateGalaxy() {
         for (int j = 0; j < getOrbits().size(); j++) {
             Orbit orbit = getOrbits().get(j);
             addNewVelocity(orbit);
@@ -167,4 +166,21 @@ public class Galaxy {
     public static void setI(int i) {
         Galaxy.i = i;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Galaxy galaxy = (Galaxy) o;
+        return id == galaxy.id &&
+                time == galaxy.time &&
+                Objects.equals(massiveAstronomicalObject, galaxy.massiveAstronomicalObject) &&
+                Objects.equals(orbits, galaxy.orbits);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, massiveAstronomicalObject, time, orbits);
+    }
+
 }

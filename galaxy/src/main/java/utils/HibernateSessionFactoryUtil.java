@@ -9,8 +9,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.util.logging.Logger;
+
 public class HibernateSessionFactoryUtil {
     private static SessionFactory sessionFactory;
+    private static final Logger logger = Logger.getGlobal();
 
     private HibernateSessionFactoryUtil() {
     }
@@ -27,9 +30,8 @@ public class HibernateSessionFactoryUtil {
                 StandardServiceRegistryBuilder builder1 = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder1.build());
-
             } catch (HibernateException e) {
-                e.getMessage();
+                logger.info("description error");
             }
         }
         return sessionFactory;
