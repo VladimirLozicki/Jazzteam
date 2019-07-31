@@ -69,7 +69,7 @@
 </form>
 
 <form method="post" action="/upload">
-    <button class="arrow-button" type="submit" value="upload">upload</button>
+    <button class="arrow-button" type="submit" value="upload">GetFromDB</button>
 </form>
 
 <button class="arrow-button" id="start" value="start">start</button>

@@ -11,8 +11,10 @@ public class AstronomicalObject {
     private String name;
     private double velocity;
 
-    public AstronomicalObject() {
-
+    protected AstronomicalObject() {
+        /*
+         * must be for hibernate
+         */
     }
 
     public AstronomicalObject(double weight, double radius) {
@@ -41,15 +43,6 @@ public class AstronomicalObject {
     public double getRadius() {
         return radius;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 
     public double getVelocity() {
         return velocity;

@@ -40,10 +40,6 @@ public class Orbit {
         double height;
         double acceleration;
 
-        public Builder() {
-
-        }
-
         public Builder planet(Planet planet) {
             this.planet = planet;
             return this;

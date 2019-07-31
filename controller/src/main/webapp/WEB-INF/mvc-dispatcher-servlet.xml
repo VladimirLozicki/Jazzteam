@@ -16,7 +16,7 @@
     <bean
             class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
     </bean>
-    <bean id="daoGalaxy" class="dao.DaoGalaxy" name="daoGalaxy"> </bean>
+    <bean id="daoGalaxy" class="dao.GalaxyDao" name="daoGalaxy"> </bean>
     <bean id="serviceGalaxy" class="services.ServiceGalaxy">
         <constructor-arg ref="daoGalaxy"/>
     </bean>

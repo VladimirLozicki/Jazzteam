@@ -58,7 +58,7 @@ public class GalaxyController {
     @PostMapping(value = "/upload")
     public String upload(ModelMap modelMap) {
         galaxy = serviceGalaxy.find(getMaxId());
-        Galaxy.setI(galaxy.get());
+        Galaxy.setI(galaxy.getTime());
         galaxy.run();
         setSystem(modelMap, galaxy);
         return result;

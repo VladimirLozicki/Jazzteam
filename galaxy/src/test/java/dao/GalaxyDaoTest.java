@@ -14,12 +14,12 @@ import services.ServiceGalaxy;
 
 import java.util.ArrayList;
 
+import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertNotSame;
 import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
 @ContextConfiguration(locations = {"classpath:beans.xml"})
-public class DaoGalaxyTest extends AbstractTestNGSpringContextTests {
+public class GalaxyDaoTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private ServiceGalaxy serviceGalaxy;
@@ -31,6 +31,12 @@ public class DaoGalaxyTest extends AbstractTestNGSpringContextTests {
         serviceGalaxy.save(getSystem());
     }
 
+    @AfterMethod
+    public void delete() {
+        orbits.clear();
+        serviceGalaxy.delete(serviceGalaxy.find(getMaxId()));
+    }
+
     @Test
     public void testSave() {
         assertNotNull(serviceGalaxy.find(getMaxId()));
@@ -38,13 +44,7 @@ public class DaoGalaxyTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void testFindById() {
-        assertNotSame(getSystem(),serviceGalaxy.find(getMaxId()));
-    }
-
-    @AfterMethod
-    public void delete() {
-        orbits.clear();
-        serviceGalaxy.delete(getSystem());
+        assertEquals(serviceGalaxy.find(getMaxId()).getOrbits().get(0).getHeight(), 90.0);
     }
 
     private Galaxy getSystem() {
@@ -52,7 +52,7 @@ public class DaoGalaxyTest extends AbstractTestNGSpringContextTests {
         Planet planet = new Planet(1.0, 2.9, "kepler");
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
-                .height(1000)
+                .height(90)
                 .build();
         orbits.add(orbit);
         galaxy.setOrbits(orbits);

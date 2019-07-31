@@ -1,7 +1,7 @@
 package model;
 
 import model.galaxy.Galaxy;
-import model.massiveastronomicalobject.MassiveAstronomicalObject;
+import model.massive_astronomical_object.MassiveAstronomicalObject;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +49,26 @@ public class GalaxyTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void testToBumpInto() {
+    public void testPlanetToFall() {
         planet.setVelocity(3);
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
                 .acceleration(0)
+                .build();
+        orbit.setFirstVelocity(10);
+        orbit.setNewVelocity(5);
+        orbits.add(orbit);
+        galaxy.setOrbits(orbits);
+        galaxy.planetFall(orbit);
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "planet fall on star");
+    }
+
+    @Test
+    public void testPlanetToFallSecondCondition() {
+        planet.setVelocity(10);
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .acceleration(-0.5)
                 .build();
         orbit.setFirstVelocity(10);
         orbit.setNewVelocity(5);
@@ -79,6 +94,19 @@ public class GalaxyTest extends AbstractTestNGSpringContextTests {
     @Test
     public void testPlanetFlewAway() {
         planet.setVelocity(1000);
+        Orbit orbit = new Orbit.Builder()
+                .planet(planet)
+                .acceleration(2)
+                .build();
+        orbits.add(orbit);
+        galaxy.setOrbits(orbits);
+        galaxy.flewAway(orbit);
+        assertEquals(galaxy.getOrbits().get(0).getCondition(), "the planet flies away");
+    }
+
+    @Test
+    public void testPlanetFlewAwaySecondCondition() {
+        planet.setVelocity(-0.5);
         Orbit orbit = new Orbit.Builder()
                 .planet(planet)
                 .acceleration(2)

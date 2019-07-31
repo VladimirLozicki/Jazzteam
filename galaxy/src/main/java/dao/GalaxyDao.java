@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 
 import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
-public class DaoGalaxy {
+public class GalaxyDao {
     @Transactional
     public Galaxy findById(int id) {
         Session session = getSessionFactory().openSession();

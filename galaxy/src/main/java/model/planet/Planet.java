@@ -17,11 +17,9 @@ public class Planet extends AstronomicalObject {
     private int id;
 
     public Planet() {
-
-    }
-
-    public Planet(double weight, double radius) {
-        super(weight, radius);
+        /*
+         * must be for hibernate
+         */
     }
 
     public Planet(double weight, double radius, String n) {

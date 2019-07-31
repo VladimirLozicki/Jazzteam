@@ -1,7 +1,7 @@
 package utils;
 
 import model.galaxy.Galaxy;
-import model.massiveastronomicalobject.MassiveAstronomicalObject;
+import model.massive_astronomical_object.MassiveAstronomicalObject;
 import model.orbit.Orbit;
 import model.planet.Planet;
 import org.hibernate.HibernateException;
@@ -31,7 +31,7 @@ public class HibernateSessionFactoryUtil {
                         .applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder1.build());
             } catch (HibernateException e) {
-                logger.info("description error");
+                logger.info("description error" + e);
             }
         }
         return sessionFactory;

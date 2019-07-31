@@ -1,4 +1,4 @@
-package model.massiveastronomicalobject;
+package model.massive_astronomical_object;
 
 import model.planet.AstronomicalObject;
 
@@ -18,6 +18,9 @@ public class MassiveAstronomicalObject extends AstronomicalObject {
     private int id;
 
     public MassiveAstronomicalObject() {
+        /*
+         * must be for hibernate
+         */
     }
 
     public MassiveAstronomicalObject(double weight, double radius) {

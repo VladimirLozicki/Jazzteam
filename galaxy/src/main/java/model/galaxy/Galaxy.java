@@ -1,6 +1,6 @@
 package model.galaxy;
 
-import model.massiveastronomicalobject.MassiveAstronomicalObject;
+import model.massive_astronomical_object.MassiveAstronomicalObject;
 import model.orbit.Orbit;
 import model.planet.Planet;
 
@@ -49,7 +49,7 @@ public class Galaxy {
             @Override
             public void run() {
                 i++;
-                setTime(i);
+                time = i;
                 getStateGalaxy();
             }
         };
@@ -85,9 +85,10 @@ public class Galaxy {
     }
 
     public void planetFall(Orbit orbit) {
-        if (orbit.getNewVelocity() < orbit.getFirstVelocity() &&
+        double new_velocity = orbit.getNewVelocity();
+        if (new_velocity < orbit.getFirstVelocity() &&
                 orbit.getAcceleration() <= accelerationGravity(orbit)
-                || orbit.getNewVelocity() >= orbit.getFirstVelocity()
+                || new_velocity >= orbit.getFirstVelocity()
                 && orbit.getAcceleration() < accelerationGravity(orbit)) {
             orbit.setCondition("planet fall on star");
             planetDied(orbit);
@@ -109,9 +110,10 @@ public class Galaxy {
     }
 
     public void flewAway(Orbit orbit) {
-        if (orbit.getNewVelocity() >= orbit.getFirstVelocity()
+        double new_velocity = orbit.getNewVelocity();
+        if (new_velocity >= orbit.getFirstVelocity()
                 && orbit.getAcceleration() > accelerationGravity(orbit)
-                || orbit.getNewVelocity() < orbit.getFirstVelocity() &&
+                || new_velocity < orbit.getFirstVelocity() &&
                 orbit.getAcceleration() >= accelerationGravity(orbit)) {
             orbit.setCondition("the planet flies away");
         }
@@ -128,10 +130,6 @@ public class Galaxy {
     }
 
     public int getTime() {
-        return i;
-    }
-
-    public int get() {
         return time;
     }
 
@@ -157,10 +155,6 @@ public class Galaxy {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    private void setTime(int time) {
-        this.time = time;
     }
 
     public static void setI(int i) {
