@@ -47,7 +47,13 @@ public class GalaxyController {
         return result;
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/back")
+    public String back() {
+        galaxy.killTime();
+        return "/galaxy";
+    }
+
+    @PostMapping(value = "/result")
     public String save(ModelMap modelMap) {
         serviceGalaxy.save(galaxy);
         setSystem(modelMap, galaxy);

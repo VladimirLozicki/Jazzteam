@@ -3,6 +3,7 @@ package model.galaxy;
 import model.massive_astronomical_object.MassiveAstronomicalObject;
 import model.orbit.Orbit;
 import model.planet.Planet;
+import org.springframework.test.context.ContextConfiguration;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,6 +15,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
@@ -21,6 +23,7 @@ import java.util.TimerTask;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@ContextConfiguration(locations = {"classpath:beans.xml"})
 public class Galaxy {
 
     @Id
@@ -42,8 +45,10 @@ public class Galaxy {
          */
     }
 
+    @Transient
+    private Timer timer = new Timer();
+
     public void run() {
-        Timer timer = new Timer();
         TimerTask task = new TimerTask() {
 
             @Override
@@ -54,6 +59,11 @@ public class Galaxy {
             }
         };
         timer.schedule(task, 10, 10);
+    }
+
+    public void killTime() {
+        timer.cancel();
+        setI(0);
     }
 
     public double accelerationGravity(Orbit orbit) {
@@ -110,10 +120,9 @@ public class Galaxy {
     }
 
     public void flewAway(Orbit orbit) {
-        double new_velocity = orbit.getNewVelocity();
-        if (new_velocity >= orbit.getFirstVelocity()
+        if (orbit.getNewVelocity() >= orbit.getFirstVelocity()
                 && orbit.getAcceleration() > accelerationGravity(orbit)
-                || new_velocity < orbit.getFirstVelocity() &&
+                || orbit.getNewVelocity() < orbit.getFirstVelocity() &&
                 orbit.getAcceleration() >= accelerationGravity(orbit)) {
             orbit.setCondition("the planet flies away");
         }

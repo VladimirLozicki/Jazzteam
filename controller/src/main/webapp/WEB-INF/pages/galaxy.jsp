@@ -1,78 +1,128 @@
 <html>
 <head>
+    <title>galaxy</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
     <style>
         TABLE {
-            width: 400px;
-            border-collapse: collapse;
+            border-collapse: collapse; /* Убираем двойные линии между ячейками */
+            width: 400px; /* Ширина таблицы */
+            margin-top: 25px;
+            margin-right: 40px;
         }
 
-        TD, TH {
-            width: 30px;
-            padding: 3px;
-            border: 1px solid black;
+        THEAD, TD {
+            border: 2px solid black; /* Параметры рамки */
+            text-align: center; /* Выравнивание по центру */
+            padding: 5px; /* Поля вокруг текста */
         }
 
-        TH {
-            background: #b0e0e6;
+        THEAD {
+            background: #b0e0e6; /* Цвет фона ячейки */
+            height: 50px; /* Высота ячеек */
+            vertical-align: bottom; /* Выравнивание по нижнему краю */
+            padding: 0; /* Убираем поля вокруг текста */
         }
 
-        button {
-            width: 70px;
-            height: 20px;
+        .button4 {
+            position: relative;
+            display: inline-block;
+            font-family: Arial, Helvetica, FreeSans, "Liberation Sans", "Nimbus Sans L", sans-serif;
+            font-size: 1.5em;
+            font-weight: 300;
+            color: rgb(245, 245, 245);
+            text-shadow: 0 -1px rgba(0, 0, 0, .1);
+            text-decoration: none;
+            user-select: none;
+            padding: .3em 1em;
+            outline: none;
+            border: none;
+            border-radius: 3px;
+            background: #0c9c0d linear-gradient(#82d18d, #0c9c0d);
+            box-shadow: inset #72de26 0 -1px 1px, inset 0 1px 1px #98ff98, #3caa3c 0 0 0 1px, rgba(0, 0, 0, .3) 0 2px 5px;
+            -webkit-animation: pulsate 1.2s linear infinite;
+            animation: pulsate 1.2s linear infinite;
+        }
+
+        .styl {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .name{
+            margin-top: 20px;
+            margin-right: 70px;
         }
     </style>
+
 </head>
 <body>
-<form>
-    <p>
-        <label for="Weight"> Weight </label>
-        <input style="width: 200px;" id="weight" type="number" placeholder="min : 1" required/>
-    </p>
-    <p>
-        <label for="Radius"> Radius</label>
-        <input style="width: 200px;" id="radius" type="number" placeholder="min : 1" required/></p>
-    <p>
-        <label for="Height"> Height </label>
-        <input style="width: 200px;" id="height" type="number" placeholder="min : 1" required/></p>
-    <p>
-        <label for="Acceleration"> Acceleration</label>
-        <input style="width: 200px;" id="acceleration" type="number" placeholder="value may be negative or positive"
-               required/></p>
-    <p>
-        <label for="Velocity"> Velocity</label>
-        <input style="width: 200px;" id="velocity" type="number" placeholder="value may be less 1"
-               required/></p>
-</form>
+<div class="styl">
+    <div>
+        <h2>Input value Orbit</h2>
+        <p>
+            <label for="Weight"> Weight </label>
+            <input class="in" style="width: 200px;" id="weight" type="number" placeholder="min : 1" required/>
+        </p>
+        <p>
+            <label for="Radius"> Radius</label>
+            <input style="width: 200px;" id="radius" type="number" placeholder="min : 1" required/></p>
+        <p>
+            <label for="Height"> Height </label>
+            <input style="width: 200px;" id="height" type="number" placeholder="min : 1" required/></p>
+        <p>
 
-<input class="arrow-button" type="button" onclick="insertRow('table');" value="add">
-<table id="table" class="table-view">
-    <tr>
-        <td>delete</td>
-        <td>id</td>
-        <td>weight</td>
-        <td>radius</td>
-        <td>height</td>
-        <td>acceleration</td>
-        <td>velocity</td>
-    </tr>
-</table>
-<form>
-    <p><label for="Weight"> Weight Star</label>
-        <input id="star_weight" type="number" required/>
-    </p>
-    <p>
-        <label for="Radius"> Radius Star</label>
-        <input id="star_radius" type="number" required/>
-    </p>
-    <input type="hidden" id="hidden">
-</form>
+            <label for="Acceleration"> Acceleration</label>
+            <input style="width: 200px;" id="acceleration" type="number" placeholder="value may be negative or positive"
+                   required/></p>
+        <p>
+            <label for="Velocity"> Velocity</label>
+            <input style="width: 200px;" id="velocity" type="number" placeholder="value may be less 1"
+                   required/>
+        </p>
 
-<form method="post" action="/upload">
-    <button class="arrow-button" type="submit" value="upload">GetFromDB</button>
-</form>
+        <h2>Input value Star</h2>
+        <p><label for="Weight"> Weight Star</label>
+            <input id="star_weight" type="number" required/>
+        </p>
+        <p>
+            <label for="Radius"> Radius Star</label>
+            <input id="star_radius" type="number" required/>
+        </p>
 
-<button class="arrow-button" id="start" value="start">start</button>
+        <div class="styl">
+            <div>
+                <p>
+                    <input class="button4" type="button" onclick="insertRow('table');" value="addOrbit">
+                </p>
+                <p>
+                <form method="post" action="/upload">
+                    <button class="button4" type="submit" value="upload">GetFromDB</button>
+                </form>
+                </p>
+                <p>
+                    <button class="button4" id="start" value="start">start</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <h2 class="name">List Orbit</h2>
+        <table id="table">
+            <thead>
+            <tr>
+                <td>delete</td>
+                <td>id</td>
+                <td>weight</td>
+                <td>radius</td>
+                <td>height</td>
+                <td>acceleration</td>
+                <td>velocity</td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
 <script>
     var button;
 
