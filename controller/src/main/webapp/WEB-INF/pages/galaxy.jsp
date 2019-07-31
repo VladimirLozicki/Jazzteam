@@ -7,7 +7,7 @@
             border-collapse: collapse; /* Убираем двойные линии между ячейками */
             width: 400px; /* Ширина таблицы */
             margin-top: 25px;
-            margin-right: 40px;
+            margin-right: 100px;
         }
 
         THEAD, TD {
@@ -51,6 +51,11 @@
         .name{
             margin-top: 20px;
             margin-right: 70px;
+        }
+
+        .p{
+            margin-right: 320px;
+            margin-top: 20px;
         }
     </style>
 
@@ -108,7 +113,7 @@
 
     <div>
         <h2 class="name">List Orbit</h2>
-        <table id="table">
+        <table id="table" class="p">
             <thead>
             <tr>
                 <td>delete</td>

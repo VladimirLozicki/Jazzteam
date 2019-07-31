@@ -17,20 +17,18 @@ public class JDBC {
         Equals equals = new Equals();
         try {
             Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection(url, username,password);
-           Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT password FROM users WHERE username='ivan'");
+            Connection connection = DriverManager.getConnection(url, username, password);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT password FROM users_1 WHERE username='ivan'");
 
             while (resultSet.next()) {
-                  actual = resultSet.getString(1);
-                 logger.info(String.valueOf(actual.equals(expected)));
-           }
-           resultSet.close();
-           statement.close();
-                                                                                                                                                                                                                                                                                                                                     connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+                actual = resultSet.getString(1);
+                logger.info(String.valueOf(actual.equals(expected)));
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

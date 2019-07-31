@@ -53,56 +53,71 @@
             text-shadow: 0 -1px rgba(0, 0, 0, .3), 0 0 5px #ffd, 0 0 8px #fff;
             box-shadow: 0 -1px 3px rgba(0, 0, 0, .3), 0 1px 1px #fff, inset 0 1px 2px rgba(0, 0, 0, .8), inset 0 -1px 0 rgba(0, 0, 0, .05);
         }
+
+        .styl {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .p {
+            margin-right: 500px;
+        }
+
     </style>
 </head>
 <body>
-
-
-<table id="table" class="table-view">
-    <h3> List orbit in the galaxy</h3>
-    <thead>
-    <tr>
-        <th>weight</th>
-        <th>radius</th>
-        <th>height</th>
-        <th>acceleration</th>
-        <th>velocity</th>
-        <th>newVelocity</th>
-        <th>condition</th>
-        <th>firstVelocity</th>
-        <th>time</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${orbits}" var="item">
-        <tr>
-            <td>${item.planet.weight}</td>
-            <td>${item.planet.radius}</td>
-            <td>${item.height}</td>
-            <td>${item.acceleration}</td>
-            <td>${item.planet.velocity}</td>
-            <td>${item.newVelocity}</td>
-            <td>${item.condition}</td>
-            <td>${item.firstVelocity}</td>
-            <td>${time}</td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-
-<h2> Information about center galaxy</h2>
-<h4>Star_weight ${weight} </h4>
-<h4>Star_radius ${radius} </h4>
 <div>
-    <form method="get" action="/result">
-        <button class="button4" id="result" value="result">result</button>
-    </form>
+    <table id="table" class="table-view">
+        <h3> List orbit in the galaxy</h3>
+        <thead>
+        <tr>
+            <th>weight</th>
+            <th>radius</th>
+            <th>height</th>
+            <th>acceleration</th>
+            <th>velocity</th>
+            <th>newVelocity</th>
+            <th>condition</th>
+            <th>firstVelocity</th>
+            <th>time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${orbits}" var="item">
+            <tr>
+                <td>${item.planet.weight}</td>
+                <td>${item.planet.radius}</td>
+                <td>${item.height}</td>
+                <td>${item.acceleration}</td>
+                <td>${item.planet.velocity}</td>
+                <td>${item.newVelocity}</td>
+                <td>${item.condition}</td>
+                <td>${item.firstVelocity}</td>
+                <td>${time}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
 
-    <form method="post" action="/back">
-        <button class="button4" id="back" value="back">back</button>
-    </form>
+<div>
+    <h2> Center galaxy</h2>
+    <h4>Star_weight ${weight} </h4>
+    <h4>Star_radius ${radius} </h4>
+</div>
 
-    <button class="button4" id="save" value="save">save</button>
+<div>
+    <div>
+        <form method="get" action="/result">
+            <button class="button4" id="result" value="result">result</button>
+        </form>
+    </div>
+    <div>
+        <form method="post" action="/back">
+            <button class="button4" id="back" value="back">back</button>
+        </form>
+        <button class="button4" id="save" value="save">save</button>
+    </div>
 </div>
 <script>
     $("#save").click(function () {
