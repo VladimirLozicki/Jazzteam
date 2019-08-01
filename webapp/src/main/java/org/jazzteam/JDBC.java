@@ -19,7 +19,7 @@ public class JDBC {
             Class.forName("org.postgresql.Driver");
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT password FROM users_1 WHERE username='ivan'");
+            ResultSet resultSet = statement.executeQuery("SELECT password FROM users WHERE username='ivan'");
 
             while (resultSet.next()) {
                 actual = resultSet.getString(1);

@@ -48,12 +48,12 @@
             justify-content: space-between;
         }
 
-        .name{
+        .name {
             margin-top: 20px;
             margin-right: 70px;
         }
 
-        .p{
+        .p {
             margin-right: 320px;
             margin-top: 20px;
         }

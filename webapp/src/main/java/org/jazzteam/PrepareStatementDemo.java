@@ -14,7 +14,6 @@ public class PrepareStatementDemo {
     private static final String username = "postgres";
     private static final String password = "1111";
 
-
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         String name;
         logger.info("Registering JDBC driver...");
@@ -22,25 +21,40 @@ public class PrepareStatementDemo {
         PreparedStatement preparedStatement = null;
         Connection connection = null;
         Statement statement;
+        String SQL = null;
         try {
 
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(url, username, password);
             statement = connection.createStatement();
-            String SQL = "SELECT * FROM users_1";
+            SQL = "SELECT * FROM users";
             ResultSet resultSet = statement.executeQuery(SQL);
 
             while (resultSet.next()) {
-                name = resultSet.getString("username");
+                name = resultSet.getString("name");
                 logger.info("name : " + name);
             }
 
-            SQL = "Update users_1 SET username='yuewiwfw' WHERE password=12345";
+            SQL = "Update users SET name=? WHERE password=?";
             preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setString(1, "vova");
+            preparedStatement.setInt(2, 12345);
             preparedStatement.executeUpdate();
             while (resultSet.next()) {
-                name = resultSet.getString("username");
+                name = resultSet.getString("name");
                 logger.info("name : " + name);
+            }
+
+            SQL = "SELECT  * FROM users WHERE password=?";
+            preparedStatement = connection.prepareStatement(SQL);
+            preparedStatement.setInt(1, 12345678);
+            resultSet = preparedStatement.executeQuery();
+            int pass;
+            while (resultSet.next()) {
+                name = resultSet.getString("name");
+                pass = resultSet.getInt("password");
+                logger.info("name : " + name);
+                logger.info("password : " + pass);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,3 +68,4 @@ public class PrepareStatementDemo {
         }
     }
 }
+
