@@ -12,6 +12,7 @@
         <spring-framework-version>5.1.7.RELEASE</spring-framework-version>
         <hibernate-version>5.4.2.Final</hibernate-version>
         <javax.servlet>4.0.1</javax.servlet>
+        <spring.version>3.1.4.RELEASE</spring.version>
     </properties>
 
     <artifactId>controller</artifactId>
@@ -43,6 +44,23 @@
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-dbcp</artifactId>
             <version>9.0.19</version>
+        </dependency>
+
+<!--        Spring Security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>

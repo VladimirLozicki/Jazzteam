@@ -102,8 +102,8 @@
 
 <div>
     <h2> Center galaxy</h2>
-    <h4>Star_weight ${weight} </h4>
-    <h4>Star_radius ${radius} </h4>
+    <div id="star_weight"><h4>Star_weight ${weight} </h4></div>
+    <div id="star_radius"><h4>Star_radius ${radius} </h4></div>
 </div>
 
 <div>
@@ -111,22 +111,55 @@
         <form method="get" action="/result">
             <button class="button4" id="result" value="result">result</button>
         </form>
+
     </div>
     <div>
         <form method="post" action="/back">
             <button class="button4" id="back" value="back">back</button>
         </form>
-        <button class="button4" id="save" value="save">save</button>
+        <form method="post" action="/new">
+            <button class="button4" id="save" value="save">save</button>
+        </form>
     </div>
 </div>
 <script>
-    $("#save").click(function () {
+    var data = {};
+    $("#result").click(function () {
+        var orbits = [];
+        var row = document.getElementById('table').rows;
+        for (var i = 1; i < row.length; i++) {
+            var orbit = {
+                "planet": {
+                    "weight": row[i].cells[0].innerHTML,
+                    "radius": row[i].cells[1].innerHTML,
+                    "velocity": row[i].cells[4].innerHTML
+                },
+                "height": row[i].cells[2].innerHTML,
+                "acceleration": row[i].cells[3].innerHTML,
+                "newVelocity": row[i].cells[5].innerHTML,
+                "condition": row[i].cells[6].innerHTML,
+                "firstVelocity": row[i].cells[7].innerHTML
+            };
+            orbits.push(orbit);
+        }
+
+        var galaxy = {
+            "massiveAstronomicalObject": {
+                "weight": document.getElementById('star_weight').value,
+                "radius": document.getElementById('star_radius').value
+            },
+            "orbits": orbits,
+            "time": row[1].cells[8].innerHTML
+        };
+        data = JSON.stringify(galaxy);
         $.ajax({
             url: "http://localhost:9090/result",
             type: "POST",
+            data: data,
+            contentType: "application/json; charset=utf-8",
             success: function (response) {
             }
-        })
+        });
     });
 </script>
 </body>

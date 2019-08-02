@@ -46,9 +46,10 @@ public class Galaxy {
     }
 
     @Transient
-    private Timer timer = new Timer();
+    private Timer timer;
 
     public void run() {
+        timer=new Timer();
         TimerTask task = new TimerTask() {
 
             @Override
