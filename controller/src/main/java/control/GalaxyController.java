@@ -1,4 +1,4 @@
-package controller;
+package control;
 
 import model.galaxy.Galaxy;
 import org.hibernate.Session;
@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import services.ServiceGalaxy;
-
 import javax.transaction.Transactional;
-
 import static utils.HibernateSessionFactoryUtil.getSessionFactory;
 
 @Controller
@@ -52,7 +50,6 @@ public class GalaxyController {
         galaxy.killTime();
         return "/galaxy";
     }
-
 
     @PostMapping(value = "/new")
     public String save(ModelMap modelMap) {
