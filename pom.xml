@@ -17,7 +17,7 @@
         <module>galaxy</module>
         <module>webapp</module>
         <module>controller</module>
-        <module>spring-security</module>
+        <module>security</module>
     </modules>
 
     <properties>
