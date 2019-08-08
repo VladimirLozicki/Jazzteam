@@ -9,7 +9,7 @@
 		<title>Protected page</title>
 	</head>
 	<body>
-		<h1>Message : ${message}</h1>
+		<h1>singleton.Message : ${message}</h1>
 
 		<c:if test="${pageContext.request.userPrincipal.name != null}">
 			<h2>Welcome : ${pageContext.request.userPrincipal.name}</h2>

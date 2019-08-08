@@ -8,16 +8,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <spring-framework-version>5.1.7.RELEASE</spring-framework-version>
-        <hibernate-version>5.4.2.Final</hibernate-version>
-        <javax.servlet>4.0.1</javax.servlet>
-        <spring.version>3.1.4.RELEASE</spring.version>
-    </properties>
 
+
+    <name>model</name>
     <artifactId>controller</artifactId>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
+
 
     <build>
         <plugins>
@@ -33,6 +30,12 @@
         </plugins>
     </build>
 
+    <properties>
+        <spring-framework-version>5.1.7.RELEASE</spring-framework-version>
+        <hibernate-version>5.4.2.Final</hibernate-version>
+        <javax.servlet>4.0.1</javax.servlet>
+        <spring.version>3.1.4.RELEASE</spring.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -119,11 +122,6 @@
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

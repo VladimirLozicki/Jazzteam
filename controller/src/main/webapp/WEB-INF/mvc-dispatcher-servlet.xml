@@ -15,9 +15,9 @@
 
     <mvc:annotation-driven/>
 
-    <bean
-            class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-    </bean>
+    <!--<bean-->
+            <!--class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+    <!--</bean>-->
 
     <bean id="daoGalaxy" class="dao.GalaxyDao" name="daoGalaxy"> </bean>
     <bean id="serviceGalaxy" class="services.ServiceGalaxy">

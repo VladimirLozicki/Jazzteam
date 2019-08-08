@@ -18,6 +18,7 @@
         <module>webapp</module>
         <module>controller</module>
         <module>security</module>
+        <module>spring-scope</module>
     </modules>
 
     <properties>

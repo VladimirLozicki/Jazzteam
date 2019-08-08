@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="daoGalaxy" class="dao.GalaxyDao" name="daoGalaxy"></bean>
+    <bean id="serviceGalaxy" class="services.ServiceGalaxy">
+        <constructor-arg ref="daoGalaxy"/>
+    </bean>
+    <bean id="galaxy" class="model.galaxy.Galaxy"></bean>
+    <bean id="planet" class="model.planet.Planet"></bean>
+    <bean id="massiveObject" class="model.massive_astronomical_object.MassiveAstronomicalObject"></bean>
+</beans>
