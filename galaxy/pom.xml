@@ -13,7 +13,7 @@
     <packaging>war</packaging>
 
     <properties>
-        <spring-framework-version>5.1.7.RELEASE</spring-framework-version>
+        <spring-framework-version>5.2.3.RELEASE</spring-framework-version>
         <jackson.core>2.9.9</jackson.core>
         <hibernate-version>5.4.2.Final</hibernate-version>
         <javax.servlet>4.0.1</javax.servlet>
