@@ -31,7 +31,7 @@
     </build>
 
     <properties>
-        <spring-framework-version>5.1.7.RELEASE</spring-framework-version>
+        <spring-framework-version>5.2.7.RELEASE</spring-framework-version>
         <hibernate-version>5.4.2.Final</hibernate-version>
         <javax.servlet>4.0.1</javax.servlet>
         <spring.version>3.1.4.RELEASE</spring.version>
@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>3.0.2.RELEASE</version>
+            <version>5.2.7.RELEASE</version>
         </dependency>
 
 
@@ -163,7 +163,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>3.1.1.RELEASE</version>
+            <version>5.2.7.RELEASE</version>
         </dependency>
     </dependencies>
 </project>
